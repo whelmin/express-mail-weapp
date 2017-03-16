@@ -1,0 +1,13 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "window":{
+    "backgroundColor":"#4fc08d",
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#4fc08d",
+    "navigationBarTitleText": "邮报系统",
+    "navigationBarTextStyle":"light"
+  }
+}

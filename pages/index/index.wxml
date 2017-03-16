@@ -1,0 +1,31 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="main-header">
+    <!--取件-->
+    <view class="main-header-btn">
+      <image src="/images/index/receive.png"></image>
+      <text>取件</text>
+    </view>
+    <!--寄件-->
+    <view class="main-header-btn">
+      <image src="/images/index/send.png"></image>
+      <text>寄件</text>
+    </view>
+  </view>
+
+  <view class="main-search">
+    <image src="/images/index/search.png"></image>
+    <input type="text" class="search" placeholder="搜索..." placeholder-class="search-placeholder" />
+  </view>
+
+  <view class="main-list">
+    <view class="main-list-item">
+
+    </view>
+    <view class="main-list-item">
+
+    </view>
+
+  </view>
+
+</view>
