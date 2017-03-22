@@ -76,7 +76,7 @@ App({
   },
   //获取身份认证
   getAuth: function() {
-    return this._g.token.userId + '_' + this._g.token.token;
+    return this._g.token.userId + '_' + this._g.token.token + '_MP';
   },
   utils: require('/utils/util.js'),
   _g: {
@@ -85,7 +85,7 @@ App({
     //用户信息
     user: {},
     token: {},
-    // server: 'http://192.168.2.123:8080'
-    server: 'http://125.81.58.193:9090'
+    server: 'http://192.168.2.123:9090'
+    // server: 'http://125.81.58.193:9090'
   }
 });

@@ -25,9 +25,12 @@
         <text wx:if="{{item.sendTime}}">寄件时间：{{item.sendTime}}</text>
         <text>录入时间：{{item.submitTime}}</text>
       </view>
-      <navigator url="/pages/index/claim/claim?id={{item.id}}" class="main-list-item-more" hover-class="none">
+      <navigator wx:if="{{item.status === 'LOST'}}" url="/pages/index/claim/claim?id={{item.id}}" class="main-list-item-more" hover-class="none">
         <text class="btn">认领</text>
       </navigator>
+      <view wx:if="{{item.status === 'FOUND'}}" class="main-list-item-more">
+        <text class="btn btn-gray">已认领</text>
+      </view>
     </view>
     <text class="remind">{{list_remind}}</text>
 

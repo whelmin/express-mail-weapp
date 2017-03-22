@@ -82,7 +82,7 @@ Page({
       method: 'POST',
       url: app._g.server + '/mail/u/receive/claim',
       data: {
-        id: that.data.id,
+        'receiveMail.id': that.data.id,
         claimer: that.data.form.name,
         phoneNum: that.data.form.phone,
         address: that.data.form.address
@@ -94,14 +94,6 @@ Page({
       success: function(res) {
         if(res.statusCode >= 200 && res.statusCode < 400){
           var data = res.data;
-          that.setData({
-            phoneIndex: null,
-            form: {
-              name: null,
-              phone: null,
-              address: null
-            }
-          });
           wx.showToast({ title: '提交成功' });
           wx.redirectTo({
             url: '/pages/index/receive/list'
@@ -118,7 +110,13 @@ Page({
       complete: function() {
         wx.hideNavigationBarLoading();
         that.setData({
-          'submit_loading': false
+          'submit_loading': false,
+          phoneIndex: null,
+          form: {
+            name: null,
+            phone: null,
+            address: null
+          }
         });
       }
     });
