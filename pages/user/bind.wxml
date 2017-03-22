@@ -1,0 +1,28 @@
+<!--pages/user/bind.wxml-->
+<view class="container">
+  <view class="cell-item cell-header {{cell_active ? 'active' : ''}}" bindtap="cellToggle">
+    <text>新增手机号</text>
+    <image class="rotate" src="/images/user/enter.png"></image>
+  </view>
+  <form wx:if="{{cell_active}}" bindreset="submit">
+    <view class="cell-item input-group">
+      <input placeholder="请输入手机号" data-key="phone" bindinput="bindKeyInput" />
+      <view class="text" bindtap="sendCode">
+        <text wx:if="{{!send_time}}" class="text-blue">发送验证码</text>
+        <text wx:else class="text-gray">发送验证码 ({{send_time}})</text>
+      </view>
+    </view>
+    <view class="cell-item input-group">
+      <input placeholder="请输入短信验证码" data-key="code" bindinput="bindKeyInput" />
+      <button class="btn" form-type="reset">
+        <text wx:if="{{!submit_loading}}">提交</text>
+        <text wx:else>提交中</text>
+      </button>
+    </view>
+  </form>
+
+  <view wx:for="{{phoneNums}}" wx:key="*this" class="cell-item {{!index ? 'margin-top' : ''}}">
+    <text>{{item}}</text>
+    <button class="btn btn-red">删除</button>
+  </view>
+</view>

@@ -1,0 +1,26 @@
+<!--pages/index/qrcode/qrcode.wxml-->
+<view class="container">
+  <view class="qrcode-box">
+    <image wx:if="{{data.receiveMail.status !== 'RECEIVED'}}" class="qrcode" src="{{qrcode_url}}"></image>
+    <block wx:else>
+      <icon type="success" size="80"/>
+      <text class="used">已取件</text>
+    </block>
+  </view>
+  <view class="detail">
+    <view class="token" wx:if="{{data.receiveMail.status !== 'RECEIVED'}}">
+      <text>取件码：</text>
+      <text class="token-value">{{data.mailToken.token}}</text>
+    </view>
+    <text wx:else>取件码：{{data.mailToken.token}}（已取件）</text>
+    <text>收件人：{{data.receiveMail.receiver}}</text>
+    <text>收件电话：{{data.receiveMail.receivePhoneNum}}</text>
+    <text wx:if="{{data.receiveMail.receiveAddress}}">收件地址：{{data.receiveMail.receiveAddress}}</text>
+    <text wx:if="{{data.receiveMail.sender}}">寄件人：{{data.receiveMail.sender}}</text>
+    <text wx:if="{{data.receiveMail.sendPhoneNum}}">寄件电话：{{data.receiveMail.sendPhoneNum}}</text>
+    <text wx:if="{{data.receiveMail.sendAddress}}">寄件地址：{{data.receiveMail.sendAddress}}</text>
+    <text wx:if="{{data.receiveMail.sendTime}}">寄件时间：{{data.receiveMail.sendTime}}</text>
+    <text>录入时间：{{data.receiveMail.submitTime}}</text>
+    <text wx:if="{{data.receiveMail.receiveTime}}">取件时间：{{data.receiveMail.receiveTime}}</text>
+  </view>
+</view>

@@ -1,0 +1,35 @@
+/* pages/index/qrcode/qrcode.wxss */
+.qrcode-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 750rpx;
+  height: 650rpx;
+  margin: 100rpx 0 15rpx;
+}
+.qrcode {
+  width: 600rpx;
+  height: 600rpx;
+}
+.used {
+  font-size: 32pt;
+  margin-left: 15rpx;
+}
+
+.detail {
+  display: flex;
+  flex-direction: column;
+  min-height: 100rpx;
+  margin: 100rpx 30rpx;
+  line-height: 160%;
+  border: 1rpx solid #eaeefb;
+  border-radius: 3px;
+  background: #f9fafc;
+  padding: 35rpx 30rpx 25rpx;
+}
+.token .token-value {
+  font-size: 42pt;
+  line-height: 110%;
+  font-weight: 900;
+  letter-spacing: 10rpx;
+}

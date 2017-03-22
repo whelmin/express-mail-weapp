@@ -13,5 +13,143 @@ page {
   align-items: stretch;
   box-sizing: border-box;
   font-size: 12pt;
-  background-color: #f8f8f8;
+  color: #475669;
+  background-color: #fff;
+}
+navigator:active {
+  opacity: .8;
+}
+.margin-bottom {
+  margin-bottom: 25rpx !important;
+}
+.margin-top {
+  margin-top: 25rpx !important;
+}
+button{
+    background: transparent;
+    border-radius: 0;
+    padding: 0;
+    border: none;
+}
+button::after{
+    display: none;
+}
+/*cell*/
+.cell-item {
+  display: flex;
+  align-items: center;
+  padding: 0 25rpx 0 30rpx;
+  height: 90rpx;
+  border-top: 1px solid #eaeefb;
+  border-bottom: 1px solid #eaeefb;
+  font-size: 13pt;
+  margin-top: -1px;
+  background: #f9fafc;
+}
+.cell-item>text,
+.cell-item>input {
+  flex: 1;
+}
+.cell-item>image {
+  width: 25rpx;
+  height: 25rpx;
+}
+.cell-item .rotate {
+  transition: .25s;
+  transform: rotate(90deg);
+}
+.cell-header.active .rotate {
+  transform: rotate(180deg);
+}
+/*按钮*/
+.btn {
+  display: inline-block;
+  font-size: 11pt;
+  height: 20pt;
+  line-height: 20pt;
+  background: #20a0ff;
+  color: #fff;
+  padding: 0 10px;
+  border-radius: 3px;
+  margin: 10rpx;
+}
+.btn-red {
+  background: #ff4949;
+}
+.btn-green {
+  background: #13ce66;
+}
+.btn-gray {
+  background: #d3dce6;
+  color: #8492a6;
+}
+/*文字*/
+.text {
+  display: inline-block;
+  font-size: 11pt;
+  margin: 10rpx;
+}
+.text-blue {
+  color: #20a0ff;
+}
+.text-gray {
+  color: #8492a6;
+}
+/*列表*/
+.main-list {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+.main-list-item {
+  position: relative;
+  display: flex;
+  min-height: 100rpx;
+  margin: 0 30rpx 18rpx;
+  line-height: 160%;
+  border: 1rpx solid #eaeefb;
+  border-radius: 3px;
+  background: #f9fafc;
+}
+.main-list-item-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 25rpx 30rpx;
+}
+.main-list-item-more {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20rpx;
+}
+.remind {
+  font-size: 10pt;
+  color: #c0ccda;
+  text-align: center;
+  margin: 30rpx;
+}
+/*tabs*/
+.nav-tabs {
+  display: flex;
+  align-items: stretch;
+  height: 80rpx;
+  background: #20a0ff;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 30rpx;
+}
+.tab-item {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tab-item text {
+  font-size: 13pt;
+  padding: 10rpx 10rpx 12rpx;
+  border-bottom: 2px solid transparent;
+}
+.tab-item.active text {
+  border-color: #fff;
 }

@@ -1,0 +1,27 @@
+<!--pages/user/user.wxml-->
+<view class="container">
+  <view class="user-header">
+    <view class="user-avatar-box">
+      <image class="user-avatar" src="{{userInfo.avatarUrl}}"></image>
+    </view>
+    <view class="user-info-box">
+      <text class="user-name">{{userInfo.nickName}}</text>
+    </view>
+  </view>
+
+  <view class="user-content">
+    <navigator url="/pages/user/bind" class="cell-item margin-bottom">
+      <text>绑定手机号</text>
+      <image src="/images/user/enter.png"></image>
+    </navigator>
+    <navigator url="/pages/index/receive/list" class="cell-item">
+      <text>我的取件</text>
+      <image src="/images/user/enter.png"></image>
+    </navigator>
+    <navigator url="/pages/user/send/list" class="cell-item">
+      <text>我的寄件</text>
+      <image src="/images/user/enter.png"></image>
+    </navigator>
+  </view>
+
+</view>

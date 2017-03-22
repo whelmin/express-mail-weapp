@@ -2,9 +2,9 @@
 .main-header {
   display: flex;
   align-items: center;
-  background: #4fc08d;
+  background: #20a0ff;
   color: #fff;
-  height: 320rpx;
+  height: 300rpx;
   font-size: 14pt;
 }
 .main-header-btn {
@@ -21,7 +21,7 @@
   margin-bottom: 30rpx;
 }
 .main-header-btn:first-child {
-  border-right: 1rpx solid rgba(255, 255, 255, 0.3);
+  border-right: 1rpx solid rgba(255, 255, 255, 0.2);
 }
 
 .main-search {
@@ -41,24 +41,17 @@
   box-sizing: border-box;
   padding: 0 25rpx 0 65rpx;
   margin: 20rpx 30rpx;
-  border: 1px solid #e8e8e8;
+  border: 1px solid #e5e9f2;
   border-radius: 5px;
   color: #2c3e50;
   outline: none;
   font-size: 12pt;
   background: #fff;
 }
+
 .search-placeholder {
   color: #ccc;
 }
-.search.active {
-  border-color: #4fc08d;
-}
-
-.main-list-item {
-  min-height: 200rpx;
-  margin: 0 30rpx 15rpx;
-  border: 1rpx solid #e8e8e8;
-  border-radius: 3px;
-  background: #fff;
+.main-search.active .search {
+  border-color: #20a0ff;
 }

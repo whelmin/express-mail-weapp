@@ -2,29 +2,34 @@
 <view class="container">
   <view class="main-header">
     <!--取件-->
-    <view class="main-header-btn">
+    <navigator url="/pages/index/receive/list" class="main-header-btn" hover-class="none">
       <image src="/images/index/receive.png"></image>
       <text>取件</text>
-    </view>
+    </navigator>
     <!--寄件-->
-    <view class="main-header-btn">
+    <navigator url="/pages/index/send/list" class="main-header-btn" hover-class="none">
       <image src="/images/index/send.png"></image>
       <text>寄件</text>
-    </view>
+    </navigator>
   </view>
 
-  <view class="main-search">
+  <view class="main-search {{search_active ? 'active' : ''}}">
     <image src="/images/index/search.png"></image>
-    <input type="text" class="search" placeholder="搜索..." placeholder-class="search-placeholder" />
+    <input type="text" class="search" placeholder="搜索..." placeholder-class="search-placeholder"  bindfocus="inputFocus" bindblur="inputBlur" />
   </view>
 
   <view class="main-list">
-    <view class="main-list-item">
-
+    <view class="main-list-item" wx:for="{{list}}" wx:key="id">
+      <view class="main-list-item-content">
+        <text>收件人：{{item.receiver}}</text>
+        <text wx:if="{{item.sendTime}}">寄件时间：{{item.sendTime}}</text>
+        <text>录入时间：{{item.submitTime}}</text>
+      </view>
+      <navigator url="/pages/index/claim/claim?id={{item.id}}" class="main-list-item-more" hover-class="none">
+        <text class="btn">认领</text>
+      </navigator>
     </view>
-    <view class="main-list-item">
-
-    </view>
+    <text class="remind">{{list_remind}}</text>
 
   </view>
 

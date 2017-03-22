@@ -1,13 +1,47 @@
 {
   "pages":[
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/index/claim/claim",
+    "pages/index/receive/list",
+    "pages/index/send/list",
+    "pages/index/send/input",
+    "pages/index/qrcode/qrcode",
+    "pages/more/more",
+    "pages/user/user",
+    "pages/user/bind"
   ],
   "window":{
-    "backgroundColor":"#4fc08d",
+    "backgroundColor":"#20a0ff",
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#4fc08d",
-    "navigationBarTitleText": "邮报系统",
+    "navigationBarBackgroundColor": "#20a0ff",
+    "navigationBarTitleText":"邮报系统",
     "navigationBarTextStyle":"light"
+  },
+  "tabBar":{
+    "color":"#8492A6",
+    "selectedColor":"#20a0ff",
+    "backgroundColor":"#f9fAfC",
+    "borderStyle":"black",
+    "list":[
+      {
+        "pagePath":"pages/index/index",
+        "text":"首页",
+        "iconPath":"images/home.png",
+        "selectedIconPath":"images/home@active.png"
+      },
+      {
+        "pagePath":"pages/more/more",
+        "text":"更多",
+        "iconPath":"images/more.png",
+        "selectedIconPath":"images/more@active.png"
+      },
+      {
+        "pagePath":"pages/user/user",
+        "text":"个人中心",
+        "iconPath":"images/user.png",
+        "selectedIconPath":"images/user@active.png"
+      }
+    ],
+    "position":"bottom"
   }
 }

@@ -1,0 +1,4 @@
+/* pages/user/bind.wxss */
+.container {
+    padding: 30rpx 0;
+}

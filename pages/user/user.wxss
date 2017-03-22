@@ -1,0 +1,35 @@
+/* pages/user/user.wxss */
+.user-header {
+  display: flex;
+  align-items: center;
+  background: #20a0ff;
+  color: #fff;
+  height: 250rpx;
+  font-size: 14pt;
+}
+.user-avatar-box {
+  width: 300rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.user-avatar {
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 50%;
+}
+.user-info-box {
+  display: flex;
+  flex-direction: column;
+  font-size: 14pt;
+  line-height: 150%;
+}
+.user-name {
+  font-size: 16pt;
+}
+.user-content {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 30rpx 0;
+}

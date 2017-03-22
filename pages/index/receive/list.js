@@ -1,44 +1,30 @@
-//index.js
-//获取应用实例
+// pages/index/receive/list.js
 var app = getApp();
 Page({
-  data: {
+  data:{
     list: [],
     current: {},
     list_remind: '加载中',
-    search_text: '',
-    search_active: false
+    active_type: 'RECEIVING'
   },
-  //下拉刷新
-  onPullDownRefresh: function(){
+  onShow:function(){
     var that = this;
     that.getList(0);
   },
-  //上滑加载
-  onReachBottom: function(){
-    var that = this;
-    that.getList();
-  },
-  onLoad: function () {
-    var that = this;
-    //登录
-    app.getUserInfo(function(){
-      that.getList();
-    });
-  },
-  //获取待认领列表
+  //获取取件列表
   getList: function(page) {
     var that = this;
     if(page === undefined){
       page = that.data.current.number + 1 || 0;
     }
     if(!page){ that.setData({ list:[], current: {} }); }
+    else{ page = that.data.current.number + 1 || 0; }
     if(page >= that.data.current.totalPages){ return; }
     that.setData({ list_remind: '加载中' });
     wx.showNavigationBarLoading();
     wx.request({
       method: 'POST',
-      url: app._g.server + '/mail/u/receives/lost',
+      url: app._g.server + '/mail/u/receives/' + that.data.active_type,
       data: {
         page: page
       },
@@ -53,6 +39,7 @@ Page({
           content.map(function(e,i){
             e.sendTime = app.utils.formatDate(e.sendTime);
             e.submitTime = app.utils.formatTime(e.submitTime);
+            e.receiveTime = app.utils.formatTime(e.receiveTime);
             return e;
           });
           that.setData({
@@ -77,14 +64,18 @@ Page({
       }
     });
   },
-  inputFocus: function(e){
-    this.setData({
-      'search_active': true
-    });
-  },
-  inputBlur: function(e){
-    this.setData({
-      'search_active': false
-    });
+  //切换tab
+  switchType: function(e){
+    var that = this;
+    var active_type = e.currentTarget.dataset.type;
+    if(active_type !== that.data.active_type) {
+      that.setData({
+        list: [],
+        current: {},
+        list_remind: '加载中',
+        active_type: active_type
+      });
+      that.getList();
+    }
   }
 });
