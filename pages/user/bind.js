@@ -7,7 +7,7 @@ Page({
     'code': null,
     'send_time': 0,
     'submit_loading': false,
-    'phoneNums': []
+    'phoneNums': [],
   },
   onLoad:function(options){
     var that = this;
@@ -95,9 +95,9 @@ Page({
       success: function(res) {
         if(res.statusCode >= 200 && res.statusCode < 400){
           var data = res.data;
-          app._g.user.phoneNums = data.phoneNums;
+          app._g.user.phoneNums = data.phoneNums || [];
           that.setData({
-            'phoneNums': data.phoneNums,
+            'phoneNums': data.phoneNums || [],
             'phone': null,
             'code': null
           });

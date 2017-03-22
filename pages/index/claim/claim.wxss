@@ -1,1 +1,28 @@
 /* pages/index/claim/claim.wxss */
+.detail {
+  display: flex;
+  flex-direction: column;
+  min-height: 100rpx;
+  margin: 40rpx 30rpx 25rpx;
+  line-height: 160%;
+  border: 1rpx solid #eaeefb;
+  border-radius: 3px;
+  background: #f9fafc;
+  padding: 25rpx 30rpx;
+}
+
+.cell-item .section{
+  flex: 1;
+}
+
+.cell-item {
+  font-size: 12pt;
+}
+
+.cell-item input, .section{
+  font-size: 11pt;
+}
+
+.picker-placeholder {
+  color: #777;
+}

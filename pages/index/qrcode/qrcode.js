@@ -40,6 +40,9 @@ Page({
       success: function(res) {
         if(res.statusCode >= 200 && res.statusCode < 400){
           var data = res.data;
+          data.receiveMail.sendTime = app.utils.formatDate(data.receiveMail.sendTime);
+          data.receiveMail.submitTime = app.utils.formatTime(data.receiveMail.submitTime);
+          data.receiveMail.receiveTime = app.utils.formatTime(data.receiveMail.receiveTime);
           that.setData({
             data: data
           });
