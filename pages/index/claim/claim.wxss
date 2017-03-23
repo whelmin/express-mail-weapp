@@ -11,12 +11,12 @@
   padding: 25rpx 30rpx;
 }
 
-.cell-item .section{
-  flex: 1;
-}
-
 .cell-item {
   font-size: 12pt;
+}
+
+.cell-item .section{
+  flex: 1;
 }
 
 .cell-item input, .section{
