@@ -85,7 +85,8 @@ App({
     //用户信息
     user: {},
     token: {},
-    server: 'http://192.168.2.123:9090'
-    // server: 'http://125.81.58.193:9090'
+    // server: 'http://192.168.2.123:8080',
+    // server: 'http://localhost.congm.in:1234',
+    server: 'http://139.129.33.201:9090'
   }
 });

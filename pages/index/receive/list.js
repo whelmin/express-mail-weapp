@@ -1,4 +1,5 @@
 // pages/index/receive/list.js
+// 取件列表
 var app = getApp();
 Page({
   data:{

@@ -3,16 +3,16 @@
 <view class="container">
   <form bindreset="submit">
     <view class="cell-item input-group margin-top">
-      <view class="input-label">寄件人：</view>
-      <input placeholder="请输入寄件人姓名" data-key="form.sendName" bindinput="bindKeyInput" />
+      <view class="input-label">寄件人姓名：</view>
+      <input placeholder="请输入寄件人的姓名" data-key="form.sendName" bindinput="bindKeyInput" />
     </view>
 
     <view class="cell-item input-group">
       <view class="input-label">寄件电话：</view>
       <view class="section">
         <picker bindchange="bindPickerChange" value="{{phoneIndex}}" range="{{phoneNums}}">
-          <text wx:if="{{phoneIndex}}">{{phoneNums[phoneIndex]}}</text>
-          <text wx:else class="picker-placeholder">请选择寄件电话</text>
+          <text wx:if="{{phoneIndex}}" class="input-placeholder-gray">{{phoneNums[phoneIndex]}}</text>
+          <text wx:else class="picker-placeholder" class="input-placeholder-gray">请选择寄件电话</text>
         </picker>
         </view>
       <navigator url="/pages/user/bind" class="btn">
@@ -26,8 +26,8 @@
     </view>
 
      <view class="cell-item input-group">
-      <view class="input-label">收件人：</view>
-      <input placeholder="请输入收件人姓名" data-key="form.receiveName" bindinput="bindKeyInput" />
+      <view class="input-label">收件人姓名：</view>
+      <input placeholder="请输入收件人的姓名" data-key="form.receiveName" bindinput="bindKeyInput" />
     </view>
 
     <view class="cell-item input-group">

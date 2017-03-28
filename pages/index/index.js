@@ -5,7 +5,7 @@ Page({
   data: {
     list: [],
     current: {},
-    list_remind: '加载中 ...',
+    list_remind: '加载中',
     search_text: '',
     search_active: false
   },

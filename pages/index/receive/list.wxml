@@ -1,4 +1,5 @@
 <!--pages/index/receive/list.wxml-->
+
 <view class="container">
   <view class="nav-tabs">
     <view class="tab-item {{active_type === 'RECEIVING' ? 'active' : ''}}" data-type="RECEIVING" bindtap="switchType">

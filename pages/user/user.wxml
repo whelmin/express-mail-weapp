@@ -18,7 +18,7 @@
       <text>我的取件</text>
       <image src="/images/user/enter.png"></image>
     </navigator>
-    <navigator url="/pages/user/send/list" class="cell-item">
+    <navigator url="/pages/index/send/list" class="cell-item">
       <text>我的寄件</text>
       <image src="/images/user/enter.png"></image>
     </navigator>

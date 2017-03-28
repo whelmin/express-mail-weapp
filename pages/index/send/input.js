@@ -67,8 +67,8 @@ Page({
         sendAddress: that.data.form.sendAddress,
         sendPhoneNum: that.data.form.sendPhone,
         receiver: that.data.form.receiveName,
-        receiveAddress: that.data.form.receivePhone,
-        receivePhoneNum: that.data.form.receiveAddress
+        receiveAddress: that.data.form.receiveAddress,
+        receivePhoneNum: that.data.form.receivePhone
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded',
