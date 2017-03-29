@@ -1,10 +1,10 @@
 <!--pages/index/send/input.wxml-->
 <!-- 新增寄件订单信息 -->
 <view class="container">
-  <form bindreset="submit">
+  <form>
     <view class="cell-item input-group margin-top">
       <view class="input-label">寄件人姓名：</view>
-      <input placeholder="请输入寄件人的姓名" data-key="form.sendName" bindinput="bindKeyInput" />
+      <input placeholder="请输入寄件人的姓名" data-key="form.sender" bindinput="bindKeyInput" />
     </view>
 
     <view class="cell-item input-group">
@@ -27,12 +27,12 @@
 
      <view class="cell-item input-group">
       <view class="input-label">收件人姓名：</view>
-      <input placeholder="请输入收件人的姓名" data-key="form.receiveName" bindinput="bindKeyInput" />
+      <input placeholder="请输入收件人的姓名" data-key="form.receiver" bindinput="bindKeyInput" />
     </view>
 
     <view class="cell-item input-group">
       <view class="input-label">收件电话：</view>
-      <input placeholder="请输入收件电话" data-key="form.receivePhone" bindinput="bindKeyInput" />
+      <input placeholder="请输入收件电话" data-key="form.receivePhoneNum" bindinput="bindKeyInput" />
     </view>
 
     <view class="cell-item input-group">
@@ -40,7 +40,7 @@
       <input placeholder="请输入收件地址" data-key="form.receiveAddress" bindinput="bindKeyInput" />
     </view>
 
-    <button class="btn btn-lg" form-type="reset">
+    <button class="btn btn-lg" bindtap="submit">
         <text wx:if="{{!submit_loading}}">提交</text>
         <text wx:else>提交中</text>
     </button>

@@ -87,33 +87,49 @@ Page({
   // 申请上门
   applyDoor: function(e) {
     var that = this;
-    wx.showNavigationBarLoading();
-    wx.request({
-      url: app._g.server + '/u/mail/send/visiting/' + e.currentTarget.dataset.id,
-      method: 'GET', 
-      header: {
-        'content-type': 'application/x-www-form-urlencoded',
-        'authorization': app.getAuth()
-      }, 
-      success: function(res){
-        // success
-        if(res.statusCode >= 200 && res.statusCode < 400){
-          var data = res.data;
-          if(data.status === "VISITING"){
-              wx.showToast({ title: '申请上门成功！' });
-              // 重新获取寄件列表
-              that.getList(0);
-          }
+    wx.showModal({
+      title: '提示',
+      content: '你是否要申请上门寄件服务',
+      showCancel: true,
+      success: function(res) {
+        if(res.confirm){
+          console.log('用户点击确定');
+          wx.showNavigationBarLoading();
+          // 发送上门请求
+          wx.request({
+            url: app._g.server + '/u/mail/send/visiting/' + e.currentTarget.dataset.id,
+            method: 'GET', 
+            header: {
+              'content-type': 'application/x-www-form-urlencoded',
+              'authorization': app.getAuth()
+            }, 
+            success: function(res){
+              // success
+              if(res.statusCode >= 200 && res.statusCode < 400){
+                var data = res.data;
+                if(data.status === "VISITING"){
+                    wx.showToast({ title: '申请上门成功！' });
+                    // 重新获取寄件列表
+                    that.getList(0);
+                }
+              }
+            },
+            fail: function(res) {
+              // to do
+              showErrModal('申请上门失败','网络错误，请重试！');
+            },
+            complete: function() {
+              wx.hideNavigationBarLoading();
+            }
+          })
+        }else{
+          console.log('用户点击取消');
         }
       },
-      fail: function(res) {
-        // to do
-        showErrModal('申请上门失败','网络错误，请重试！');
-      },
-      complete: function() {
-        wx.hideNavigationBarLoading();
+      fail: function() {
+        console.log('获取模态框失败');
       }
-    })
+    });
   }
 
 });

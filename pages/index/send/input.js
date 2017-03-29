@@ -5,21 +5,14 @@ Page({
     phoneNums: [],
     phoneIndex: null,
     data: {},
-    form: {
-      sendName: null,
-      sendPhone: null,
-      sendAddress: null,
-      receiveName: null,
-      receivePhone: null,
-      receiveAddress: null
-    },
+    form: {},
     submit_loading: false
   },
   bindPickerChange: function(e) {
     var that = this;
     that.setData({
       phoneIndex: e.detail.value,
-      'form.sendPhone': that.data.phoneNums[e.detail.value]
+      'form.sendPhoneNum': that.data.phoneNums[e.detail.value]
     });
   },
   //绑定input
@@ -47,11 +40,11 @@ Page({
   submit: function(){
     var that = this;
     var form = that.data.form;
-    if(!form.sendName){ app.showErrModal('寄件人姓名不能为空！', '提交失败'); return; }
-    if(!form.sendPhone){ app.showErrModal('请选择寄件电话！', '提交失败'); return; }
+    if(!form.sender){ app.showErrModal('寄件人姓名不能为空！', '提交失败'); return; }
+    if(!form.sendPhoneNum){ app.showErrModal('请选择寄件电话！', '提交失败'); return; }
     if(!form.sendAddress){ app.showErrModal('寄件地址不能为空！', '提交失败'); return; }
-    if(!form.receiveName){ app.showErrModal('收件人姓名不能为空！', '提交失败'); return; }
-    if(!form.receivePhone){ app.showErrModal('收件电话不能为空！', '提交失败'); return; }
+    if(!form.receiver){ app.showErrModal('收件人姓名不能为空！', '提交失败'); return; }
+    if(!form.receivePhoneNum){ app.showErrModal('收件电话不能为空！', '提交失败'); return; }
     if(!form.receiveAddress){ app.showErrModal('收件地址不能为空！', '提交失败'); return; }
 
     wx.showNavigationBarLoading();
@@ -63,12 +56,12 @@ Page({
       method: 'POST',
       url: app._g.server + '/mail/u/send',
       data: {
-        sender: that.data.form.sendName,
+        sender: that.data.form.sender,
         sendAddress: that.data.form.sendAddress,
-        sendPhoneNum: that.data.form.sendPhone,
-        receiver: that.data.form.receiveName,
+        sendPhoneNum: that.data.form.sendPhoneNum,
+        receiver: that.data.form.receiver,
         receiveAddress: that.data.form.receiveAddress,
-        receivePhoneNum: that.data.form.receivePhone
+        receivePhoneNum: that.data.form.receivePhoneNum
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded',
@@ -77,7 +70,7 @@ Page({
       success: function(res) {
         if(res.statusCode >= 200 && res.statusCode < 400){
           var data = res.data;
-          wx.showToast({ title: '提交成功' });
+          wx.showToast({ title: '提交成功', icon: 'success' });
           wx.redirectTo({
             url: '/pages/index/send/list'
           });
@@ -93,16 +86,7 @@ Page({
       complete: function() {
         wx.hideNavigationBarLoading();
         that.setData({
-          'submit_loading': false,
-          phoneIndex: null,
-          form: {
-            sendName: null,
-            sendPhone: null,
-            sendAddress: null,
-            receiveName: null,
-            receivePhone: null,
-            receiveAddress: null
-          }
+          'submit_loading': false
         });
       }
     });
