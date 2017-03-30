@@ -36,9 +36,10 @@ Page({
     if(page >= that.data.current.totalPages){ return; }
     that.setData({ list_remind: '加载中' });
     wx.showNavigationBarLoading();
+    
     wx.request({
       method: 'POST',
-      url: app._g.server + '/mail/u/receives/lost',
+      url: app._g.server + '/u/mail/receive/l/lost',
       data: {
         page: page
       },

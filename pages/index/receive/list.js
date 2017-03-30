@@ -21,13 +21,17 @@ Page({
     if(!page){ that.setData({ list:[], current: {} }); }
     else{ page = that.data.current.number + 1 || 0; }
     if(page >= that.data.current.totalPages){ return; }
+
     that.setData({ list_remind: '加载中' });
     wx.showNavigationBarLoading();
+    var urlLink = (that.data.active_type === 'FOUND')? '/u/mail/receive/l/claim' : '/u/mail/receive/l';
+
     wx.request({
       method: 'POST',
-      url: app._g.server + '/mail/u/receives/' + that.data.active_type,
+      url: app._g.server + urlLink,
       data: {
-        page: page
+        page: page,
+        statusList: that.data.active_type
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded',
@@ -43,6 +47,7 @@ Page({
             e.receiveTime = app.utils.formatTime(e.receiveTime);
             return e;
           });
+          console.log(app._g.server + urlLink);
           that.setData({
             list: that.data.list.concat(content),
             current: data
@@ -69,6 +74,7 @@ Page({
   switchType: function(e){
     var that = this;
     var active_type = e.currentTarget.dataset.type;
+    // 点击时不是上一个状态时刷新,否则不刷新。
     if(active_type !== that.data.active_type) {
       that.setData({
         list: [],

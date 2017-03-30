@@ -2,14 +2,14 @@
 <view class="container">
   <!--detail-->
   <view class="detail">
-    <text>收件人：{{data.receiveMail.receiver}}</text>
-    <text wx:if="{{data.receiveMail.receivePhoneNum}}">收件电话：{{data.receiveMail.receivePhoneNum}}</text>
-    <text wx:if="{{data.receiveMail.receiveAddress}}">收件地址：{{data.receiveMail.receiveAddress}}</text>
-    <text wx:if="{{data.receiveMail.sender}}">寄件人：{{data.receiveMail.sender}}</text>
-    <text wx:if="{{data.receiveMail.sendPhoneNum}}">寄件电话：{{data.receiveMail.sendPhoneNum}}</text>
-    <text wx:if="{{data.receiveMail.sendAddress}}">寄件地址：{{data.receiveMail.sendAddress}}</text>
-    <text wx:if="{{data.receiveMail.sendTime}}">寄件时间：{{data.receiveMail.sendTime}}</text>
-    <text>录入时间：{{data.receiveMail.submitTime}}</text>
+    <text>收件人：{{data.receiver}}</text>
+    <text wx:if="{{data.receivePhoneNum}}">收件电话：{{data.receivePhoneNum}}</text>
+    <text wx:if="{{data.receiveAddress}}">收件地址：{{data.receiveAddress}}</text>
+    <text wx:if="{{data.sender}}">寄件人：{{data.sender}}</text>
+    <text wx:if="{{data.sendPhoneNum}}">寄件电话：{{data.sendPhoneNum}}</text>
+    <text wx:if="{{data.sendAddress}}">寄件地址：{{data.sendAddress}}</text>
+    <text wx:if="{{data.sendTime}}">寄件时间：{{data.sendTime}}</text>
+    <text>录入时间：{{data.submitTime}}</text>
   </view>
   <text class="form-title">填写认领表单</text>
 
@@ -17,7 +17,7 @@
   <form bindreset="submit">
     <view class="cell-item input-group">
       <view class="input-label">认领人：</view>
-      <input placeholder="请输入认领人姓名" data-key="form.name" bindinput="bindKeyInput" />
+      <input placeholder="请输入认领人姓名" data-key="form.claimer" bindinput="bindKeyInput" />
     </view>
 
     <view class="cell-item input-group">

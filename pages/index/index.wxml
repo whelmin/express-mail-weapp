@@ -12,12 +12,14 @@
       <text>寄件</text>
     </navigator>
   </view>
-
+  
+  <!--搜索-->
   <view class="main-search {{search_active ? 'active' : ''}}">
     <image src="/images/index/search.png"></image>
     <input type="text" class="search" placeholder="搜索" placeholder-class="search-placeholder"  bindfocus="inputFocus" bindblur="inputBlur" />
   </view>
 
+  <!--待认领列表-->
   <view class="main-list">
     <view class="main-list-item" wx:for="{{list}}" wx:key="id">
       <view class="main-list-item-content">

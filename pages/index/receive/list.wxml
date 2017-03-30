@@ -5,6 +5,11 @@
     <view class="tab-item {{active_type === 'RECEIVING' ? 'active' : ''}}" data-type="RECEIVING" bindtap="switchType">
       <text>待取件</text>
     </view>
+
+    <view class="tab-item {{active_type === 'FOUND' ? 'active' : ''}}" data-type="FOUND" bindtap="switchType">
+      <text>认领中</text>
+    </view>
+
     <view class="tab-item {{active_type === 'RECEIVED' ? 'active' : ''}}" data-type="RECEIVED" bindtap="switchType">
       <text>已取件</text>
     </view>

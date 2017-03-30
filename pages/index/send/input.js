@@ -54,7 +54,7 @@ Page({
     });
     wx.request({
       method: 'POST',
-      url: app._g.server + '/mail/u/send',
+      url: app._g.server + '/u/mail/send',
       data: {
         sender: that.data.form.sender,
         sendAddress: that.data.form.sendAddress,
