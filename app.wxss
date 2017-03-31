@@ -139,7 +139,7 @@ button::after{
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 20rpx;
+  padding: 20rpx 10rpx 20rpx 20rpx;
 }
 .remind {
   font-size: 10pt;

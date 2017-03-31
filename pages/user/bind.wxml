@@ -23,6 +23,6 @@
 
   <view wx:for="{{phoneNums}}" wx:key="*this" class="cell-item {{!index ? 'margin-top' : ''}}">
     <text>{{item}}</text>
-    <button class="btn btn-red">删除</button>
+    <button class="btn btn-red" bindtap="unbind" data-phoneNumber="{{item}}">删除</button>
   </view>
 </view>

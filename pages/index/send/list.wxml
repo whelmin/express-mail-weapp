@@ -30,6 +30,7 @@
         <text class="btn block" wx:if="{{item.status === 'NEW' || item.status === 'VISITING' }}">寄件</text>
         <text class="btn btn-green block" wx:if="{{item.status === 'NEW'}}" bindtap="applyDoor" data-id="{{item.id}}">申请上门</text>
         <text class="btn btn-gray block" wx:if="{{item.status === 'VISITING'}}">上门中</text>
+        <text class="btn btn-red block" wx:if="{{item.status === 'NEW'}}" bindtap="delete" data-id="{{item.id}}">删除</text>       
         <text class="btn btn-gray block" wx:if="{{item.status === 'SENDING'}}">已寄件</text>
       </view>
     </view>
