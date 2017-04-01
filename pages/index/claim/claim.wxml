@@ -37,7 +37,7 @@
       <view class="input-label">地址：</view>
       <input placeholder="请输入联系地址" data-key="form.address" bindinput="bindKeyInput" />
     </view>
-    <button class="btn btn-lg" form-type="reset">
+    <button class="btn btn-lg margin-top" form-type="reset">
         <text wx:if="{{!submit_loading}}">提交</text>
         <text wx:else>提交中</text>
     </button>

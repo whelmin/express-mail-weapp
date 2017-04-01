@@ -11,7 +11,7 @@
   </view>
   <!--新增寄件-->
   <navigator wx:if="{{active_type === 'NEW,VISITING'}}" url="/pages/index/send/input">
-    <button class="btn btn-lg" type="primary" plain>新增寄件</button>
+    <view class="btn btn-lg">新增寄件</view>
   </navigator>
   <!--寄件列表-->
   <view class="main-list">
@@ -27,11 +27,11 @@
         <text wx:if="{{item.submitTime}}">寄件时间：{{item.submitTime}}</text>
       </view>
       <view class="main-list-item-more">
-        <text class="btn block" wx:if="{{item.status === 'NEW' || item.status === 'VISITING' }}">寄件</text>
-        <text class="btn btn-green block" wx:if="{{item.status === 'NEW'}}" bindtap="applyDoor" data-id="{{item.id}}">申请上门</text>
-        <text class="btn btn-gray block" wx:if="{{item.status === 'VISITING'}}">上门中</text>
-        <text class="btn btn-red block" wx:if="{{item.status === 'NEW'}}" bindtap="delete" data-id="{{item.id}}">删除</text>       
-        <text class="btn btn-gray block" wx:if="{{item.status === 'SENDING'}}">已寄件</text>
+        <text class="btn" wx:if="{{item.status === 'NEW' || item.status === 'VISITING' }}">寄件</text>
+        <text class="btn btn-green" wx:if="{{item.status === 'NEW'}}" bindtap="applyDoor" data-id="{{item.id}}">申请上门</text>
+        <text class="btn btn-gray" wx:if="{{item.status === 'VISITING'}}">上门中</text>
+        <text class="btn btn-red" wx:if="{{item.status === 'NEW'}}" bindtap="delete" data-id="{{item.id}}">删除</text>       
+        <text class="btn btn-gray" wx:if="{{item.status === 'SENDING'}}">已寄件</text>
       </view>
     </view>
     <text class="remind">{{list_remind}}</text>

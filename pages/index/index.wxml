@@ -15,8 +15,9 @@
   
   <!--搜索-->
   <view class="main-search {{search_active ? 'active' : ''}}">
-    <image src="/images/index/search.png"></image>
-    <input type="text" class="search" placeholder="搜索" placeholder-class="search-placeholder"  bindfocus="inputFocus" bindblur="inputBlur" />
+    <input type="text" class="search" placeholder="搜索" placeholder-class="search-placeholder"  bindfocus="inputFocus" bindblur="inputBlur" data-key="search_text" bindinput="bindKeyInput"/>
+    <image src="/images/index/search.png" class="search-icon"></image>
+    <image src="/images/index/enter.png" class="search-btn" bindtap="search"></image>
   </view>
 
   <!--待认领列表-->

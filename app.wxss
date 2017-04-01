@@ -75,9 +75,7 @@ button::after{
   padding: 0 10px;
   border-radius: 3px;
   margin: 10rpx;
-}
-.block{
-  display: block;
+  text-align: center;
 }
 .btn-red {
   background: #ff4949;
@@ -93,7 +91,7 @@ button::after{
 }
 .btn-lg{
   display: block;
-  margin: 30rpx;
+  margin: 0 30rpx 30rpx;
   height: 30pt;
   line-height: 30pt;
 }

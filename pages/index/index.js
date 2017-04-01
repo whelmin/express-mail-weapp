@@ -7,7 +7,9 @@ Page({
     current: {},
     list_remind: '加载中',
     search_text: '',
-    search_active: false
+    search_active: false,
+    // 列表是否有更新
+    list_update: false
   },
   //下拉刷新
   onPullDownRefresh: function(){
@@ -25,6 +27,16 @@ Page({
     app.getUserInfo(function(){
       that.getList();
     });
+  },
+  //绑定input
+  bindKeyInput: function(e) {
+    var that = this;
+    var obj = {};
+    obj[e.target.dataset.key] = e.detail.value;
+    that.setData(obj);
+    if(e.detail.value === '' && that.data.list_update === true) {
+      that.getList(0);
+    }
   },
   //获取待认领列表
   getList: function(page) {
@@ -58,7 +70,8 @@ Page({
           });
           that.setData({
             list: that.data.list.concat(content),
-            current: data
+            current: data,
+            list_update: false
           });
           if(data.last){
             that.setData({ list_remind: '已全部加载' });
@@ -77,6 +90,58 @@ Page({
         wx.stopPullDownRefresh();
       }
     });
+  },
+  search: function(e) {
+    var that = this;
+    if(that.data.search_text === ''){ 
+      app.showErrModal('搜索关键字不能为空', '搜索失败'); return; 
+    }
+    wx.showNavigationBarLoading();
+    wx.request({
+      url: app._g.server + '/u/mail/receive/s/lost',
+      data: {
+        keywords: that.data.search_text
+      },
+      method: 'POST', 
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+        'authorization': app.getAuth()
+      }, 
+      success: function(res){
+        // success
+        if(res.statusCode >= 200 && res.statusCode < 400){
+          var data = res.data;
+          var content = data.content;
+          console.log(content);
+          if(content.length !==0) {
+            content.map(function(e,i){
+              e.sendTime = app.utils.formatDate(e.sendTime);
+              e.submitTime = app.utils.formatTime(e.submitTime);
+              return e;
+            });
+            that.setData({
+              list: content,
+              list_update: true
+            });
+          }else{
+            that.setData({ 
+              list_remind: '没有找到相关数据哦',
+              list: [],
+              list_update: true
+            });
+          }
+        }
+      },
+      fail: function(res) {
+        // fail
+        that.setData({ list_remind: '网络错误' });
+      },
+      complete: function(res) {
+        // complete
+        wx.hideNavigationBarLoading();
+      }
+    })
+
   },
   inputFocus: function(e){
     this.setData({
