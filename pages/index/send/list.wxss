@@ -1,1 +1,21 @@
 /* pages/index/send/list.wxss */
+.tab-item{
+    position: relative;
+}
+.tab-item .count{
+    position: absolute;
+    top: 10rpx;
+    right: 40rpx;
+    background: #FF4949;
+    width: 30rpx;
+    height: 30rpx;
+    border-radius: 30rpx;
+}
+.count text{
+    display: inline-block;
+    line-height: 30rpx;
+    height: 30rpx;
+    font-size: 8pt;
+    border-bottom: none !important;
+    padding: 0 !important;
+}

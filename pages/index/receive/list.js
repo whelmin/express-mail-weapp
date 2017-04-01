@@ -6,11 +6,18 @@ Page({
     list: [],
     current: {},
     list_remind: '加载中',
-    active_type: 'RECEIVING'
+    active_type: 'RECEIVING',
+    count: {}
   },
   onShow:function(){
     var that = this;
     that.getList(0);
+    if(!app._g.count) {
+      that.setData({
+        count: app._g.count
+      });
+    }
+    console.log(that.data.count);
   },
   //获取取件列表
   getList: function(page) {

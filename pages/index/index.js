@@ -8,8 +8,10 @@ Page({
     list_remind: '加载中',
     search_text: '',
     search_active: false,
-    // 列表是否有更新
-    list_update: false
+    //列表是否有更新
+    list_update: false,
+    //计数
+    count: {}
   },
   //下拉刷新
   onPullDownRefresh: function(){
@@ -26,6 +28,7 @@ Page({
     //登录
     app.getUserInfo(function(){
       that.getList();
+      that.mpCount();
     });
   },
   //绑定input
@@ -34,6 +37,7 @@ Page({
     var obj = {};
     obj[e.target.dataset.key] = e.detail.value;
     that.setData(obj);
+    // 搜索关键字清空后，需要重新获取列表
     if(e.detail.value === '' && that.data.list_update === true) {
       that.getList(0);
     }
@@ -91,6 +95,7 @@ Page({
       }
     });
   },
+  // 搜索
   search: function(e) {
     var that = this;
     if(that.data.search_text === ''){ 
@@ -143,6 +148,37 @@ Page({
     })
 
   },
+  // 徽章计数
+  mpCount: function() {
+    var that = this;
+    wx.request({
+      url: app._g.server + '/mp/count',
+      method: 'GET', 
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+        'authorization': app.getAuth()
+      }, 
+      success: function(res){
+         if(res.statusCode >= 200 && res.statusCode < 400){
+           var data = res.data;
+           var receiveTotal = data.receiveMailCount + data.foundMailCount;
+           data.receiveTotal = receiveTotal;
+           console.log(data);
+           app._g.count = data || {};
+           that.setData({
+             count: app._g.count
+           });
+         }
+      },
+      fail: function(res) {
+        // fail
+      },
+      complete: function(res) {
+        // complete
+      }
+    })
+  },
+  // 输入框聚焦，失焦变化
   inputFocus: function(e){
     this.setData({
       'search_active': true

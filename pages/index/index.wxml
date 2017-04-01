@@ -5,11 +5,18 @@
     <navigator url="/pages/index/receive/list" class="main-header-btn" hover-class="none">
       <image src="/images/index/receive.png"></image>
       <text>取件</text>
+      <!--需要判断-->
+      <view wx:if="{{count}}" class="count">
+        <text>{{count.receiveTotal}}</text>
+      </view>
     </navigator>
     <!--寄件-->
     <navigator url="/pages/index/send/list" class="main-header-btn" hover-class="none">
       <image src="/images/index/send.png"></image>
       <text>寄件</text>
+      <view wx:if="{{count}}" class="count">
+        <text>{{count.sendMailCount}}</text>
+      </view>
     </navigator>
   </view>
   

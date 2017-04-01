@@ -4,6 +4,9 @@
   <view class="nav-tabs">
     <view class="tab-item {{active_type === 'NEW,VISITING' ? 'active' : ''}}" data-type="NEW,VISITING" bindtap="switchType">
       <text>新寄件</text>
+      <view wx:if="{{count}}" class="count">
+        <text>1</text>
+      </view>
     </view>
     <view class="tab-item {{active_type === 'SENDING' ? 'active' : ''}}" data-type="SENDING" bindtap="switchType">
       <text>已寄件</text>

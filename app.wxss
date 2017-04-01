@@ -174,4 +174,5 @@ button::after{
   font-size: 11pt;
   color: #c0ccda;
   margin: 20rpx 25rpx;
+  /*border-radius: 2rpx;*/
 }

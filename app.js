@@ -84,8 +84,9 @@ App({
     userInfo: {},
     //用户信息
     user: {},
+    //计数
+    count: {},
     token: {},
     server: 'http://139.129.33.201:9090'
   }
 });
-// just a test
