@@ -47,7 +47,7 @@ Page({
         }
       },
       fail: function(res) {
-        app.showErrModal(res.data, '网络错误');
+        app.showErrModal('网络错误', '获取邮件信息失败');
       },
       complete: function() {
         wx.hideNavigationBarLoading();
