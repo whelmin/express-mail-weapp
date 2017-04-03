@@ -18,6 +18,7 @@ Page({
       });
     }
     console.log(that.data.count);
+    console.log(app._g.count);
   },
   //获取取件列表
   getList: function(page) {

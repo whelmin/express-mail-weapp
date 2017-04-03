@@ -1,11 +1,11 @@
-<!--pages/index/receive/list.wxml-->
+<!--pages/index/receive/list.wxml 取件-->
 
 <view class="container">
   <view class="nav-tabs">
     <view class="tab-item {{active_type === 'RECEIVING' ? 'active' : ''}}" data-type="RECEIVING" bindtap="switchType">
       <text>待取件</text>
       <view wx:if="{{count}}" class="count">
-        <text>1</text>
+        <text>{{count.receiveMailCount}}</text>
       </view>
     </view>
 

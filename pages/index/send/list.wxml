@@ -1,4 +1,4 @@
-<!--pages/index/send/list.wxml-->
+<!--pages/index/send/list.wxml 寄件-->
 
 <view class="container">
   <view class="nav-tabs">

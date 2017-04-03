@@ -4,18 +4,17 @@
 }
 .tab-item .count{
     position: absolute;
-    top: 10rpx;
-    right: 40rpx;
+    top: 22rpx;
+    right: 18rpx;
     background: #FF4949;
-    width: 30rpx;
+    min-width: 38rpx;
     height: 30rpx;
-    border-radius: 30rpx;
-}
-.count text{
-    display: inline-block;
-    line-height: 30rpx;
-    height: 30rpx;
-    font-size: 8pt;
-    border-bottom: none !important;
-    padding: 0 !important;
+    border-radius: 15rpx;
+    color: #20a0ff;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    font-size: 9pt;
+    font-weight: bold;
 }

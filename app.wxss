@@ -161,12 +161,12 @@ button::after{
   align-items: center;
   justify-content: center;
 }
-.tab-item text {
+.tab-item>text {
   font-size: 13pt;
   padding: 10rpx 10rpx 12rpx;
   border-bottom: 2px solid transparent;
 }
-.tab-item.active text {
+.tab-item.active>text {
   border-color: #fff;
 }
 

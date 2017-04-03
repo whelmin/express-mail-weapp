@@ -6,7 +6,8 @@ Page({
     list: [],
     current: {},
     list_remind:'加载中',
-    active_type: 'NEW,VISITING'
+    active_type: 'NEW,VISITING',
+    count: {}
   },
   // 获取寄件列表
   getList: function(page) {
@@ -69,6 +70,12 @@ Page({
     // 页面显示
     var that = this;
     that.getList(0);
+    if(!app._g.count) {
+      that.setData({
+        count: app._g.count
+      });
+    }
+    console.log(that.data.count);
   },
   // 切换tab
   switchType: function(e) {
