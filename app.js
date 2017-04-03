@@ -26,6 +26,25 @@ App({
               success: function(res) {
                 that._g.token = res.data.token;
                 that._g.user = res.data.user;
+                var userRoles = res.data.user.userRoles || ['NORMAL_USER'];
+                that._g.role.userRoles = userRoles;
+                if(userRoles.indexOf('SUPER_ADMIN') !== -1 || userRoles.indexOf('USER_ADMIN') !== -1){
+                  that._g.role.isAdmin = true;
+                }else{
+                  if(res.data.register){
+                    wx.showModal({
+                      title: '补全信息',
+                      content: '请先绑定手机号才能正常查阅取件信息！',
+                      success: function(res) {
+                        if (res.confirm) {
+                          wx.navigateTo({
+                            url: '/pages/user/bind'
+                          });
+                        }
+                      }
+                    });
+                  }
+                }
                 typeof cb == "function" && cb();
               }
             });
@@ -76,7 +95,7 @@ App({
   },
   //获取身份认证
   getAuth: function() {
-    return this._g.token.userId + '_' + this._g.token.token + '_MP';
+    return this._g.token.userId + '_' + this._g.token.token + '_' + this._g.token.platform;
   },
   utils: require('/utils/util.js'),
   _g: {
@@ -84,8 +103,11 @@ App({
     userInfo: {},
     //用户信息
     user: {},
+    role: {
+      userRoles: [],
+      isAdmin: false
+    },
     token: {},
-    server: 'http://192.168.2.123:9090'
-    // server: 'http://125.81.58.193:9090'
+    server: 'http://139.129.33.201:9090'
   }
 });

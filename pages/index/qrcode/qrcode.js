@@ -21,7 +21,7 @@ Page({
       }, function(){
         clearInterval(querygo);
       });
-    }, 5000);
+    }, 4000);
     
   },
   onUnload:function(){

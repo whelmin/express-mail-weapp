@@ -3,9 +3,10 @@
 var app = getApp();
 Page({
   data: {
+    isAdmin: false,
     list: [],
     current: {},
-    list_remind: '加载中 ...',
+    list_remind: '加载中',
     search_text: '',
     search_active: false
   },
@@ -22,13 +23,25 @@ Page({
   onLoad: function () {
     var that = this;
     //登录
+    app.showLoadToast();
     app.getUserInfo(function(){
+      wx.hideToast();
+      that.setData({
+        isAdmin: app._g.role.isAdmin
+      });
       that.getList();
     });
+  },
+  onShow: function (){
+    var that = this;
+    if(that.data.list_remind !== '加载中'){
+      that.getList(0);
+    }
   },
   //获取待认领列表
   getList: function(page) {
     var that = this;
+    if(app._g.role.isAdmin){ return; }
     if(page === undefined){
       page = that.data.current.number + 1 || 0;
     }
@@ -85,6 +98,50 @@ Page({
   inputBlur: function(e){
     this.setData({
       'search_active': false
+    });
+  },
+  //管理员操作
+  qrcode: function(){
+    wx.scanCode({
+      success: function(res) {
+        var result = JSON.parse(res.result);
+        if(result.qrCodeInfoType === 'ADMIN_LOGIN'){
+          // 扫码登录
+          wx.showNavigationBarLoading();
+          wx.request({
+            method: 'POST',
+            url: app._g.server + '/login/a/confirm',
+            data: {
+              qrCodeInfo: result.qrCodeInfo
+            },
+            header: {
+              'content-type': 'application/x-www-form-urlencoded',
+              'authorization': app.getAuth()
+            },
+            success: function(res) {
+              if(res.statusCode >= 200 && res.statusCode < 400){
+                if(res.data.code == '200'){
+                  wx.showToast({ title: '登录成功' });
+                }
+              }else{
+                app.showErrModal(res.data, '扫描二维码失败');
+              }
+            },
+            fail: function(res) {
+              app.showErrModal('网络错误', '扫描二维码失败');
+            },
+            complete: function() {
+              wx.hideNavigationBarLoading();
+            }
+          });
+        }else if(result.qrCodeInfoType === 'RECEIVE_MAIL'){
+          // 扫码取件
+
+        }else if(result.qrCodeInfoType === 'SEND_MAIL'){
+          // 扫码寄件
+
+        }
+      }
     });
   }
 });
