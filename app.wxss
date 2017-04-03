@@ -75,6 +75,7 @@ button::after{
   padding: 0 10px;
   border-radius: 3px;
   margin: 10rpx;
+  text-align: center;
 }
 .btn-red {
   background: #ff4949;
@@ -84,11 +85,13 @@ button::after{
 }
 .btn-gray {
   background: #d3dce6;
-  color: #8492a6;
+}
+.btn-blue{
+  background: #20a0ff;
 }
 .btn-lg{
   display: block;
-  margin: 30rpx;
+  margin: 0 30rpx 30rpx;
   height: 30pt;
   line-height: 30pt;
 }
@@ -103,6 +106,9 @@ button::after{
 }
 .text-gray {
   color: #8492a6;
+}
+.input-placeholder-gray{
+  color: rgba(113, 111, 109, .9);
 }
 /*列表*/
 .main-list {
@@ -128,9 +134,10 @@ button::after{
 }
 .main-list-item-more {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 20rpx;
+  padding: 20rpx 10rpx 20rpx 20rpx;
 }
 .remind {
   font-size: 10pt;
@@ -167,4 +174,5 @@ button::after{
   font-size: 11pt;
   color: #c0ccda;
   margin: 20rpx 25rpx;
+  /*border-radius: 2rpx;*/
 }

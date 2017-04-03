@@ -5,19 +5,29 @@
     <navigator url="/pages/index/receive/list" class="main-header-btn" hover-class="none">
       <image src="/images/index/receive.png"></image>
       <text>取件</text>
+      <!--需要判断-->
+      <view wx:if="{{count}}" class="count">
+        <text>{{count.receiveTotal}}</text>
+      </view>
     </navigator>
     <!--寄件-->
     <navigator url="/pages/index/send/list" class="main-header-btn" hover-class="none">
       <image src="/images/index/send.png"></image>
       <text>寄件</text>
+      <view wx:if="{{count}}" class="count">
+        <text>{{count.sendMailCount}}</text>
+      </view>
     </navigator>
   </view>
-
+  
+  <!--搜索-->
   <view class="main-search {{search_active ? 'active' : ''}}">
-    <image src="/images/index/search.png"></image>
-    <input type="text" class="search" placeholder="搜索 ..." placeholder-class="search-placeholder"  bindfocus="inputFocus" bindblur="inputBlur" />
+    <input type="text" class="search" placeholder="搜索" placeholder-class="search-placeholder"  bindfocus="inputFocus" bindblur="inputBlur" data-key="search_text" bindinput="bindKeyInput"/>
+    <image src="/images/index/search.png" class="search-icon"></image>
+    <image src="/images/index/enter.png" class="search-btn" bindtap="search"></image>
   </view>
 
+  <!--待认领列表-->
   <view class="main-list">
     <view class="main-list-item" wx:for="{{list}}" wx:key="id">
       <view class="main-list-item-content">

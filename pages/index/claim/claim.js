@@ -28,7 +28,7 @@ Page({
     wx.showNavigationBarLoading();
     wx.request({
       method: 'GET',
-      url: app._g.server + '/mail/receive/' + options.id,
+      url: app._g.server + '/u/mail/receive/lost/' + options.id,
       header: {
         'content-type': 'application/x-www-form-urlencoded',
         'authorization': app.getAuth()
@@ -36,9 +36,9 @@ Page({
       success: function(res) {
         if(res.statusCode >= 200 && res.statusCode < 400){
           var data = res.data;
-          data.receiveMail.sendTime = app.utils.formatDate(data.receiveMail.sendTime);
-          data.receiveMail.submitTime = app.utils.formatTime(data.receiveMail.submitTime);
-          data.receiveMail.receiveTime = app.utils.formatTime(data.receiveMail.receiveTime);
+          console.log(data);
+          data.submitTime = app.utils.formatTime(data.submitTime || '');
+          data.updateTime = app.utils.formatTime(data.updateTime);
           that.setData({
             data: data
           });

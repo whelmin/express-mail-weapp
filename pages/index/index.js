@@ -8,7 +8,11 @@ Page({
     current: {},
     list_remind: '加载中',
     search_text: '',
-    search_active: false
+    search_active: false,
+    //列表是否有更新
+    list_update: false,
+    //计数
+    count: {}
   },
   //下拉刷新
   onPullDownRefresh: function(){
@@ -30,11 +34,23 @@ Page({
         isAdmin: app._g.role.isAdmin
       });
       that.getList();
+      that.mpCount();
     });
   },
   onShow: function (){
     var that = this;
     if(that.data.list_remind !== '加载中'){
+      that.getList(0);
+    }
+  },
+  //绑定input
+  bindKeyInput: function(e) {
+    var that = this;
+    var obj = {};
+    obj[e.target.dataset.key] = e.detail.value;
+    that.setData(obj);
+    // 搜索关键字清空后，需要重新获取列表
+    if(e.detail.value === '' && that.data.list_update === true) {
       that.getList(0);
     }
   },
@@ -49,9 +65,10 @@ Page({
     if(page >= that.data.current.totalPages){ return; }
     that.setData({ list_remind: '加载中' });
     wx.showNavigationBarLoading();
+    
     wx.request({
       method: 'POST',
-      url: app._g.server + '/mail/u/receives/lost',
+      url: app._g.server + '/u/mail/receive/l/lost',
       data: {
         page: page
       },
@@ -70,7 +87,8 @@ Page({
           });
           that.setData({
             list: that.data.list.concat(content),
-            current: data
+            current: data,
+            list_update: false
           });
           if(data.last){
             that.setData({ list_remind: '已全部加载' });
@@ -90,6 +108,90 @@ Page({
       }
     });
   },
+  // 搜索
+  search: function(e) {
+    var that = this;
+    if(that.data.search_text === ''){ 
+      app.showErrModal('搜索关键字不能为空', '搜索失败'); return; 
+    }
+    wx.showNavigationBarLoading();
+    wx.request({
+      url: app._g.server + '/u/mail/receive/s/lost',
+      data: {
+        keywords: that.data.search_text
+      },
+      method: 'POST', 
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+        'authorization': app.getAuth()
+      }, 
+      success: function(res){
+        // success
+        if(res.statusCode >= 200 && res.statusCode < 400){
+          var data = res.data;
+          var content = data.content;
+          console.log(content);
+          if(content.length !==0) {
+            content.map(function(e,i){
+              e.sendTime = app.utils.formatDate(e.sendTime);
+              e.submitTime = app.utils.formatTime(e.submitTime);
+              return e;
+            });
+            that.setData({
+              list: content,
+              list_update: true
+            });
+          }else{
+            that.setData({ 
+              list_remind: '没有找到相关数据哦',
+              list: [],
+              list_update: true
+            });
+          }
+        }
+      },
+      fail: function(res) {
+        // fail
+        that.setData({ list_remind: '网络错误' });
+      },
+      complete: function(res) {
+        // complete
+        wx.hideNavigationBarLoading();
+      }
+    })
+
+  },
+  // 徽章计数
+  mpCount: function() {
+    var that = this;
+    wx.request({
+      url: app._g.server + '/mp/count',
+      method: 'GET', 
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+        'authorization': app.getAuth()
+      }, 
+      success: function(res){
+         if(res.statusCode >= 200 && res.statusCode < 400){
+           var data = res.data;
+           var receiveTotal = data.receiveMailCount + data.foundMailCount;
+           data.receiveTotal = receiveTotal;
+           console.log(data);
+           app._g.count = data || {};
+           that.setData({
+             count: app._g.count
+           });
+         }
+      },
+      fail: function(res) {
+        // fail
+      },
+      complete: function(res) {
+        // complete
+      }
+    })
+  },
+  // 输入框聚焦，失焦变化
   inputFocus: function(e){
     this.setData({
       'search_active': true

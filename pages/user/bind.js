@@ -118,5 +118,51 @@ Page({
         });
       }
     });
+  },
+  unbind: function(e) {
+    var that = this;
+    wx.showModal({
+      title: '提示',
+      content: '您确定要删除该手机号码？',
+      showCancel: true,
+      success: function(res) {
+        if(res.confirm) {
+            console.log('用户点击确定');
+            wx.showNavigationBarLoading();
+            wx.request({
+              url: app._g.server + '/unbind/' + e.target.dataset.phoneNumber,
+              method: 'GET', 
+              // 设置请求的 header
+              header: {
+                'content-type': 'application/x-www-form-urlencoded',
+                'authorization': app.getAuth()
+              }, 
+              success: function(res){
+                // success
+                if(res.statusCode >= 200 && res.statusCode < 400){
+                  var data = res.data;
+                  console.log(data);
+                  wx.showToast({ title: '删除成功！' });
+                  // 刷新手机号码列表
+                  app._g.user.phoneNums = data.phoneNums || [];
+                  that.setData({
+                    'phoneNums': data.phoneNums || []
+                  });
+                }
+              },
+              fail: function(res) {
+                // to do
+                showErrModal('删除手机号码失败','网络错误，请重试！');
+              },
+              complete: function(res) {
+                // complete
+                wx.hideNavigationBarLoading();
+              }
+            })
+        }else{
+          console.log('用户点击取消');
+        }
+      }
+    });
   }
 });

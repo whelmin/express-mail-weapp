@@ -24,6 +24,20 @@
   align-items: center;
   justify-content: center;
   text-align: center;
+  position: relative;
+}
+.main-header-btn .count{
+  position: absolute;
+  top: 10rpx;
+  right: 100rpx;
+  background: #FF4949;
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 40rpx;
+}
+.main-header-btn .count text{
+  line-height: 40rpx;
+  font-size: 10pt;
 }
 .main-header-btn image {
   width: 150rpx;
@@ -37,19 +51,24 @@
 .main-search {
   position: relative;
 }
-.main-search image {
+.main-search image{
   position: absolute;
   top: 50%;
-  left: 50rpx;
   width: 32rpx;
   height: 32rpx;
   margin-top: -16rpx;
+}
+.main-search image.search-icon {
+  left: 50rpx;
+}
+.main-search image.search-btn{
+  right: 50rpx;
 }
 .search {
   height: 72rpx;
   line-height: 72rpx;
   box-sizing: border-box;
-  padding: 0 25rpx 0 65rpx;
+  padding: 0 65rpx;
   margin: 20rpx 30rpx;
   border: 1px solid #e5e9f2;
   border-radius: 5px;

@@ -1,10 +1,10 @@
 //app.js
 App({
   onLaunch: function () {
-    
+
   },
   getUserInfo:function(cb){
-    var that = this
+    var that = this;
     //调用登录接口
     wx.login({
       success: function(loginRes) {
@@ -71,7 +71,7 @@ App({
           err.push(data[key]);
         }
       }
-      var content = err.join('; ')
+      var content = err.join('; ');
     } else {
       var content = data;
     }
@@ -107,6 +107,8 @@ App({
       userRoles: [],
       isAdmin: false
     },
+    //计数
+    count: {},
     token: {},
     server: 'http://139.129.33.201:9090'
   }
