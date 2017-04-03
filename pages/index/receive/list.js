@@ -9,10 +9,13 @@ Page({
     active_type: 'RECEIVING',
     count: {}
   },
-  onShow:function(){
+  onLoad: function(){
+
+  },
+  onShow: function(){
     var that = this;
     that.getList(0);
-    if(!app._g.count) {
+    if(!(app._g.count.receiveMailCount === undefined)) {
       that.setData({
         count: app._g.count
       });

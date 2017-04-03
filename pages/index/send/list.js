@@ -9,9 +9,22 @@ Page({
     active_type: 'NEW,VISITING',
     count: {}
   },
-  // 获取寄件列表
+  onLoad: function(){
+
+  },
+  onShow: function(){
+    //页面显示
+    var that = this;
+    that.getList(0); 
+    app.mpCount(function(data){
+      that.setData({
+        count: data
+      });
+    }); 
+  },
+  //获取寄件列表
   getList: function(page) {
-    // page为请求的页码，默认为0
+    //page为请求的页码，默认为0
     var that = this;
     if(page === undefined){
         page = that.data.current.number + 1 || 0;
@@ -66,18 +79,7 @@ Page({
       }
     })
   },
-  onShow:function(){
-    // 页面显示
-    var that = this;
-    that.getList(0);
-    if(!app._g.count) {
-      that.setData({
-        count: app._g.count
-      });
-    }
-    console.log(that.data.count);
-  },
-  // 切换tab
+  //切换tab
   switchType: function(e) {
     var that = this;
     var active_type = e.currentTarget.dataset.type;
@@ -91,7 +93,7 @@ Page({
       that.getList();
     }
   },
-  // 申请上门
+  //申请上门
   applyDoor: function(e) {
     var that = this;
     wx.showModal({
@@ -102,7 +104,7 @@ Page({
         if(res.confirm){
           console.log('用户点击确定');
           wx.showNavigationBarLoading();
-          // 发送上门请求
+          //发送上门请求
           wx.request({
             url: app._g.server + '/u/mail/send/visiting/' + e.currentTarget.dataset.id,
             method: 'GET', 
@@ -111,18 +113,17 @@ Page({
               'authorization': app.getAuth()
             }, 
             success: function(res){
-              // success
+              //success
               if(res.statusCode >= 200 && res.statusCode < 400){
                 var data = res.data;
                 if(data.status === "VISITING"){
                     wx.showToast({ title: '申请上门成功！' });
-                    // 重新获取寄件列表
+                    //重新获取寄件列表
                     that.getList(0);
                 }
               }
             },
             fail: function(res) {
-              // to do
               showErrModal('申请上门失败','网络错误，请重试！');
             },
             complete: function() {
@@ -138,7 +139,7 @@ Page({
       }
     });
   },
-  delete: function(e) {
+  remove: function(e) {
     var that = this;
     wx.showModal({
       title: '提示',
@@ -148,7 +149,7 @@ Page({
         if(res.confirm){
           console.log('用户点击确定');
           wx.showNavigationBarLoading();
-          // 发送上门请求
+          //发送上门请求
           wx.request({
             url: app._g.server + '/u/mail/send/d',
             method: 'POST', 
@@ -160,19 +161,21 @@ Page({
               'authorization': app.getAuth()
             }, 
             success: function(res){
-              // success
+              //success
               if(res.statusCode >= 200 && res.statusCode < 400){
                 var data = res.data;
                 console.log(data);
                 if(data.succeeded === 1 && data.failed === 0) {
                   wx.showToast({ title: '删除寄件成功！' });
-                  // 重新获取寄件列表
                   that.getList(0);
+                  app._g.count.sendMailCount--;
+                  that.setData({
+                    'count.sendMailCount': that.data.count.sendMailCount-1
+                  });
                 }
               }
             },
             fail: function(res) {
-              // to do
               showErrModal('删除寄件失败','网络错误，请重试！');
             },
             complete: function() {

@@ -34,13 +34,22 @@ Page({
         isAdmin: app._g.role.isAdmin
       });
       that.getList();
-      that.mpCount();
+      app.mpCount(function(data){
+        that.setData({
+          count: data
+        });
+      });
     });
   },
   onShow: function (){
     var that = this;
     if(that.data.list_remind !== '加载中'){
       that.getList(0);
+      app.mpCount(function(data){
+        that.setData({
+          count: data
+        });
+      });
     }
   },
   //绑定input
@@ -108,7 +117,7 @@ Page({
       }
     });
   },
-  // 搜索
+  //搜索
   search: function(e) {
     var that = this;
     if(that.data.search_text === ''){ 
@@ -126,7 +135,7 @@ Page({
         'authorization': app.getAuth()
       }, 
       success: function(res){
-        // success
+        //success
         if(res.statusCode >= 200 && res.statusCode < 400){
           var data = res.data;
           var content = data.content;
@@ -151,47 +160,15 @@ Page({
         }
       },
       fail: function(res) {
-        // fail
         that.setData({ list_remind: '网络错误' });
       },
       complete: function(res) {
-        // complete
         wx.hideNavigationBarLoading();
       }
     })
 
   },
-  // 徽章计数
-  mpCount: function() {
-    var that = this;
-    wx.request({
-      url: app._g.server + '/mp/count',
-      method: 'GET', 
-      header: {
-        'content-type': 'application/x-www-form-urlencoded',
-        'authorization': app.getAuth()
-      }, 
-      success: function(res){
-         if(res.statusCode >= 200 && res.statusCode < 400){
-           var data = res.data;
-           var receiveTotal = data.receiveMailCount + data.foundMailCount;
-           data.receiveTotal = receiveTotal;
-           console.log(data);
-           app._g.count = data || {};
-           that.setData({
-             count: app._g.count
-           });
-         }
-      },
-      fail: function(res) {
-        // fail
-      },
-      complete: function(res) {
-        // complete
-      }
-    })
-  },
-  // 输入框聚焦，失焦变化
+  //输入框聚焦，失焦变化
   inputFocus: function(e){
     this.setData({
       'search_active': true

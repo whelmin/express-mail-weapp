@@ -53,6 +53,33 @@ App({
       }
     });
   },
+  //徽章计数
+  mpCount: function(cb) {
+    var that = this;
+    wx.request({
+      url: that._g.server + '/mp/count',
+      method: 'GET', 
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+        'authorization': that.getAuth()
+      }, 
+      success: function(res){
+         if(res.statusCode >= 200 && res.statusCode < 400){
+           var data = res.data;
+           var receiveTotal = data.receiveMailCount + data.foundMailCount;
+           data.receiveTotal = receiveTotal;
+           that._g.count = data || {};
+           typeof cb == "function" && cb(data);
+         }
+      },
+      fail: function(res) {
+        // fail
+      },
+      complete: function(res) {
+        // complete
+      }
+    })
+  },
   //modal-loading
   showLoadToast: function(title, duration){
     wx.showToast({

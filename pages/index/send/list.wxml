@@ -5,7 +5,7 @@
     <view class="tab-item {{active_type === 'NEW,VISITING' ? 'active' : ''}}" data-type="NEW,VISITING" bindtap="switchType">
       <text>新寄件</text>
       <view wx:if="{{count}}" class="count">
-        <text>1</text>
+        <text>{{count.sendMailCount}}</text>
       </view>
     </view>
     <view class="tab-item {{active_type === 'SENDING' ? 'active' : ''}}" data-type="SENDING" bindtap="switchType">
@@ -33,7 +33,7 @@
         <text class="btn" wx:if="{{item.status === 'NEW' || item.status === 'VISITING' }}">寄件</text>
         <text class="btn btn-green" wx:if="{{item.status === 'NEW'}}" bindtap="applyDoor" data-id="{{item.id}}">申请上门</text>
         <text class="btn btn-gray" wx:if="{{item.status === 'VISITING'}}">上门中</text>
-        <text class="btn btn-red" wx:if="{{item.status === 'NEW'}}" bindtap="delete" data-id="{{item.id}}">删除</text>       
+        <text class="btn btn-red" wx:if="{{item.status === 'NEW'}}" bindtap="remove" data-id="{{item.id}}">删除</text>       
         <text class="btn btn-gray" wx:if="{{item.status === 'SENDING'}}">已寄件</text>
       </view>
     </view>
