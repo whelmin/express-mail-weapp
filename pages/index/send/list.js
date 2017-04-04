@@ -1,5 +1,6 @@
-// pages/index/send/list.js
-// 寄件列表
+//pages/index/send/list.js
+//用户寄件列表
+
 var app = getApp();
 Page({
   data:{

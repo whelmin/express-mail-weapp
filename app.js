@@ -28,7 +28,7 @@ App({
                 that._g.user = res.data.user;
                 var userRoles = res.data.user.userRoles || ['NORMAL_USER'];
                 that._g.role.userRoles = userRoles;
-                if(userRoles.indexOf('SUPER_ADMIN') !== -1 || userRoles.indexOf('USER_ADMIN') !== -1){
+                if(userRoles.indexOf('SUPER_ADMIN') !== -1 || userRoles.indexOf('MAIL_ADMIN') !== -1){
                   that._g.role.isAdmin = true;
                 }else{
                   if(res.data.register){

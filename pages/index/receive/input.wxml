@@ -1,2 +1,42 @@
-<!--pages/index/receive/input.wxml-->
-<text>pages/index/receive/input.wxml</text>
+<!--pages/index/receive/input.wxml 管理员录入取件 -->
+
+<view class="container">
+  <text class="form-title">录入取件信息</text>
+  <!--录入信息表单-->
+  <form bindreset="submit">
+    <view class="cell-item input-group">
+      <view class="input-label">寄件人：</view>
+      <input placeholder="请输入寄件人姓名" data-key="form.sender" bindinput="bindKeyInput" />
+    </view>
+
+    <view class="cell-item input-group">
+      <view class="input-label">寄件地址：</view>
+      <input placeholder="请输入寄件地址" data-key="form.sendAddress" bindinput="bindKeyInput" />
+    </view>
+
+    <view class="cell-item input-group">
+      <view class="input-label">寄件人联系方式：</view>
+      <input placeholder="请输入寄件人的联系方式" data-key="form.sendPhoneNum" bindinput="bindKeyInput" />
+    </view>
+
+    <view class="cell-item input-group margin-top">
+      <view class="input-label">收件人姓名：</view>
+      <input placeholder="请输入收件人姓名" data-key="form.receiver" bindinput="bindKeyInput" />
+    </view>
+
+    <view class="cell-item input-group">
+      <view class="input-label">收件地址：</view>
+      <input placeholder="请输入收件地址" data-key="form.receiveAddress" bindinput="bindKeyInput" />
+    </view>
+
+    <view class="cell-item input-group">
+      <view class="input-label">收件人联系方式：</view>
+      <input placeholder="请输入收件人的联系方式" data-key="form.receivePhoneNum" bindinput="bindKeyInput" />
+    </view>
+
+    <button class="btn btn-lg margin-top" form-type="reset">
+        <text wx:if="{{!submit_loading}}">提交</text>
+        <text wx:else>提交中</text>
+    </button>
+  </form>
+</view>

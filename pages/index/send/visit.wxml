@@ -1,2 +1,21 @@
-<!--pages/index/send/visit.wxml-->
-<text>pages/index/send/visit.wxml</text>
+<!--pages/index/send/visit.wxml 管理员查询上门寄件列表-->
+
+<view class="container margin-top">
+
+  <!--获取上门中状态的列表-->
+  <view class="main-list">
+    <view class="main-list-item" wx:for="{{list}}" wx:key="id">
+      <view class="main-list-item-content">
+        <text>寄件人：{{item.sender}}</text>
+        <text>寄件电话：{{item.sendPhoneNum}}</text>
+        <text>寄件地址：{{item.sendAddress}}</text>
+        <text>收件人：{{item.receiver}}</text>
+        <text>收件电话：{{item.receivePhoneNum}}</text>
+        <text>收件地址：{{item.receiveAddress}}</text>
+        <text wx:if="{{item.createTime}}">用户创建时间：{{item.createTime}}</text>
+        <text wx:if="{{item.requestVisitingTime}}">用户申请上门时间：{{item.requestVisitingTime}}</text>
+      </view>
+    </view>
+    <text class="remind">{{list_remind}}</text>
+  </view>
+</view>

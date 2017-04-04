@@ -1,1 +1,8 @@
-/* pages/index/receive/input.wxss */
+/* pages/index/receive/input.wxss 管理员录入取件 */
+
+.cell-item {
+  font-size: 12pt;
+}
+.cell-item>input{
+    font-size: 11pt;
+}

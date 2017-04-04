@@ -56,18 +56,6 @@
       <text>扫描二维码</text>
     </view>
   </view>
-  <!--<view class="main-header admin-header">
-    取件扫码
-    <view class="main-header-btn">
-      <image src="/images/index/receive.png"></image>
-      <text>取件扫码</text>
-    </view>-->
-    <!--寄件扫码
-    <view class="main-header-btn">
-      <image src="/images/index/send.png"></image>
-      <text>寄件扫码</text>
-    </view>
-  </view>-->
   <view class="main-header admin-header">
     <!--录入取件-->
     <navigator url="/pages/index/receive/input" class="main-header-btn" hover-class="none">
