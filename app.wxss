@@ -77,6 +77,14 @@ button::after{
   margin: 10rpx;
   text-align: center;
 }
+.btn-mini{
+  font-size: 10pt;
+  border-radius: 0;
+  margin: 0;
+  padding: 0 8px;
+  height: 18pt;
+  line-height: 18pt;
+}
 .btn-red {
   background: #ff4949;
 }
@@ -169,10 +177,45 @@ button::after{
 .tab-item.active>text {
   border-color: #fff;
 }
-
 .form-title{
   font-size: 11pt;
   color: #c0ccda;
   margin: 20rpx 25rpx;
   /*border-radius: 2rpx;*/
+}
+/*搜索框*/
+.main-search {
+  position: relative;
+}
+.main-search image{
+  position: absolute;
+  top: 50%;
+  width: 32rpx;
+  height: 32rpx;
+  margin-top: -16rpx;
+}
+.main-search image.search-icon {
+  left: 50rpx;
+}
+.main-search image.search-btn{
+  right: 50rpx;
+}
+.search {
+  height: 72rpx;
+  line-height: 72rpx;
+  box-sizing: border-box;
+  padding: 0 65rpx;
+  margin: 20rpx 30rpx;
+  border: 1px solid #e5e9f2;
+  border-radius: 5px;
+  color: #2c3e50;
+  outline: none;
+  font-size: 12pt;
+  background: #fff;
+}
+.search-placeholder {
+  color: #ccc;
+}
+.main-search.active .search {
+  border-color: #20a0ff;
 }

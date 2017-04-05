@@ -1,0 +1,18 @@
+<!--pages/more/hire/input.wxml-->
+<view class="container">
+    <view class="form-title margin-top">填写招聘信息</view>
+    <form>
+        <view class="textarea-group">
+            <view>标题：</view>
+            <textarea bindblur="EventHandle" bindfocus="EventHandle" bindinput="bindKeyInput" placeholder="请输入招聘标题" auto-height/>   
+        </view>
+          <view class="textarea-group">
+            <view>内容：</view>
+            <textarea bindblur="EventHandle" bindfocus="EventHandle" bindinput="bindKeyInput" placeholder="请输入招聘信息内容" auto-height/>   
+        </view>
+        <button class="btn btn-lg" bindtap="submit">
+            <text wx:if="{{!submit_loading}}">发布</text>
+            <text wx:else>发布中</text>
+        </button>
+    </form>
+</view>

@@ -1,0 +1,38 @@
+/* pages/more/hire/list.wxss 招聘信息列表 */
+
+.container{
+    position: relative;
+}
+.hire-list .main-list-item{
+    background: #F9FAFC;
+    border: none;
+    color: #5e6d82;
+}
+.main-list-item-content{
+    padding: 15rpx 30rpx;
+}
+.main-list-item-content .hire-article-title{
+    font-size: 14pt;
+}
+.main-list-item-content .hire-article-content{
+    font-size: 10pt;
+    line-height: 120%;
+}
+/*发布按钮*/
+.edit{
+    display: flex;
+    position: absolute;
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 50rpx;
+    bottom: 50rpx;
+    right: 50rpx;
+    background: #F7BA2A;
+    justify-content: center;
+    align-items:center; 
+}
+.edit image{
+    display: block;
+    width: 50%;
+    height: 60%;
+}

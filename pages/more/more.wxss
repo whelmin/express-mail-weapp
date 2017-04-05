@@ -1,1 +1,27 @@
 /* pages/more/more.wxss */
+
+.main-header {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  color: #000;
+  height: 300rpx;
+}
+.main-header-btn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+}
+.main-header-btn image {
+  width: 150rpx;
+  height: 150rpx;
+  margin-bottom: 30rpx;
+}
+.main-header-btn text {
+  font-size: 12pt;
+  font-weight: lighter;
+}

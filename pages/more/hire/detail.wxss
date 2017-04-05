@@ -1,0 +1,112 @@
+/* pages/more/hire/detail.wxss */
+.detail{
+    margin: 20rpx 30rpx;
+}
+.detail .title{
+    font-size: 18pt;
+    font-weight: bold;
+    margin-top: 40rpx;
+    line-height: 140%;
+    word-break: break-all;
+}
+.detail .info{
+    margin-top: 30rpx;
+    color: #b2b2b2;
+    font-size: 12pt;
+}
+.detail .info text{
+    padding: 10rpx 0;
+    display: block;
+}
+.detail .content{
+    font-size: 11pt;
+    line-height: 150%;
+    padding: 50rpx 15rpx 200rpx;
+    word-break: break-all;
+    text-align: justify;
+}
+/*评论部分*/
+.comment-box{
+    border-top: 1px dotted #ddd;
+    margin: 20rpx 30rpx;
+}
+.comment-title{
+    display: block;
+    text-align: right;
+    line-height: 200%;
+    font-size: 10pt;
+}
+.comment-item{
+    display: flex;
+    font-weight: lighter;
+}
+.comment-item-left image{
+    width: 75rpx;
+    height: 75rpx;
+}
+.comment-item-right{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    font-weight: lighter;
+    margin-left: 20rpx;
+}
+.comment-item-nickname{
+    font-size:10pt;
+    color: #017cb9;
+    line-height: 130%;
+}
+.comment-item-right .comment-item-content{
+    font-size:11pt;
+    color: #666;
+    line-height: 150%;
+}
+.comment-item-right .comment-item-time{
+    color: #999;
+    font-size: 9pt;
+    font-weight: lighter;
+    line-height: 200%;
+}
+
+/*新增评论区*/
+.newComment{
+    display: flex;
+}
+.newComment-left{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 75rpx;
+}
+.newComment-left .comment-item-avatar{
+    width: 100%;
+    height: 75rpx;
+}
+.newComment-left .comment-item-nickname{
+    width: 100%;
+    overflow: hidden; 
+    text-overflow: ellipsis;
+}
+.newComment-right{
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size:11pt;
+    border:1px solid #ddd;
+    margin-left: 20rpx;
+}
+.newComment-right textarea{
+    width: auto;
+    height: 120rpx;
+    padding: 15rpx 20rpx 15rpx 5rpx;
+}
+/*placeholder-class*/
+.newCommentTextarea{
+    font-size:10pt;
+    line-height: 120%;
+}
+.newComment-right button{
+    align-self: flex-end;
+}

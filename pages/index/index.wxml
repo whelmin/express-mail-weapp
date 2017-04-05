@@ -1,4 +1,5 @@
 <!--index.wxml-->
+<!--用户-->
 <view class="container" wx:if="{{!isAdmin}}">
   <view class="main-header">
     <!--取件-->
@@ -33,7 +34,7 @@
       <view class="main-list-item-content">
         <text>收件人：{{item.receiver}}</text>
         <text wx:if="{{item.sendTime}}">寄件时间：{{item.sendTime}}</text>
-        <text>录入时间：{{item.submitTime}}</text>
+        <text wx:if="{{item.submitTime}}">录入时间：{{item.submitTime}}</text>
       </view>
       <navigator wx:if="{{item.status === 'LOST'}}" url="/pages/index/claim/claim?id={{item.id}}" class="main-list-item-more" hover-class="none">
         <text class="btn">认领</text>
@@ -43,10 +44,10 @@
       </view>
     </view>
     <text class="remind">{{list_remind}}</text>
-
   </view>
 
 </view>
+
 <!--管理员-->
 <view class="container" wx:else>
   <view class="main-header admin-header">
@@ -67,5 +68,27 @@
       <image src="/images/index/visiting.png"></image>
       <text>上门寄件</text>
     </navigator>
+  </view>
+  <!--管理员可查询取件列表-->
+  <view class="main-list margin-top">
+    <view class="main-list-item" wx:for="{{list}}" wx:key="id">
+      <view class="main-list-item-content">
+        <text wx:if="{{item.sender}}">寄件人：{{item.sender}}</text>
+        <text wx:if="{{item.sendPhoneNum}}">寄件电话：{{item.sendPhoneNum}}</text>
+        <text wx:if="{{item.sendAddress}}">寄件地址：{{item.sendAddress}}</text>
+        <text>收件人：{{item.receiver}}</text>
+        <text wx:if="{{item.receivePhoneNum}}">收件电话：{{item.receivePhoneNum}}</text>
+        <text wx:if="{{item.receiveAddress}}">收件地址：{{item.receiveAddress}}</text>
+        <text wx:if="{{item.createTime}}">用户创建时间：{{item.createTime}}</text>
+        <text wx:if="{{item.submitTime}}">用户提交时间：{{item.submitTime}}</text>
+      </view>
+      <navigator wx:if="{{item.status === 'LOST'}}" class="main-list-item-more" hover-class="none">
+        <text class="btn">需要认领的</text>
+      </navigator>
+      <view wx:if="{{item.status === 'NEW'}}" class="main-list-item-more">
+        <text class="btn btn-green">新增的寄件</text>
+      </view>
+    </view>
+    <text class="remind">{{list_remind}}</text>
   </view>
 </view>
