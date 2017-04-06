@@ -82,11 +82,20 @@
         <text wx:if="{{item.createTime}}">用户创建时间：{{item.createTime}}</text>
         <text wx:if="{{item.submitTime}}">用户提交时间：{{item.submitTime}}</text>
       </view>
-      <navigator wx:if="{{item.status === 'LOST'}}" class="main-list-item-more" hover-class="none">
-        <text class="btn">需要认领的</text>
-      </navigator>
       <view wx:if="{{item.status === 'NEW'}}" class="main-list-item-more">
-        <text class="btn btn-green">新增的寄件</text>
+        <text class="btn">提交发布</text>
+      </view>
+      <view wx:if="{{item.status === 'RECEIVING'}}" class="main-list-item-more">
+        <text class="btn btn-green">待取件</text>
+      </view>
+      <view wx:if="{{item.status === 'LOST'}}" class="main-list-item-more">
+        <text class="btn btn-gray">待认领</text>
+      </view>
+      <view wx:if="{{item.status === 'FOUND'}}" class="main-list-item-more">
+        <text class="btn btn-green">已认领</text>
+      </view>
+      <view wx:if="{{item.status === 'RECEIVED'}}" class="main-list-item-more">
+        <text class="btn btn-green">已取件</text>
       </view>
     </view>
     <text class="remind">{{list_remind}}</text>

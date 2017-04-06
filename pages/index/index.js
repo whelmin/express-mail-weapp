@@ -155,7 +155,6 @@ Page({
         if(res.statusCode >= 200 && res.statusCode < 400){
           var data = res.data;
           var content = data.content;
-          console.log(content);
           if(content.length !==0) {
             content.map(function(e,i){
               e.sendTime = app.utils.formatDate(e.sendTime);

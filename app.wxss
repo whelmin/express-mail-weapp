@@ -92,6 +92,7 @@ button::after{
   background: #13ce66;
 }
 .btn-gray {
+  color: #8492a6;
   background: #d3dce6;
 }
 .btn-blue{
