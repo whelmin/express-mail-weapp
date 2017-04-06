@@ -7,7 +7,7 @@
       <image src="/images/index/receive.png"></image>
       <text>取件</text>
       <!--需要判断-->
-      <view wx:if="{{count}}" class="count">
+      <view wx:if="{{count.receiveTotal}}" class="count">
         <text>{{count.receiveTotal}}</text>
       </view>
     </navigator>
@@ -15,7 +15,7 @@
     <navigator url="/pages/index/send/list" class="main-header-btn" hover-class="none">
       <image src="/images/index/send.png"></image>
       <text>寄件</text>
-      <view wx:if="{{count}}" class="count">
+      <view wx:if="{{count.sendMailCount}}" class="count">
         <text>{{count.sendMailCount}}</text>
       </view>
     </navigator>
@@ -83,7 +83,7 @@
         <text wx:if="{{item.submitTime}}">用户提交时间：{{item.submitTime}}</text>
       </view>
       <view wx:if="{{item.status === 'NEW'}}" class="main-list-item-more">
-        <text class="btn">提交发布</text>
+        <text class="btn" bindtap="submit" data-id="{{item.id}}">提交发布</text>
       </view>
       <view wx:if="{{item.status === 'RECEIVING'}}" class="main-list-item-more">
         <text class="btn btn-green">待取件</text>

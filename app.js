@@ -124,6 +124,51 @@ App({
   getAuth: function() {
     return this._g.token.userId + '_' + this._g.token.token + '_' + this._g.token.platform;
   },
+  //管理员操作
+  qrcode: function(){
+    var that = this;
+    wx.scanCode({
+      success: function(res) {
+        var result = JSON.parse(res.result);
+        if(result.qrCodeInfoType === 'ADMIN_LOGIN'){
+          // 扫码登录
+          wx.showNavigationBarLoading();
+          wx.request({
+            method: 'POST',
+            url: that._g.server + '/login/a/confirm',
+            data: {
+              qrCodeInfo: result.qrCodeInfo
+            },
+            header: {
+              'content-type': 'application/x-www-form-urlencoded',
+              'authorization': that.getAuth()
+            },
+            success: function(res) {
+              if(res.statusCode >= 200 && res.statusCode < 400){
+                if(res.data.code == '200'){
+                  wx.showToast({ title: '登录成功' });
+                }
+              }else{
+                that.showErrModal(res.data, '扫描二维码失败');
+              }
+            },
+            fail: function(res) {
+              that.showErrModal('网络错误', '扫描二维码失败');
+            },
+            complete: function() {
+              wx.hideNavigationBarLoading();
+            }
+          });
+        }else if(result.qrCodeInfoType === 'RECEIVE_MAIL'){
+          // 扫码取件
+
+        }else if(result.qrCodeInfoType === 'SEND_MAIL'){
+          // 扫码寄件
+
+        }
+      }
+    });
+  },
   utils: require('/utils/util.js'),
   _g: {
     //微信信息

@@ -7,9 +7,12 @@
     <view class="user-info-box">
       <text class="user-name">{{userInfo.nickName}}</text>
     </view>
+    <view class="scan" bindtap="qrcode">
+      <image src="/images/index/qrcode.png"></image>
+    </view>
   </view>
 
-  <view class="user-content">
+  <view class="user-content" wx:if="{{!isAdmin}}">
     <navigator url="/pages/user/bind" class="cell-item margin-bottom">
       <text>绑定手机号</text>
       <image src="/images/user/enter.png"></image>
@@ -20,6 +23,20 @@
     </navigator>
     <navigator url="/pages/index/send/list" class="cell-item">
       <text>我的寄件</text>
+      <image src="/images/user/enter.png"></image>
+    </navigator>
+  </view>
+
+  <view class="user-content" wx:else>
+    <view bindtap="qrcode" class="cell-item margin-bottom">
+      <text>扫描二维码</text>
+    </view>
+    <navigator url="/pages/index/receive/input" class="cell-item">
+      <text>录入取件</text>
+      <image src="/images/user/enter.png"></image>
+    </navigator>
+    <navigator url="/pages/index/send/visit" class="cell-item">
+      <text>上门寄件</text>
       <image src="/images/user/enter.png"></image>
     </navigator>
   </view>

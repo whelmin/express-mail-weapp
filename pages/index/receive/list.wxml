@@ -4,7 +4,7 @@
   <view class="nav-tabs">
     <view class="tab-item {{active_type === 'RECEIVING' ? 'active' : ''}}" data-type="RECEIVING" bindtap="switchType">
       <text>待取件</text>
-      <view wx:if="{{count}}" class="count">
+      <view wx:if="{{count.receiveMailCount}}" class="count">
         <text>{{count.receiveMailCount}}</text>
       </view>
     </view>

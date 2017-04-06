@@ -194,50 +194,7 @@ Page({
       'search_active': false
     });
   },
-  //管理员操作
-  qrcode: function(){
-    wx.scanCode({
-      success: function(res) {
-        var result = JSON.parse(res.result);
-        if(result.qrCodeInfoType === 'ADMIN_LOGIN'){
-          // 扫码登录
-          wx.showNavigationBarLoading();
-          wx.request({
-            method: 'POST',
-            url: app._g.server + '/login/a/confirm',
-            data: {
-              qrCodeInfo: result.qrCodeInfo
-            },
-            header: {
-              'content-type': 'application/x-www-form-urlencoded',
-              'authorization': app.getAuth()
-            },
-            success: function(res) {
-              if(res.statusCode >= 200 && res.statusCode < 400){
-                if(res.data.code == '200'){
-                  wx.showToast({ title: '登录成功' });
-                }
-              }else{
-                app.showErrModal(res.data, '扫描二维码失败');
-              }
-            },
-            fail: function(res) {
-              app.showErrModal('网络错误', '扫描二维码失败');
-            },
-            complete: function() {
-              wx.hideNavigationBarLoading();
-            }
-          });
-        }else if(result.qrCodeInfoType === 'RECEIVE_MAIL'){
-          // 扫码取件
-
-        }else if(result.qrCodeInfoType === 'SEND_MAIL'){
-          // 扫码寄件
-
-        }
-      }
-    });
-  },
+  qrcode: app.qrcode,
    //管理员获取取件列表
   getList_a: function(page) {
     var that = this;
@@ -291,4 +248,37 @@ Page({
       }
     });
   },
+  //提交发布 NEW状态变为RECEIVING或者LOST
+  submit: function(e) {
+    var that = this;
+    wx.showNavigationBarLoading();
+    wx.request({
+      url: app._g.server + '/a/mail/receive/submit',
+      data: {
+        ids: e.target.dataset.id
+      },
+      method: 'POST', 
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+        'authorization': app.getAuth()
+      }, 
+      success: function(res){
+        if(res.statusCode >= 200 && res.statusCode < 400){
+          var data = res.data;
+          if(data.succeeded) {
+            wx.showToast({title: '提交发布成功'});
+            that.getList_a(0);
+          }else{
+            app.showErrModal(res.data,'提交失败');
+          }
+        }
+      },
+      fail: function(res) {
+        app.showErrModal(res.data, '网络错误');
+      },
+      complete: function(res) {
+        wx.hideNavigationBarLoading();
+      }
+    })
+  }
 });

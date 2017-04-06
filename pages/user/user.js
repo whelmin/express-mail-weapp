@@ -2,14 +2,17 @@
 var app = getApp();
 Page({
   data:{
+    isAdmin: false,
     userInfo: {}
   },
   onLoad:function(options){
     var that = this;
     that.setData({
-      userInfo: app._g.userInfo
+      userInfo: app._g.userInfo,
+      isAdmin: app._g.role.isAdmin
     });
   },
+  qrcode: app.qrcode,
   onReady:function(){
     // 页面渲染完成
   },
