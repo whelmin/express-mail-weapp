@@ -1,1 +1,36 @@
 /* pages/more/hire/input.wxss */
+.container{
+    color: #999;
+}
+.addPic{
+    display: flex;
+    justify-content: flex-end;
+    padding: 10rpx 15rpx;
+}
+.addPic image{
+    width: 50rpx;
+    height: 50rpx;
+}
+form{
+    margin: 10rpx 25rpx;
+}
+.textarea-group{
+    margin-bottom: 20rpx;
+}
+.textarea-group view{
+    height: 70rpx;
+    line-height: 70rpx;
+}
+.textarea-group textarea{
+    border: 1px solid #e5e5e5;
+    width: 100%;
+    padding: 25rpx;
+    box-sizing: border-box;
+    min-height: 100rpx;
+}
+.textarea-group .issues-textarea{
+    min-height: 225rpx;
+}
+.textarea-group .placeholderCss{
+    font-size: 11pt;
+}

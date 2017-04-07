@@ -1,16 +1,20 @@
 <!--pages/more/hire/input.wxml-->
 <view class="container">
+    <!--添加图片-->
+    <view class="addPic" bindtap="addPic">
+        <image src="/images/more/add.png"></image>
+    </view>
     <view class="form-title margin-top">填写招聘信息</view>
     <form>
         <view class="textarea-group">
             <view>标题：</view>
-            <textarea bindblur="EventHandle" bindfocus="EventHandle" bindinput="bindKeyInput" placeholder="请输入招聘标题" auto-height/>   
+            <textarea bindblur="EventHandle" bindfocus="EventHandle" bindinput="bindKeyInput" placeholder="请输入招聘标题..."  placeholder-class="placeholderCss" auto-height/>   
         </view>
           <view class="textarea-group">
             <view>内容：</view>
-            <textarea bindblur="EventHandle" bindfocus="EventHandle" bindinput="bindKeyInput" placeholder="请输入招聘信息内容" auto-height/>   
+            <textarea class="issues-textarea" bindblur="EventHandle" bindfocus="EventHandle" bindinput="bindKeyInput" placeholder="请输入招聘信息内容 ..." placeholder-class="placeholderCss"/>   
         </view>
-        <button class="btn btn-lg" bindtap="submit">
+        <button class="btn btn-lg margin-top" bindtap="submit">
             <text wx:if="{{!submit_loading}}">发布</text>
             <text wx:else>发布中</text>
         </button>
