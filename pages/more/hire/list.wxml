@@ -19,9 +19,13 @@
     </view>
     <text class="remind">{{list_remind}}</text>
   </view>
-  <!--发布-->
+  <!--发布招聘-->
   <navigator url="/pages/more/hire/input" class="edit" hover-class="none">
     <image src="/images/more/edit.png"></image>
+  </navigator>
+  <!--查看自己发布的招聘文章-->
+  <navigator url="/pages/more/hire/my" class="edit own" hover-class="none">
+    <image src="/images/more/me.png"></image>
   </navigator>
 </view>
   

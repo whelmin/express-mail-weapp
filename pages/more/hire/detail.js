@@ -2,6 +2,7 @@
 var app = getApp();
 Page({
   data:{
+    server: app._g.server,
     // 文章id
     id: null,
     list: [],
@@ -36,7 +37,10 @@ Page({
       success: function(res) {
         if(res.statusCode >= 200 && res.statusCode < 400){
           var data = res.data;
-          console.log(data);
+          var spliter = data.content.split('\n[imgs-id-list]:');
+          data.text = spliter[0];
+          var imgstr = spliter[1];
+          data.imgs = imgstr ? imgstr.split(',') : [];
           data.createTime = app.utils.formatTime(data.createTime);
           data.updateTime = app.utils.formatTime(data.updateTime || '');
           that.setData({

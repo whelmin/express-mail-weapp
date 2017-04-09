@@ -1,36 +1,109 @@
 /* pages/more/hire/input.wxss */
 .container{
     color: #999;
+    background-color: #f6f6f6;
+    font-size: 11pt;
 }
-.addPic{
+.issues-label{
+    font-size: 10pt;
+    line-height: 100%;
+    color: #999;
+    margin: 25rpx 20rpx 15rpx;
+}
+.issues-panel{
     display: flex;
-    justify-content: flex-end;
-    padding: 10rpx 15rpx;
+    flex-direction: column;
+    align-items: stretch;
+    background-color: #fff;
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
 }
-.addPic image{
-    width: 50rpx;
-    height: 50rpx;
+.issues-img-panel{
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #fff;
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+    padding: 15rpx 25rpx;
 }
-form{
-    margin: 10rpx 25rpx;
+.issues-img-panel.error{
+    background: rgba(231, 138, 176, 0.06);
 }
-.textarea-group{
-    margin-bottom: 20rpx;
+.issues-input{
+    border-bottom: 1px solid #e5e5e5;
+    padding: 15rpx 25rpx;
 }
-.textarea-group view{
-    height: 70rpx;
-    line-height: 70rpx;
+.issues-input.error{
+    background: rgba(231, 138, 176, 0.06);
 }
-.textarea-group textarea{
-    border: 1px solid #e5e5e5;
+.issues-textarea{
     width: 100%;
     padding: 25rpx;
-    box-sizing: border-box;
-    min-height: 100rpx;
-}
-.textarea-group .issues-textarea{
     min-height: 225rpx;
+    box-sizing: border-box;
 }
-.textarea-group .placeholderCss{
-    font-size: 11pt;
+.issues-textarea.error{
+    background: rgba(231, 138, 176, 0.06);
+}
+.issues-photo-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #888;
+    margin: 20rpx;
+    margin-right: 0;
+    width: 135rpx;
+    height: 135rpx;
+    border: 1rpx solid #e5e5e5;
+    border-radius: 5rpx;
+}
+.issues-photo-item:active{
+    opacity: .8;
+}
+.issues-photo-item .remind-img{
+    padding: 0;
+}
+.issues-photo-item image{
+    width: 100%;
+    height: 100%;
+}
+.add-photo:active {
+    background: #f0f0f0;
+}
+.add-photo::before, .add-photo::after{
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: #e5e5e5;
+}
+.add-photo:active::before, .add-photo:active::after{
+    background: #ddd;
+}
+/*加号*/
+.add-photo::before {
+    width: 10rpx;
+    height: 80rpx;
+    margin-top: -40rpx;
+    margin-left: -5rpx;
+}
+.add-photo::after {
+    width: 80rpx;
+    height: 10rpx;
+    margin-top: -5rpx;
+    margin-left: -40rpx;
+}
+.issues-remind {
+    flex: 1;
+    font-size: 9pt;
+    line-height: 135%;
+    color: #ccc;
+    padding: 0 30rpx;
+    word-break: break-all;
+    text-indent: 1em;
+    padding-top: 30rpx;
+}
+.issues-remind.text-center{
+    text-align: center;
 }

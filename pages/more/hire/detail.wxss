@@ -11,12 +11,15 @@
 }
 .detail .info{
     margin-top: 30rpx;
-    color: #b2b2b2;
-    font-size: 12pt;
+    color: #999;
+    font-size: 11pt;
 }
 .detail .info text{
     padding: 10rpx 0;
     display: block;
+}
+.detail .info text:last-child{
+    margin-bottom: 15rpx;
 }
 .detail .content{
     font-size: 11pt;

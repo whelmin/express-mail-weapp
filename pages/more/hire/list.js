@@ -58,7 +58,7 @@ Page({
           var content = data.content;
           content.map(function(e,i){
             e.title = e.title.substr(0,18);
-            e.content = e.content.substr(0,25);
+            e.content = e.content.split('\n[imgs-id-list]:')[0].substr(0,25);
             e.createTime = app.utils.formatDate(e.createTime);
             e.updateTime = app.utils.formatTime(e.updateTime);
             return e;

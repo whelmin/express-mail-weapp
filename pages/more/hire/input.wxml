@@ -1,22 +1,30 @@
 <!--pages/more/hire/input.wxml-->
 <view class="container">
-    <!--添加图片-->
-    <view class="addPic" bindtap="addPic">
-        <image src="/images/more/add.png"></image>
-    </view>
-    <view class="form-title margin-top">填写招聘信息</view>
-    <form>
-        <view class="textarea-group">
-            <view>标题：</view>
-            <textarea bindblur="EventHandle" bindfocus="EventHandle" bindinput="bindKeyInput" placeholder="请输入招聘标题..."  placeholder-class="placeholderCss" auto-height/>   
+    <block>
+        <text class="issues-label">新建招聘文章</text>
+        <view class="issues-panel">
+        <view class="issues-input {{(showError&&!title)?'error':''}}">
+            <input placeholder="请输入招聘标题" bindinput="listenerTitle" />
         </view>
-          <view class="textarea-group">
-            <view>内容：</view>
-            <textarea class="issues-textarea" bindblur="EventHandle" bindfocus="EventHandle" bindinput="bindKeyInput" placeholder="请输入招聘信息内容 ..." placeholder-class="placeholderCss"/>   
+        <textarea class="issues-textarea  {{(showError&&!content)?'error':''}}" cursor-spacing="50" placeholder="请输入招聘内容" bindinput="listenerTextarea"></textarea>
         </view>
-        <button class="btn btn-lg margin-top" bindtap="submit">
+    </block>
+    <!--上传图片区-->
+    <block>
+      <text class="issues-label">选择图片（可选）</text>
+      <view class="issues-img-panel {{(showError&&uploading)?'error':''}}">
+        <view class="issues-photo-item" wx:if="{{uploading}}">
+          <image class="remind-img" src="/images/more/loading.gif" mode="aspectFit"></image>
+        </view>
+        <view class="issues-photo-item add-photo" wx:else bindtap="choosePhoto"></view>
+        <!--上传后展示图片列表-->
+        <view class="issues-photo-item" wx:for="{{imgs}}" wx:key="*this">
+          <image src="{{server + '/img/' + item}}" mode="aspectFill" data-index="{{index}}" bindtap="previewPhoto"></image>
+        </view>
+      </view>
+    </block>
+    <button class="btn btn-lg margin-top" bindtap="submit">
             <text wx:if="{{!submit_loading}}">发布</text>
             <text wx:else>发布中</text>
-        </button>
-    </form>
+    </button>
 </view>

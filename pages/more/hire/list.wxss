@@ -8,6 +8,9 @@
     border: none;
     color: #5e6d82;
 }
+.main-list-item navigator{
+    width: 100%;
+}
 .main-list-item-content{
     padding: 15rpx 30rpx;
 }
@@ -35,4 +38,11 @@
     display: block;
     width: 50%;
     height: 60%;
+}
+.own{
+    bottom: 170rpx;
+    background: #20a0ff;
+}
+.own image{
+    height:50%;
 }

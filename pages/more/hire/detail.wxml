@@ -7,10 +7,13 @@
             <text>发布时间：{{data.createTime}}</text>
             <text wx:if="{{data.updateTime}}">更新时间：{{data.updateTime}}</text>
         </view>
-        <text class="content">{{data.content}}</text>
+        <text class="content">{{data.text}}</text>
+        <block wx:for="{{data.imgs}}" wx:key="*this">
+            <image src="{{server + '/img/' + item}}" mode="aspectFit"></image>
+        </block>
     </view>
     <!--评论区-->
-    <view class="comment-box">
+    <view class="comment-box" wx:if="{{data.status === 'CHECK_PASSED'}}">
         <text wx:if="{{current.totalElements}}" class="comment-title">最新评论</text>
         <text wx:else class="comment-title">暂无评论哦，快来抢沙发</text>
         <view class="comment" wx:for="{{list}}" wx:key="id">
@@ -41,5 +44,5 @@
             </view>
         </view>
     </view>
-    <text class="remind">{{comment_remind}}</text>
+    <text class="remind" wx:if="{{data.status === 'CHECK_PASSED'}}">{{comment_remind}}</text>
 </view>
