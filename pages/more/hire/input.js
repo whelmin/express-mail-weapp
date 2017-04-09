@@ -154,7 +154,7 @@ Page({
                   showCancel: false,
                   success: function(res) {
                     wx.navigateTo({
-                      url: '/pages/more/hire/list'
+                      url: '/pages/more/hire/my'
                     });
                   }
                 });

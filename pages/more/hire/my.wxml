@@ -3,16 +3,16 @@
   <!--批注说明-->
   <view class="annotation">
     <view class="annotation-item">
-        <text class="color color-gray"></text>
-        <text>审核未通过</text>
+        <text class="color color-blue"></text>
+        <text>审核中</text>
     </view>
     <view class="annotation-item">
         <text class="color color-green"></text>
         <text>审核已通过</text>
     </view>
     <view class="annotation-item">
-        <text class="color color-blue"></text>
-        <text>审核中</text>
+        <text class="color color-gray"></text>
+        <text>审核未通过</text>
     </view>
   </view>
   <!--列表列表-->
