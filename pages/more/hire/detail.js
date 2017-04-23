@@ -8,10 +8,20 @@ Page({
     list: [],
     current: {},
     data:{},
+    // 提示
     comment_remind: '正在加载评论...',
+    // 评论内容
     comment_content: '',
     userInfo:{},
     submit_loading: false
+  },
+  onShareAppMessage: function () {
+    var that = this;
+    return {
+      title: that.data.data.title,
+      desc: that.data.data.text,
+      path: '/pages/more/hire/detail?id=that.data.id',
+    }
   },
   //绑定input
   bindKeyInput: function(e) {
@@ -41,7 +51,7 @@ Page({
           data.text = spliter[0];
           var imgstr = spliter[1];
           data.imgs = imgstr ? imgstr.split(',') : [];
-          data.createTime = app.utils.formatTime(data.createTime);
+          data.createTime = app.utils.formatTime(data.createTime || '');
           data.updateTime = app.utils.formatTime(data.updateTime || '');
           that.setData({
             data: data

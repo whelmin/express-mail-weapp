@@ -40,7 +40,7 @@
       <input placeholder="请输入收件地址" data-key="form.receiveAddress" bindinput="bindKeyInput" />
     </view>
 
-    <button class="btn btn-lg" bindtap="submit">
+    <button class="btn btn-lg margin-top" bindtap="submit">
         <text wx:if="{{!submit_loading}}">提交</text>
         <text wx:else>提交中</text>
     </button>

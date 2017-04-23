@@ -14,7 +14,7 @@
   <text class="form-title">填写认领表单</text>
 
   <!--认领信息表单-->
-  <form bindreset="submit">
+  <form>
     <view class="cell-item input-group">
       <view class="input-label">认领人：</view>
       <input placeholder="请输入认领人姓名" data-key="form.claimer" bindinput="bindKeyInput" />
@@ -37,7 +37,7 @@
       <view class="input-label">地址：</view>
       <input placeholder="请输入联系地址" data-key="form.address" bindinput="bindKeyInput" />
     </view>
-    <button class="btn btn-lg margin-top" form-type="reset">
+    <button class="btn btn-lg margin-top" bindtap="submit">
         <text wx:if="{{!submit_loading}}">提交</text>
         <text wx:else>提交中</text>
     </button>

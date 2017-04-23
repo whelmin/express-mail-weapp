@@ -107,19 +107,19 @@ Page({
         if(res.statusCode >= 200 && res.statusCode < 400){
           var data = res.data;
           var content = data.content;
-          console.log(content);
+          
           if(content.length !==0) {
             content.map(function(e,i){
               e.title = e.title.substr(0,18);
-              e.content = e.content.substr(0,25);
-              e.createTime = app.utils.formatDate(e.createTime);
-              e.updateTime = app.utils.formatTime(e.updateTime);
+              e.content = e.content.split('\n[imgs-id-list]:')[0].substr(0,25);
+              e.createTime = app.utils.formatDate(e.createTime || '');
+              e.updateTime = app.utils.formatTime(e.updateTime || '');
               return e;
-            });
-            that.setData({
-              list: content,
-              list_update: true
-            });
+          });
+          that.setData({
+            list: content,
+            list_update: true
+          });
           }else{
             that.setData({ 
               list_remind: '没有找到相关数据哦',

@@ -150,7 +150,7 @@ Page({
         if(res.confirm){
           console.log('用户点击确定');
           wx.showNavigationBarLoading();
-          //发送上门请求
+          //发送删除请求
           wx.request({
             url: app._g.server + '/u/mail/send/d',
             method: 'POST', 

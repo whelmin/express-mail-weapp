@@ -30,7 +30,9 @@
         <text wx:if="{{item.submitTime}}">寄件时间：{{item.submitTime}}</text>
       </view>
       <view class="main-list-item-more">
-        <text class="btn" wx:if="{{item.status === 'NEW' || item.status === 'VISITING' }}">寄件</text>
+        <navigator wx:if="{{item.status === 'NEW' || item.status === 'VISITING' }}" url="/pages/index/qrcode/qrcode?id={{item.id}}&type=send&status={{item.status}}" hover-class="none">
+          <text class="btn">寄件</text>
+      </navigator>
         <text class="btn btn-green" wx:if="{{item.status === 'NEW'}}" bindtap="applyDoor" data-id="{{item.id}}">申请上门</text>
         <text class="btn btn-gray" wx:if="{{item.status === 'VISITING'}}">上门中</text>
         <text class="btn btn-red" wx:if="{{item.status === 'NEW'}}" bindtap="remove" data-id="{{item.id}}">删除</text>       
@@ -38,6 +40,6 @@
       </view>
     </view>
     <text class="remind">{{list_remind}}</text>
-
+    
   </view>
 </view>

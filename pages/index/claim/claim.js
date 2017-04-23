@@ -6,11 +6,7 @@ Page({
     phoneNums: [],
     phoneIndex: null,
     data: {},
-    form: {
-      name: null,
-      phone: null,
-      address: null
-    },
+    form: {},
     submit_loading: false
   },
   bindPickerChange: function(e) {
@@ -19,6 +15,12 @@ Page({
       phoneIndex: e.detail.value,
       'form.phone': that.data.phoneNums[e.detail.value]
     });
+  },
+  //绑定input
+  bindKeyInput: function(e) {
+    var obj = {};
+    obj[e.target.dataset.key] = e.detail.value;
+    this.setData(obj);
   },
   onLoad:function(options){
     var that = this;
@@ -61,16 +63,10 @@ Page({
       phoneNums: app._g.user.phoneNums || []
     });
   },
-  //绑定input
-  bindKeyInput: function(e) {
-    var obj = {};
-    obj[e.target.dataset.key] = e.detail.value;
-    this.setData(obj);
-  },
   submit: function(){
     var that = this;
     var form = that.data.form;
-    if(!form.name){ app.showErrModal('认领人姓名不能为空！', '提交失败'); return; }
+    if(!form.claimer){ app.showErrModal('认领人姓名不能为空！', '提交失败'); return; }
     if(!form.phone){ app.showErrModal('请选择联系电话！', '提交失败'); return; }
     if(!form.address){ app.showErrModal('联系地址不能为空！', '提交失败'); return; }
     wx.showNavigationBarLoading();
@@ -80,10 +76,10 @@ Page({
     });
     wx.request({
       method: 'POST',
-      url: app._g.server + '/mail/u/receive/claim',
+      url: app._g.server + '/u/mail/receive/claim',
       data: {
         'receiveMail.id': that.data.id,
-        claimer: that.data.form.name,
+        claimer: that.data.form.claimer,
         phoneNum: that.data.form.phone,
         address: that.data.form.address
       },
@@ -95,6 +91,7 @@ Page({
         if(res.statusCode >= 200 && res.statusCode < 400){
           var data = res.data;
           wx.showToast({ title: '提交成功' });
+          app._g.count.foundMailCount++;
           wx.redirectTo({
             url: '/pages/index/receive/list'
           });

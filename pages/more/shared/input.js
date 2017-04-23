@@ -1,4 +1,4 @@
-// pages/more/share.js
+// pages/more/shared/input.js
 Page({
   data:{},
   onLoad:function(options){

@@ -10,7 +10,6 @@ Page({
     count: {}
   },
   onLoad: function(){
-
   },
   onShow: function(){
     var that = this;
@@ -20,8 +19,6 @@ Page({
         count: app._g.count
       });
     }
-    console.log(that.data.count);
-    console.log(app._g.count);
   },
   //获取取件列表
   getList: function(page) {
@@ -53,9 +50,12 @@ Page({
           var data = res.data;
           var content = data.content;
           content.map(function(e,i){
-            e.sendTime = app.utils.formatDate(e.sendTime);
+            e.createTime = app.utils.formatDate(e.createTime);
             e.submitTime = app.utils.formatTime(e.submitTime);
             e.receiveTime = app.utils.formatTime(e.receiveTime);
+            if(e.receiveMail){
+              e.receiveMail.submitTime = app.utils.formatTime(e.receiveMail.submitTime);
+            }
             return e;
           });
           console.log(app._g.server + urlLink);

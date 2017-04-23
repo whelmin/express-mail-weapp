@@ -13,8 +13,10 @@
     "pages/more/hire/detail",
     "pages/more/hire/input",
     "pages/more/hire/my",
+    "pages/more/shared/list",
+    "pages/more/shared/detail",
+    "pages/more/shared/input",
     "pages/more/card",
-    "pages/more/share",
     "pages/user/user",
     "pages/user/bind"
   ],
