@@ -41,7 +41,7 @@
 }
 .own{
     bottom: 170rpx;
-    background: #20a0ff;
+    background: #d4237a;
 }
 .own image{
     height:50%;

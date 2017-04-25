@@ -1,4 +1,5 @@
 {
-    "navigationBarBackgroundColor": "#20a0ff",
-    "navigationBarTitleText":"招聘信息详情"
+    "navigationBarTitleText":"招聘信息详情",
+    "navigationBarBackgroundColor": "#d4237a",
+    "backgroundColor": "#d4237a"
 }

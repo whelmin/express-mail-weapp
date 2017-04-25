@@ -1,12 +1,21 @@
 <!--pages/more/index.wxml-->
-
-<view class="main-header">
-    <!--招聘-->
+<view class="container">
+  <!--轮播图-->
+  <swiper indicator-dots="{{indicatorDots}}" indicator-active-color="{{activeColor}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+    <block wx:for="{{imgUrls}}">
+      <swiper-item>
+        <image src="{{item}}" class="slide-image"/>
+      </swiper-item>
+    </block>
+  </swiper>
+  <!--具体模块-->
+  <view class="main-header margin-top">
+    <!--招聘模块-->
     <navigator url="/pages/more/hire/list" class="main-header-btn" hover-class="none">
       <image src="/images/more/hire.png"></image>
       <text>招聘信息</text>
     </navigator>
-    <!--一卡通-->
+    <!--一卡通模块-->
     <navigator url="/pages/more/card/index" class="main-header-btn" hover-class="none">
       <image src="/images/more/card.png"></image>
       <text>一卡通</text>
@@ -16,4 +25,6 @@
       <image src="/images/more/share.png"></image>
       <text>共享服务</text>
     </navigator>
+  </view>
 </view>
+
