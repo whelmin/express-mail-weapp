@@ -13,6 +13,39 @@ Page({
   },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
+    var that = this;
+    if(options.id) {
+      that.setData({
+        'id': options.id
+      });
+      app.showLoadToast();
+      wx.request({
+          url: that.data.server + '/u/article/'+ options.id,
+          header: {
+            'content-type': 'application/x-www-form-urlencoded',
+            'authorization': app.getAuth()
+          },
+          method: 'GET',
+          success: function(res){
+              var data = res.data;
+              var spliter = data.content.split('\n[imgs-id-list]:');
+
+              that.setData({
+                title: data.title,
+                content: spliter[0],
+                imgs: spliter[1] ? spliter[1].split(',') : [],
+                imgLen: spliter[1] ? spliter[1].split(',').length : 0
+              });
+              console.log(that.data.imgLen);
+            },
+          fail: function(res) {
+              app.showErrModal(res.errMsg, '获取详情失败，请稍候重试！');
+          },
+          complete: function() {
+              wx.hideToast();
+          }
+        });
+    }
   },
   onReady:function(){
     // 页面渲染完成
@@ -57,7 +90,6 @@ Page({
   },
   uploadImg: function(path){
     var that = this;
-    console.log(path);
     wx.showNavigationBarLoading();
     // 上传图片
     wx.uploadFile({
@@ -93,6 +125,28 @@ Page({
       },
       complete: function() {
         wx.hideNavigationBarLoading();
+      }
+    });
+  },
+  // 删除图片
+  removePhoto: function(e) {
+    var that = this;
+    if(that.data.uploading) {
+        app.showErrModal('图片上传中','删除失败');
+        return false;
+    }
+    wx.showModal({
+      title: '提示',
+      content: '你是否要删除图片？',
+      confirmText: '是',
+      success: function(res) {
+        if(res.confirm) {
+          that.data.imgs.splice(e.currentTarget.dataset.index,1);
+          that.setData({
+            imgLen: that.data.imgLen - 1,
+            imgs: that.data.imgs
+          });
+        }
       }
     });
   },
@@ -153,7 +207,7 @@ Page({
                   content: '发布成功,文章审核中',
                   showCancel: false,
                   success: function(res) {
-                    wx.navigateTo({
+                    wx.redirectTo({
                       url: '/pages/more/hire/my'
                     });
                   }

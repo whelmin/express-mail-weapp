@@ -1,4 +1,4 @@
-// pages/more/card.js
+// pages/more/index.js
 Page({
   data:{},
   onLoad:function(options){

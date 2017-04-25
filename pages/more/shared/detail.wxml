@@ -1,2 +1,50 @@
 <!--pages/more/shared/detail.wxml-->
-<text>pages/more/shared/detail.wxml</text>
+<!--共享文章详情-->
+
+<view class="container">
+    <view class="detail margin-top">
+        <text class="title">{{data.title}}</text>
+        <view class="info">
+            <text>发布者：{{data.user.nickName}}</text>
+            <text>发布时间：{{data.createTime}}</text>
+            <text wx:if="{{data.updateTime}}">更新时间：{{data.updateTime}}</text>
+        </view>
+        <text class="content">{{data.text}}</text>
+        <block wx:for="{{data.imgs}}" wx:key="*this">
+            <image src="{{server + '/img/' + item}}" mode="aspectFit"></image>
+        </block>
+    </view>
+    <!--评论区-->
+    <view class="comment-box">
+        <text wx:if="{{current.totalElements}}" class="comment-title">最新评论</text>
+        <text wx:else class="comment-title">暂无评论哦，快来抢沙发</text>
+        <view class="comment" wx:for="{{list}}" wx:key="id">
+            <view class="comment-item margin-bottom">
+                <view class="comment-item-left">
+                    <image src="{{item.user.avatarUrl}}" class="comment-item-avatar"></image>
+                </view>
+                <view class="comment-item-right">
+                    <text class="comment-item-nickname">{{item.user.nickName}}</text>
+                    <text class="comment-item-content">{{item.content}}</text>
+                    <view class="comment-item-time">{{item.createTime}}</view>
+                </view>
+            </view>
+        </view>
+        <!--发布新评论-->
+        <view class="newComment margin-top">
+            <view class="newComment-left">
+                <!--获取用户信息-->
+                <image src="{{userInfo.avatarUrl}}" class="comment-item-avatar"></image>
+                <text class="comment-item-nickname">{{userInfo.nickName}}</text>
+            </view>
+            <view class="newComment-right">
+                <textarea placeholder="说点什么吧..." placeholder-class="newCommentTextarea" data-key ="comment_content" bindinput="bindKeyInput"/>
+                <button class="btn btn-mini btn-blue" bindtap="submit">
+                    <text wx:if="{{!submit_loading}}">发布</text>
+                    <text wx:else>发布中</text>
+                </button>
+            </view>
+        </view>
+    </view>
+    <text class="remind" wx:if="{{data.status === 'CHECK_PASSED'}}">{{comment_remind}}</text>
+</view>

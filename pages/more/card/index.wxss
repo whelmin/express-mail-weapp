@@ -1,4 +1,5 @@
-/* pages/more/card.wxss */
+/* pages/more/card/index.wxss */
+
 /**ykt.wxss**/
 .container {
     background-color: #f7f7f7;

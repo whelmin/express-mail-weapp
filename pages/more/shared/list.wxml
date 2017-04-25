@@ -1,2 +1,41 @@
 <!--pages/more/shared/list.wxml-->
-<text>pages/more/shared/list.wxml</text>
+
+<!--共享服务文章-->
+<view class="container">
+  <view class="nav-tabs">
+    <view class="tab-item {{active_type === 'forum' ? 'active' : ''}}" data-type="forum" bindtap="switchType">
+      <text>论坛</text>
+    </view>
+
+    <view class="tab-item {{active_type === 'groupChat' ? 'active' : ''}}" data-type="groupChat" bindtap="switchType">
+      <text>群聊</text>
+      <!--<view wx:if="{{count.foundMailCount}}" class="count">
+        <text>{{count.foundMailCount}}</text>
+      </view>-->
+      <view class="count">
+        <text>3</text>
+      </view>
+    </view>
+  </view>
+
+  <!--论坛文章列表-->
+  <view class="main-list shared-list" wx:if="{{active_type === 'forum'}}">
+    <view class="main-list-item" wx:for="{{list}}" wx:key="id">
+        <navigator url="/pages/more/shared/detail?id={{item.id}}">
+            <view class="main-list-item-content">
+                <text class="shared-article-title">{{item.title}}</text>
+                <text class="shared-article-content">{{item.content}}</text>
+            </view>
+        </navigator>
+    </view>
+    <text class="remind">{{list_remind}}</text>
+  </view>
+  <!--发帖-->
+  <navigator url="/pages/more/shared/input" class="edit" hover-class="none" wx:if="{{active_type === 'forum'}}">
+    <image src="/images/more/edit.png"></image>
+  </navigator>
+  <!--己发布-->
+  <navigator url="/pages/more/shared/my" class="edit own" hover-class="none" wx:if="{{active_type === 'forum'}}">
+    <image src="/images/more/me.png"></image>
+  </navigator>
+</view>

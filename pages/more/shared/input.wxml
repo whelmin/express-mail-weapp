@@ -1,2 +1,37 @@
 <!--pages/more/shared/input.wxml-->
-<text>pages/more/shared/input.wxml</text>
+<!--发帖论坛-->
+<view class="container">
+    <block>
+        <text class="issues-label">新建论坛帖</text>
+        <view class="issues-panel">
+        <view class="issues-input {{(showError&&!title)?'error':''}}">
+            <input value="{{title}}" placeholder="请输入标题" bindinput="listenerTitle" />
+        </view>
+        <textarea class="issues-textarea  {{(showError&&!content)?'error':''}}" value="{{content}}" cursor-spacing="50" placeholder="请输入内容" bindinput="listenerTextarea"></textarea>
+        </view>
+    </block>
+    <!--上传图片区-->
+    <block>
+      <text class="issues-label">选择图片（可选）</text>
+      <view class="issues-img-panel {{(showError&&uploading)?'error':''}}">
+        <view class="issues-photo-item" wx:if="{{uploading}}">
+          <image class="remind-img" src="/images/more/loading.gif" mode="aspectFit"></image>
+        </view>
+        <view class="issues-photo-item add-photo" wx:else bindtap="choosePhoto"></view>
+
+        <!--上传后 展示图片列表-->
+        <view class="issues-photo-item" wx:for="{{imgs}}" wx:key="*this">
+           <image src="{{server + '/img/' + item}}" mode="aspectFill" data-index="{{index}}" bindtap="previewPhoto"></image>
+           <!--已选中的图片可删除-->
+           <view class="close" bindtap="removePhoto" data-index="{{index}}">
+                <image src="/images/more/close.png"></image>
+           </view>
+        </view>
+      </view>
+    </block>
+    <button class="btn btn-lg margin-top" bindtap="submit">
+            <text wx:if="{{!submit_loading}}">发布</text>
+            <text wx:else>发布中</text>
+    </button>
+</view>
+

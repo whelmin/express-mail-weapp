@@ -1,4 +1,4 @@
-/* pages/more/hire/my.wxss */
+/* pages/more/shared/my.wxss */
 /*批注说明部分*/
 .annotation{
     display: flex;
@@ -21,43 +21,23 @@
 .color-blue{
     background-color: #20a0ff;
 }
-.color-gray{
-    background-color: #d3dce6;
-}
-.color-green{
-    background-color: #13ce66;
-}
-.hire-list .main-list-item{
+.shared-list .main-list-item{
     background: #F9FAFC;
     border: none;
     color: #5e6d82;
 }
-.main-list-item navigator{
-    display: flex;
-}
-.hire-article-title{
-    line-height: 200%;
-}
-.hire-article-content{
-    line-height: 130%;
-}
 .main-list-item-content{
-    padding: 15rpx 30rpx;
+    display: flex;
     flex: 1;
 }
 .main-list-item-content.border-blue{
     border-left: 12rpx solid  #20a0ff;
 }
-.main-list-item-content.border-gray{
-    border-left: 12rpx solid  #d3dce6;
-}
-.main-list-item-content.border-green{
-    border-left: 12rpx solid  #13ce66;
-}
-.main-list-item-content .hire-article-title{
+.main-list-item-content .shared-article-title{
     font-size: 14pt;
+    line-height: 150%;
 }
-.main-list-item-content .hire-article-content{
+.main-list-item-content .shared-article-content{
     font-size: 10pt;
     line-height: 120%;
 }

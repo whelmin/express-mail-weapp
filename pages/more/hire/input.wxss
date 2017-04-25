@@ -68,6 +68,14 @@
     width: 100%;
     height: 100%;
 }
+/*删除图片按钮*/
+.issues-photo-item .close{
+    width: 35rpx;
+    height: 35rpx;
+    position: absolute;
+    top: -15rpx;
+    right: -15rpx;
+}
 .add-photo:active {
     background: #f0f0f0;
 }

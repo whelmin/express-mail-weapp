@@ -8,7 +8,7 @@
     "pages/index/send/input",
     "pages/index/send/visit",
     "pages/index/qrcode/qrcode",
-    "pages/more/more",
+    "pages/more/index",
     "pages/more/hire/list",
     "pages/more/hire/detail",
     "pages/more/hire/input",
@@ -16,7 +16,8 @@
     "pages/more/shared/list",
     "pages/more/shared/detail",
     "pages/more/shared/input",
-    "pages/more/card",
+    "pages/more/shared/my",
+    "pages/more/card/index",
     "pages/user/user",
     "pages/user/bind"
   ],
@@ -40,7 +41,7 @@
         "selectedIconPath":"images/home@active.png"
       },
       {
-        "pagePath":"pages/more/more",
+        "pagePath":"pages/more/index",
         "text":"更多",
         "iconPath":"images/more.png",
         "selectedIconPath":"images/more@active.png"

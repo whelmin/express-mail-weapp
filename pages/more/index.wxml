@@ -1,4 +1,4 @@
-<!--pages/more/more.wxml-->
+<!--pages/more/index.wxml-->
 
 <view class="main-header">
     <!--招聘-->
@@ -7,12 +7,12 @@
       <text>招聘信息</text>
     </navigator>
     <!--一卡通-->
-    <navigator url="/pages/more/card" class="main-header-btn" hover-class="none">
+    <navigator url="/pages/more/card/index" class="main-header-btn" hover-class="none">
       <image src="/images/more/card.png"></image>
       <text>一卡通</text>
     </navigator>
      <!--共享模块-->
-    <navigator url="/pages/more/share" class="main-header-btn" hover-class="none">
+    <navigator url="/pages/more/shared/list" class="main-header-btn" hover-class="none">
       <image src="/images/more/share.png"></image>
       <text>共享服务</text>
     </navigator>

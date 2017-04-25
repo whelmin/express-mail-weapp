@@ -1,12 +1,13 @@
 <!--pages/more/hire/input.wxml-->
+
 <view class="container">
     <block>
         <text class="issues-label">新建招聘文章</text>
         <view class="issues-panel">
         <view class="issues-input {{(showError&&!title)?'error':''}}">
-            <input placeholder="请输入招聘标题" bindinput="listenerTitle" />
+            <input placeholder="请输入招聘标题" value="{{title}}"bindinput="listenerTitle" />
         </view>
-        <textarea class="issues-textarea  {{(showError&&!content)?'error':''}}" cursor-spacing="50" placeholder="请输入招聘内容" bindinput="listenerTextarea"></textarea>
+        <textarea class="issues-textarea {{(showError&&!content)?'error':''}}" value="content" cursor-spacing="50" placeholder="请输入招聘内容" bindinput="listenerTextarea"></textarea>
         </view>
     </block>
     <!--上传图片区-->
@@ -20,6 +21,10 @@
         <!--上传后展示图片列表-->
         <view class="issues-photo-item" wx:for="{{imgs}}" wx:key="*this">
           <image src="{{server + '/img/' + item}}" mode="aspectFill" data-index="{{index}}" bindtap="previewPhoto"></image>
+          <!--已选中的图片可删除-->
+           <view class="close" bindtap="removePhoto" data-index="{{index}}">
+                <image src="/images/more/close.png"></image>
+           </view>
         </view>
       </view>
     </block>

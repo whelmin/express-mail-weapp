@@ -18,13 +18,14 @@
   <!--列表列表-->
   <view class="main-list hire-list">
     <view class="main-list-item" wx:for="{{list}}" wx:key="id">
-            <navigator class="main-list-item-content {{item.status === 'CHECKING'? 'border-blue': ''}} {{item.status === 'CHECK_NOT_PASSED'? 'border-gray': ''}} {{item.status === 'CHECK_PASSED'? 'border-green': ''}}" url="/pages/more/hire/detail?id={{item.id}}">
-                <text class="hire-article-title">{{item.title}}</text>
-                <text class="hire-article-content">{{item.content}}</text>
-            </navigator>
-            <view class="main-list-item-more">
-                <text class="btn btn-red" bindtap="article_delete" data-key="{{item.id}}">删除</text>
-            </view>
+        <navigator class="main-list-item-content {{item.status === 'CHECKING'? 'border-blue': ''}} {{item.status === 'CHECK_NOT_PASSED'? 'border-gray': ''}} {{item.status === 'CHECK_PASSED'? 'border-green': ''}}" url="/pages/more/hire/detail?id={{item.id}}">
+            <text class="hire-article-title">{{item.title}}</text>
+            <text class="hire-article-content">{{item.content}}</text>
+        </navigator>
+        <view class="main-list-item-more">
+            <text class="btn btn-red" bindtap="article_delete" data-key="{{item.id}}">删除</text>
+            <navigator class="btn btn-green" url="/pages/more/hire/input?id={{item.id}}">修改</navigator>
+        </view>
     </view>
     <text class="remind">{{list_remind}}</text>
   </view>

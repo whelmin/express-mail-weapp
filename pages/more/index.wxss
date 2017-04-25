@@ -1,4 +1,4 @@
-/* pages/more/more.wxss */
+/* pages/more/index.wxss */
 
 .main-header {
   display: flex;

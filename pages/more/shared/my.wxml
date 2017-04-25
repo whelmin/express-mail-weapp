@@ -1,0 +1,19 @@
+<!--pages/more/shared/my.wxml 用户已发帖子-->
+
+<view class="container margin-top">
+
+  <!--列表-->
+  <view class="main-list shared-list">
+    <view class="main-list-item" wx:for="{{list}}" wx:key="id">
+        <navigator class="main-list-item-content border-blue" url="/pages/more/shared/detail?id={{item.id}}">
+            <text class="shared-article-title">{{item.title}}</text>
+            <text class="shared-article-content">{{item.content}}</text>
+        </navigator>
+        <view class="main-list-item-more">
+            <text class="btn btn-red" bindtap="article_delete" data-key="{{item.id}}">删除</text>
+            <navigator class="btn btn-green" url="/pages/more/shared/input?id={{item.id}}">修改</navigator>
+        </view>
+    </view>
+    <text class="remind">{{list_remind}}</text>
+  </view>
+</view>

@@ -1,5 +1,5 @@
-// pages/more/hire/my.js
-// 用户查询自己发布的文章
+// pages/more/shared/my.js
+// 用户已发帖子
 
 var app = getApp();
 Page({
@@ -20,7 +20,7 @@ Page({
       that.getList(0);
     }
   },
-  //用户获取招聘列表
+  //用户获取帖子列表
   getList: function(page) {
     var that = this;
     if(page === undefined){
@@ -37,7 +37,7 @@ Page({
     
     wx.request({
       method: 'POST',
-      url: app._g.server + '/u/article/l/me',
+      url: app._g.server + '/u/shared/article/l/me',
       data: {
         page: page
       },
@@ -51,7 +51,7 @@ Page({
           var content = data.content;
           content.map(function(e,i){
             e.title = e.title.substr(0,10);
-            e.content = e.content.split('\n[imgs-id-list]:')[0].substr(0,36);
+            e.content = e.content.split('\n[imgs-id-list]:')[0].substr(0,42);
             e.createTime = app.utils.formatDate(e.createTime);
             e.updateTime = app.utils.formatTime(e.updateTime);
             return e;
@@ -60,12 +60,12 @@ Page({
             list: that.data.list.concat(content),
           });
           if(data.last){
-            that.setData({ list_remind: '已全部加载' });
+            that.setData({ list_remind: '已全部加载完' });
           }else{
             that.setData({ list_remind: '上滑加载更多' });
           }
           if(data.totalElements === 0){
-            that.setData({ list_remind: '还没有招聘文章，快去发布吧...' });
+            that.setData({ list_remind: '暂时无帖，快去发帖吧...' });
           }
         }else{
           app.showErr(res.data, that, 'list_remind');
@@ -80,17 +80,17 @@ Page({
       }
     });
   },
-  //用户删除招聘文章
+  //用户删贴
   article_delete: function(e) {
     var that = this;
     wx.showModal({
       title: '提示',
-      content: '你真的要删除该招聘文章？',
+      content: '你真的要删除该帖子？',
       success: function(res) {
         if(res.confirm) {
           wx.showNavigationBarLoading();
           wx.request({
-              url: app._g.server + '/u/article/d',
+              url: app._g.server + '/u/shared/article/d',
               method: 'POST', 
               data: {
                 ids: e.target.dataset.key
@@ -103,7 +103,7 @@ Page({
                 if(res.statusCode >= 200 && res.statusCode < 400){
                   var data = res.data;
                   if(data.succeeded) {
-                    wx.showToast({ title: '删除文章成功！' });
+                    wx.showToast({ title: '删除帖子成功！' });
                     that.getList(0);
                   }
                 }
