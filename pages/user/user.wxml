@@ -12,7 +12,7 @@
     </view>
   </view>
 
-  <view class="user-content" wx:if="{{!isAdmin}}">
+  <view class="user-content" wx:if="{{isAdmin}}">
     <navigator url="/pages/user/bind" class="cell-item margin-bottom">
       <text>绑定手机号</text>
       <image src="/images/user/enter.png"></image>
