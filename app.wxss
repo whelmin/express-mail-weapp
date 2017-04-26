@@ -131,7 +131,6 @@ button::after{
   min-height: 100rpx;
   margin: 0 30rpx 18rpx;
   line-height: 160%;
-  border: 1rpx solid #eaeefb;
   border-radius: 3px;
   color: #5e6d82;
   background: #D3DCE6;

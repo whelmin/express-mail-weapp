@@ -10,3 +10,6 @@
 .cell-item input, .section{
   font-size: 11pt;
 }
+.cell-item>input{
+  color: #999;
+}

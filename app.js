@@ -166,6 +166,9 @@ App({
           // 扫码寄件
 
         }
+      },
+      complete: function() {
+        wx.hideNavigationBarLoading();
       }
     });
   },
