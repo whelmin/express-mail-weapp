@@ -1,4 +1,6 @@
 {
     "navigationBarTitleText":"发帖论坛",
-    "navigationBarTextStyle":"light"
+    "navigationBarTextStyle":"light",
+    "navigationBarBackgroundColor": "#13CE66",
+    "backgroundColor": "#13CE66"
 }

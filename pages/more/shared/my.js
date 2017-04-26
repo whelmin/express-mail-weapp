@@ -65,7 +65,7 @@ Page({
             that.setData({ list_remind: '上滑加载更多' });
           }
           if(data.totalElements === 0){
-            that.setData({ list_remind: '暂时无帖，快去发帖吧...' });
+            that.setData({ list_remind: '暂无帖，快去发帖吧...' });
           }
         }else{
           app.showErr(res.data, that, 'list_remind');

@@ -1,4 +1,6 @@
 {
-    "navigationBarTitleText":"发布招聘信息",
-    "navigationBarTextStyle":"light"
+    "navigationBarTitleText":"新建招聘文章",
+    "navigationBarTextStyle":"light",
+    "navigationBarBackgroundColor": "#d4237a",
+    "backgroundColor": "#d4237a"
 }
