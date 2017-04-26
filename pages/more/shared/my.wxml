@@ -1,9 +1,9 @@
 <!--pages/more/shared/my.wxml 用户已发帖子-->
 
-<view class="container margin-top">
+<view class="container">
 
   <!--列表-->
-  <view class="main-list shared-list">
+  <view class="main-list shared-list margin-top">
     <view class="main-list-item" wx:for="{{list}}" wx:key="id">
         <navigator class="main-list-item-content border-blue" url="/pages/more/shared/detail?id={{item.id}}" open-type="redirect">
             <text class="shared-article-title">{{item.title}}</text>

@@ -92,8 +92,8 @@ button::after{
   background: #13ce66;
 }
 .btn-gray {
-  color: #8492a6;
-  background: #d3dce6;
+  color: #fff;
+  background: #8492A6;
 }
 .btn-blue{
   background: #20a0ff;
@@ -133,7 +133,8 @@ button::after{
   line-height: 160%;
   border: 1rpx solid #eaeefb;
   border-radius: 3px;
-  background: #f9fafc;
+  color: #5e6d82;
+  background: #D3DCE6;
 }
 .main-list-item-content {
   flex: 1;
@@ -169,6 +170,7 @@ button::after{
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-bottom: 20rpx;
 }
 .tab-item>text {
   font-size: 13pt;

@@ -4,7 +4,7 @@
 }
 .tab-item .count{
     position: absolute;
-    top: 22rpx;
+    top: 15rpx;
     right: 80rpx;
     background: #FF4949;
     min-width: 38rpx;
