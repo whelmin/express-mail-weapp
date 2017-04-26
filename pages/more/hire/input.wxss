@@ -7,7 +7,6 @@
 .issues-label{
     font-size: 10pt;
     line-height: 100%;
-    color: #999;
     margin: 25rpx 20rpx 15rpx;
 }
 .issues-panel{

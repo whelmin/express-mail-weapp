@@ -29,9 +29,9 @@
     background-color: #13ce66;
 }
 .hire-list .main-list-item{
-    background: #F9FAFC;
     border: none;
     color: #5e6d82;
+    background: #D3DCE6;
 }
 .main-list-item navigator{
     display: flex;
