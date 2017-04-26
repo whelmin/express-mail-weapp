@@ -21,7 +21,7 @@
         <view class="status-remind {{status_remind === '连接成功！开始群聊吧😊' ? 'success' : ''}}">{{status_remind}}</view>
         <view class="divider"></view>
         <view class="message-remind">{{message_remind}}</view>
-
+        <scroll-view></scroll-view>
     </view>
     <!--输入区-->
     <view class="inputArea">

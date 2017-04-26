@@ -5,13 +5,13 @@
   <!--列表-->
   <view class="main-list shared-list">
     <view class="main-list-item" wx:for="{{list}}" wx:key="id">
-        <navigator class="main-list-item-content border-blue" url="/pages/more/shared/detail?id={{item.id}}">
+        <navigator class="main-list-item-content border-blue" url="/pages/more/shared/detail?id={{item.id}}" open-type="redirect">
             <text class="shared-article-title">{{item.title}}</text>
             <text class="shared-article-content">{{item.content}}</text>
         </navigator>
         <view class="main-list-item-more">
             <text class="btn btn-red" bindtap="article_delete" data-key="{{item.id}}">删除</text>
-            <navigator class="btn btn-green" url="/pages/more/shared/input?id={{item.id}}">修改</navigator>
+            <navigator class="btn btn-green" url="/pages/more/shared/input?id={{item.id}}" open-type="redirect">修改</navigator>
         </view>
     </view>
     <text class="remind">{{list_remind}}</text>

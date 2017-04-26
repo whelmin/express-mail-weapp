@@ -72,6 +72,9 @@ Page({
           }else{
             that.setData({ list_remind: '上滑加载更多' });
           }
+          if(data.totalElements === 0) {
+            that.setData({ list_remind: '暂无招聘文章' });
+          }
         }else{
           app.showErr(res.data, that, 'list_remind');
         }

@@ -7,6 +7,7 @@
 }
 .annotation-item{
     display: flex;
+    align-items: center;
     margin-right: 30rpx;
 }
 .annotation-item .color{

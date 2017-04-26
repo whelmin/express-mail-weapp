@@ -1,5 +1,5 @@
 <!--index.wxml-->
-<!--用户-->
+<!--普通用户-->
 <view class="container" wx:if="{{!isAdmin}}">
   <view class="main-header">
     <!--取件-->
