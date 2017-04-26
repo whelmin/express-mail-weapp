@@ -127,12 +127,12 @@ App({
   //管理员操作
   qrcode: function(){
     var that = this;
+    wx.showNavigationBarLoading();
     wx.scanCode({
       success: function(res) {
         var result = JSON.parse(res.result);
         if(result.qrCodeInfoType === 'ADMIN_LOGIN'){
           // 扫码登录
-          wx.showNavigationBarLoading();
           wx.request({
             method: 'POST',
             url: that._g.server + '/login/a/confirm',
@@ -182,6 +182,6 @@ App({
     //计数
     count: {},
     token: {},
-    server: 'http://139.129.33.201:9090'
+    server: 'https://cqipc.cn/api'
   }
 });
