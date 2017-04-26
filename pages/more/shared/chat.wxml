@@ -1,0 +1,35 @@
+<!--pages/more/shared/chat.wxml-->
+<view class="container">
+    <view class="nav-tabs">
+        <view class="tab-item {{active_type === 'forum' ? 'active' : ''}}" data-type="forum" bindtap="switchType">
+        <text>论坛</text>
+        </view>
+
+        <view class="tab-item {{active_type === 'groupChat' ? 'active' : ''}}" data-type="groupChat" bindtap="switchType">
+        <text>群聊</text>
+        <!--<view wx:if="{{count.foundMailCount}}" class="count">
+            <text>{{count.foundMailCount}}</text>
+        </view>-->
+        <view class="count">
+            <text>3</text>
+        </view>
+        </view>
+  </view>
+  <view class="groupChat">
+    <!--聊天记录-->
+    <view class="chatArea">
+        <view class="status-remind {{status_remind === '连接成功！开始群聊吧😊' ? 'success' : ''}}">{{status_remind}}</view>
+        <view class="divider"></view>
+        <view class="message-remind">{{message_remind}}</view>
+
+    </view>
+    <!--输入区-->
+    <view class="inputArea">
+      <textarea class="inputArea-textarea" placeholder="说点什么吧..."></textarea>
+      <view class="add" bindtap="addPhoto">
+        <image src="/images/more/addphoto.png"></image>
+      </view>
+    </view>
+
+  </view>
+</view>

@@ -12,7 +12,7 @@
     </block>
     <!--上传图片区-->
     <block>
-      <text class="issues-label">选择图片（可选）</text>
+      <text class="issues-label">选择图片（可选）图片大小不能超过2M</text>
       <view class="issues-img-panel {{(showError&&uploading)?'error':''}}">
         <view class="issues-photo-item" wx:if="{{uploading}}">
           <image class="remind-img" src="/images/more/loading.gif" mode="aspectFit"></image>

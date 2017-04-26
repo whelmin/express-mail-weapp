@@ -7,12 +7,12 @@
         <view class="issues-input {{(showError&&!title)?'error':''}}">
             <input placeholder="请输入招聘标题" value="{{title}}"bindinput="listenerTitle" />
         </view>
-        <textarea class="issues-textarea {{(showError&&!content)?'error':''}}" value="content" cursor-spacing="50" placeholder="请输入招聘内容" bindinput="listenerTextarea"></textarea>
+        <textarea class="issues-textarea {{(showError&&!content)?'error':''}}" value="{{content}}" cursor-spacing="50" placeholder="请输入招聘内容" bindinput="listenerTextarea"></textarea>
         </view>
     </block>
     <!--上传图片区-->
     <block>
-      <text class="issues-label">选择图片（可选）</text>
+      <text class="issues-label">选择图片（可选）图片大小不能超过2M</text>
       <view class="issues-img-panel {{(showError&&uploading)?'error':''}}">
         <view class="issues-photo-item" wx:if="{{uploading}}">
           <image class="remind-img" src="/images/more/loading.gif" mode="aspectFit"></image>

@@ -17,6 +17,7 @@
     "pages/more/shared/detail",
     "pages/more/shared/input",
     "pages/more/shared/my",
+    "pages/more/shared/chat",
     "pages/more/card/index",
     "pages/user/user",
     "pages/user/bind"

@@ -95,7 +95,13 @@ Page({
       });
       that.getList();
     }
+    if(active_type === 'groupChat') {
+      wx.redirectTo({
+        url: '/pages/more/shared/chat'
+      });
+    }
   },
+
   onHide:function(){
     // 页面隐藏
   },

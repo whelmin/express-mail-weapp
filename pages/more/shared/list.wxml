@@ -38,4 +38,5 @@
   <navigator url="/pages/more/shared/my" class="edit own" hover-class="none" wx:if="{{active_type === 'forum'}}">
     <image src="/images/more/me.png"></image>
   </navigator>
+
 </view>
