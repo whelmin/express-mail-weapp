@@ -27,141 +27,153 @@
     font-size: 9pt;
     font-weight: bold;
 }
-.groupChat{
-    padding: 20rpx 30rpx;
-    display: flex;
-    height: 1200rpx;
-    flex-direction: column;
-    justify-content: space-between;
-}
-/*聊天记录区域*/
-.chatArea {
-    text-align: center;
-}
-.chatArea .status-remind{
-    color: #dc5656;
-}
-.chatArea .status-remind.success{
-    color: #13CE66;
-}
-.chatArea .divider{
-    margin: 20rpx 0;
-    width: 100%;
-    height: 0;
-    border-bottom: 1rpx dotted #999;
-}
-.msg-log{
-    width: 100%;
-}
-.msg-log-item{
-    margin-bottom: 30rpx;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-.msg-header {
-    display: flex;
-    justify-content: flex-start;
-    margin-bottom: 10rpx;
-}
-.msg-header .msg-header-name{
-    margin-right: 10rpx;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    width: 110rpx;
-    white-space: nowrap;
-}
-.msg-header .msg-header-time{
+
+.chat-container {
     flex: 1;
+    text-align: center;
+    overflow-y:auto;
+}
+.system-message {
+    font-size: 14px;
+    line-height: 14px;
+    color: #fff;
+    background: #cecece;
+    border-radius: 4px;
+    display: inline-block;
+    padding: 8rpx 15rpx;
+    margin: 30rpx 0 10rpx;
+
+}
+.user-message {
+    margin: 38rpx 20rpx 0;
     text-align: left;
+    font-size: 0;
+    display: flex
 }
-.msg-body{
-    display: flex;
-    justify-content: flex-start;
+.user-message.me {
+    flex-direction: row-reverse;
 }
-.msg-body .msg-body-avatar{
-    width: 75rpx;
-    height: 75rpx;
-    border-radius: 75rpx;
-    overflow: hidden;
-    margin-right: 15rpx;
+.avatar {
+    width: 84rpx;
+    height: 84rpx;
+    border: #a5a5a7 1rpx solid;
+    display: inline-block;
+    vertical-align: top;
 }
-.msg-body .msg-body-avatar image{
-    width: 100%;
-    height: 100%;
+.text {
+    display: inline-block;
+    vertical-align: top;
 }
-.msg-body .msg-body-content{
-    flex:1;
-    background: #D3DCE6;
-    color: #5e6d82;
-    position: relative;
-    padding: 20rpx 25rpx;
-    border-radius: 10rpx;
-    text-align: left;
+.user-message.other .text {
+    margin-left: 19rpx;
 }
-.msg-body .msg-body-content::before{
-    position: absolute;
-    content: "";
-    width: 14rpx;
-    height: 14rpx;
-    transform: rotate(45deg);
-    z-index: 2;
-    transition: background .1s linear;
-    top: 50%;
-    margin-top: -7rpx;
-    left: -6rpx;
-    background-color: #D3DCE6;
-    border-left: 1px solid #D3DCE6;
-    border-bottom: 1px solid #D3DCE6;
+.user-message.me .text {
+    margin-right: 19rpx;
 }
-/*输入区*/
-.inputArea{
-    display: flex;
-    position: relative;
+.text .nickname {
+    color: #737373;
+    font-size: 14px;
+    margin-bottom: 6rpx;
 }
-.inputArea .send-btn{
-    position: absolute;
-    top: 50%;
-    right: 10rpx;
-    width: 60rpx;
-    height: 50rpx;
-    margin-top: -25rpx;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.send-btn image{
-    width: 40rpx;
-    height: 40rpx;
-}
-.inputArea .inputArea-textarea{
-    flex: 1;    
-    min-height: 80rpx;
-    box-sizing: border-box;
-    padding: 15rpx 20rpx;
-    border: 1px solid #e5e9f2;
-    border-radius: 5px;
-    color: #2c3e50;
-    outline: none;
-    font-size: 9pt;
+.text .content {
+    border: #ccc 1rpx solid;
+    border-radius: 4px;
     background: #fff;
+    font-size: 36rpx;
+    line-height: 36rpx;
+    padding: 20rpx;
+    position: relative;
 }
-.inputArea-placeholder{
-    color: #ccc;
+.user-message.me .text .content {
+    background: #a0e75b;
+    border: #70b44d 1rpx solid;
 }
-.inputArea.active .inputArea-textarea{
-    border-color: #20a0ff;
+.text .content::after,.text .content::before {
+    font-size: 0;
+    position: absolute;
+    width: 0;
+    height: 0;
+    content: '';
+    border: 13rpx dashed transparent;
 }
 
-.inputArea .add{
-    width: 8%;
-    margin-right: 10rpx;
-    height: 80rpx;
+.user-message.other .text .content::after,.user-message.other .text .content::before {
+    right: 100%;
+    border-right-style: solid;
+}
+.user-message.other .text .content::before {
+    top: 18rpx;
+    border-right-color: #ccc;
+}
+.user-message.other .text .content::after {
+    border: 12rpx solid transparent;
+    top: 19rpx;
+    border-right-color: #fff;
+}
+
+.user-message.me .text .content::after,.user-message.me .text .content::before {
+    left: 100%;
+    border-left-style: solid;
+}
+
+.user-message.me .text .content::before {
+    top: 18rpx;
+    border-left-color: #70b44d;
+}
+.user-message.me .text .content::after {
+    border: 12rpx solid transparent;
+    top: 19rpx;
+    border-left-color: #a0e75b;
+}
+.text .content.img {
+    border: #ccc 1rpx solid;
+    border-radius: 4px;
+    background: #fff;
+    font-size: 30rpx;
+    line-height: normal;
+    padding: 10rpx;
+    position: relative;
+    text-align: center;
+    max-width: 560rpx;
+}
+.text .content.img image {
+    max-width: 100%;
+}
+
+.input-panel {
+    height: 100rpx;
+    padding: 13rpx 20rpx;
+    background: #f5f5f7;
+    border-top:#d7d7d9 1rpx solid;
+    box-sizing: border-box;
     display: flex;
     align-items: center;
-    justify-content: center;
 }
-.add image{
-    width: 40rpx;
-    height: 40rpx;
+.pic-icon {
+    width: 70rpx;
+    height: 60rpx;
+    margin: 0 20rpx 0 0;
+    background-image:url('/images/more/pic.png');
+    background-position: center;
+    background-size: 70rpx 60rpx;
+}
+.send-input {
+    flex: 1;
+    height: 72rpx;
+    background: #fff;
+    border:#ddd 1rpx solid;
+    border-radius: 3px;
+    margin-right: 20rpx;
+    box-sizing: border-box;
+    padding: 0 10rpx;
+}
+.send-btn {
+    width: 160rpx;
+    height: 72rpx;
+    line-height: 72rpx;
+    background-color: #a0e75a;
+    font-size: 28rpx;
+}
+.me .nickname {
+    display: none;
 }

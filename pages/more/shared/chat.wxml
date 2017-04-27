@@ -15,31 +15,27 @@
         </view>
         </view>
   </view>
-  <view class="groupChat">
-    <!--聊天记录-->
+  <!--<view class="groupChat">
+    
     <view class="chatArea">
-        <view class="status-remind {{status_remind === '连接成功！开始群聊吧😊' ? 'success' : ''}}">{{status_remind}}</view>
-        <view class="divider"></view>
-        <view class="message-remind">{{message_remind}}</view>
-        <scroll-view scroll-y="true" style="height: 400px;" >
-            <view class="msg-log" wx:for="{{record}}" wx:key="id">
-                <view class="msg-log-item">
-                    <view class="msg-header">
-                        <text class="msg-header-name">{{item.user.nickName}}</text>
-                        <text class="msg-header-time">{{item.createTime}}</text>
-                    </view>
-                    <view class="msg-body">
-                        <view class="msg-body-avatar">
-                            <image src="{{item.user.avatarUrl}}"></image>
-                        </view>
-                        <view class="msg-body-content">{{item.content}}</view>
-                    </view>
+        <view class="status-remind">{{status_remind}}</view>
+        <view class="msg-log" wx:for="{{record}}" wx:key="id">
+            <view class="msg-log-item">
+                <view class="msg-header">
+                    <text class="msg-header-name">{{item.user.nickName}}</text>
+                    <text class="msg-header-time">{{item.createTime}}</text>
                 </view>
-
+                <view class="msg-body">
+                    <view class="msg-body-avatar">
+                        <image src="{{item.user.avatarUrl}}"></image>
+                    </view>
+                    <view class="msg-body-content">{{item.content}}</view>
+                </view>
             </view>
-        </scroll-view>
+
+        </view>
     </view>
-    <!--输入区-->
+    
     <view class="inputArea {{search_active ? 'active' : ''}}">
       <view class="add" bindtap="addPhoto">
         <image src="/images/more/add.png"></image>
@@ -50,5 +46,25 @@
       </view>
     </view>
 
-  </view>
+  </view>-->
+    <scroll-view class="chat-container" scroll-y scroll-into-view="{{lastMessageId}}" scroll-top="9999999999">
+            <view wx:for="{{record}}" wx:for-item="message" wx:key="id" id="{{message.id}}" class="message {{message.type}}">
+                <view wx:if="{{message.type == 'speak'}}" class="user-message {{message.user.id ===  user_id ? 'me' : 'other'}}">
+                    <image class="avatar" src="{{message.user.avatarUrl}}" mode="aspectFill"></image>
+                    <view class="text">
+                        <view class="nickname">{{message.user.nickName}}</view>
+                        <view class="createTime">{{message.createTime}}</view>
+                        <view class="content">{{message.content}}</view>
+                    </view>
+                </view>
+                <view wx:if="{{message.type == 'system'}}" class="system-message">
+                    {{message.content}}
+                </view>
+            </view>
+    </scroll-view>
+    <view class="input-panel">
+        <button class="pic-icon"></button>
+        <input type="text" value="{{inputContent}}" bindchange="changeInputContent" class="send-input"></input>
+        <button bindtap="sendMessage" class="send-btn">发送</button>
+    </view>
 </view>

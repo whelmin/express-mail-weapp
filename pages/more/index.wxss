@@ -11,7 +11,7 @@ swiper{
   display: flex;
   align-items: center;
   background: #fff;
-  color: #000;
+  color: #324057;
   height: 300rpx;
 }
 .main-header-btn {

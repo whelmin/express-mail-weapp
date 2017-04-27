@@ -32,16 +32,26 @@ function initClient() {
 var app = getApp();
 Page({
   data:{
-    status_remind: '建立连接中...',
-    message_remind: '加载聊天记录',
+    user:{
+      id: null,
+      nickName: null
+    },
     active_type: 'groupChat',
     record: [],
-    msg_content: null
+    inputContent: null
   },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
     var that = this;
-  
+    that.setData({
+      'user.id': app._g.user.id,
+      'user.nickName': app._g.user.nickName
+    });
+    that.data.record.push({
+          id: that.data.record.length,
+          type: 'system',
+          content: '正在登录 ...'
+    });
     wx.connectSocket({
       url: app._g.websocket + '/express-mail',
       header:{ 
@@ -49,13 +59,26 @@ Page({
       },
       success: function(res) {
         console.log('Socket连接成功');
+
+        that.data.record.push({
+          id: that.data.record.length,
+          type: 'system',
+          content: that.data.user.nickName + '加入群聊了，开始聊天吧 ...'
+        });
+
         that.setData({
-          status_remind: '连接成功！开始群聊吧😊'
+          record: that.data.record
         });
       },
       fail: function(err) {
+        that.data.record.push({
+          id: that.data.record.length,
+          type: 'system',
+          content: '您还没有加入群聊，请稍后重试'
+        });
+
         that.setData({
-          status_remind: '连接失败！请稍候重试。'
+          record: that.data.record
         });
       }
     });
@@ -79,9 +102,9 @@ Page({
     client.connect({ 'authorization': app.getAuth() }, function (sessionId) {
         // 订阅实时聊天记录
         client.subscribe('/topic/chat', function (res) {
-            console.log('实时聊天记录');
             var item = JSON.parse(res.body);
-            item.createTime = app.utils.formatTime(item.createTime);
+            item.type = 'speak';
+            item.createTime = app.utils.formatMonth(item.createTime);
             that.data.record.push(item);
 
             that.setData({
@@ -90,19 +113,19 @@ Page({
         });
         // 订阅历史聊天记录
         client.subscribe('/app/chat/record', function (res) {
-            console.log('历史聊天记录');
             var body = res.body;
             if(body) {
               var content = JSON.parse(body).content;
 
               content.map(function(e,i){
-                e.createTime = app.utils.formatTime(e.createTime);
+                e.type = 'speak';
+                e.createTime = app.utils.formatMonth(e.createTime);
                 return e;
               });
+              
 
               that.setData({
-                record: content,
-                message_remind: '加载成功'
+                record: that.data.record.concat(content)
               });
             }else{
               app.showErrModal('获取历史聊天记录失败','网络错误');
@@ -110,8 +133,16 @@ Page({
             
         });
         // 订阅聊天错误信息
-        client.subscribe('/user/queue/errors', function (body, headers) {
-            console.log('聊天错误信息', body);
+        client.subscribe('/user/queue/errors', function (res) {
+            that.data.record.push({
+              id: that.data.record.length,
+              type: 'system',
+              content: res.body
+            });
+
+            that.setData({
+              record: that.data.record
+            });
         });
 
     });

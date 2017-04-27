@@ -10,11 +10,15 @@ function formatTime(timestamp, format) {
   var second = date.getSeconds();
   var formattedDate = [year, month, day].map(formatNumber).join('-');
   var formattedTime = [hour, minute, second].map(formatNumber).join(':');
+  var formattedMonth = [month, day].map(formatNumber).join('-');
   if (format === 'd') {
     return formattedDate;
   } else if (format === 's') {
     return formattedDate + ' ' + formattedTime;
+  }else if (format === 'm') {
+    return formattedMonth + ' ' + formattedTime;
   }
+
 }
 
 function formatNumber(n) {
@@ -28,5 +32,8 @@ module.exports = {
   },
   formatTime: function(value) {
     return formatTime(value, 's');
+  },
+  formatMonth: function(value) {
+    return formatTime(value, 'm');
   }
 }
