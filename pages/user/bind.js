@@ -126,7 +126,6 @@ Page({
       content: '您确定要删除该手机号码？',
       success: function(res) {
         if(res.confirm) {
-            console.log('用户点击确定');
             wx.showNavigationBarLoading();
             wx.request({
               url: app._g.server + '/unbind/' + e.target.dataset.phoneNumber,

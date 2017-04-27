@@ -17,11 +17,7 @@ Page({
   //下拉刷新
   onPullDownRefresh: function(){
     var that = this;
-    if(that.data.isAdmin) {
-        that.getList_a(0);
-    }else{
-        that.getList_u(0);
-    }
+    that.login();
   },
   //上滑加载
   onReachBottom: function(){
@@ -33,6 +29,13 @@ Page({
     }
   },
   onLoad: function () {
+  },
+  onShow: function (){
+    var that = this;
+    //登录
+    that.login();
+  },
+  login: function () {
     var that = this;
     //登录
     app.showLoadToast();
@@ -52,21 +55,6 @@ Page({
         });
       });
     });
-  },
-  onShow: function (){
-    var that = this;
-    if(that.data.list_remind !== '加载中'){
-      if(that.data.isAdmin) {
-        that.getList_a(0);
-      }else{
-        that.getList_u(0);
-      }
-      app.mpCount(function(data){
-        that.setData({
-          count: data
-        });
-      });
-    }
   },
   //绑定input
   bindKeyInput: function(e) {
