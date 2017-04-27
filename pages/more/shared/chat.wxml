@@ -21,13 +21,32 @@
         <view class="status-remind {{status_remind === '连接成功！开始群聊吧😊' ? 'success' : ''}}">{{status_remind}}</view>
         <view class="divider"></view>
         <view class="message-remind">{{message_remind}}</view>
-        <scroll-view></scroll-view>
+        <scroll-view scroll-y="true" style="height: 400px;" >
+            <view class="msg-log" wx:for="{{record}}" wx:key="id">
+                <view class="msg-log-item">
+                    <view class="msg-header">
+                        <text class="msg-header-name">{{item.user.nickName}}</text>
+                        <text class="msg-header-time">{{item.createTime}}</text>
+                    </view>
+                    <view class="msg-body">
+                        <view class="msg-body-avatar">
+                            <image src="{{item.user.avatarUrl}}"></image>
+                        </view>
+                        <view class="msg-body-content">{{item.content}}</view>
+                    </view>
+                </view>
+
+            </view>
+        </scroll-view>
     </view>
     <!--输入区-->
-    <view class="inputArea">
-      <textarea class="inputArea-textarea" placeholder="说点什么吧..."></textarea>
+    <view class="inputArea {{search_active ? 'active' : ''}}">
       <view class="add" bindtap="addPhoto">
-        <image src="/images/more/addphoto.png"></image>
+        <image src="/images/more/add.png"></image>
+      </view>
+      <textarea class="inputArea-textarea" value="{{msg_content}}" placeholder="说点什么吧..." placeholder-class="inputArea-placeholder" maxlength="200" auto-height="true" bindinput="msgContent"></textarea>
+      <view class="send-btn" bindtap="sendMsg">
+        <image src="/images/index/enter.png"></image>
       </view>
     </view>
 

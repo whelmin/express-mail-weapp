@@ -13,7 +13,7 @@
 }
 .tab-item .count{
     position: absolute;
-    top: 22rpx;
+    top: 15rpx;
     right: 95rpx;
     background: #FF4949;
     min-width: 38rpx;
@@ -50,20 +50,112 @@
     height: 0;
     border-bottom: 1rpx dotted #999;
 }
+.msg-log{
+    width: 100%;
+}
+.msg-log-item{
+    margin-bottom: 30rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.msg-header {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 10rpx;
+}
+.msg-header .msg-header-name{
+    margin-right: 10rpx;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 110rpx;
+    white-space: nowrap;
+}
+.msg-header .msg-header-time{
+    flex: 1;
+    text-align: left;
+}
+.msg-body{
+    display: flex;
+    justify-content: flex-start;
+}
+.msg-body .msg-body-avatar{
+    width: 75rpx;
+    height: 75rpx;
+    border-radius: 75rpx;
+    overflow: hidden;
+    margin-right: 15rpx;
+}
+.msg-body .msg-body-avatar image{
+    width: 100%;
+    height: 100%;
+}
+.msg-body .msg-body-content{
+    flex:1;
+    background: #D3DCE6;
+    color: #5e6d82;
+    position: relative;
+    padding: 20rpx 25rpx;
+    border-radius: 10rpx;
+    text-align: left;
+}
+.msg-body .msg-body-content::before{
+    position: absolute;
+    content: "";
+    width: 14rpx;
+    height: 14rpx;
+    transform: rotate(45deg);
+    z-index: 2;
+    transition: background .1s linear;
+    top: 50%;
+    margin-top: -7rpx;
+    left: -6rpx;
+    background-color: #D3DCE6;
+    border-left: 1px solid #D3DCE6;
+    border-bottom: 1px solid #D3DCE6;
+}
 /*输入区*/
 .inputArea{
     display: flex;
-
+    position: relative;
+}
+.inputArea .send-btn{
+    position: absolute;
+    top: 50%;
+    right: 10rpx;
+    width: 60rpx;
+    height: 50rpx;
+    margin-top: -25rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.send-btn image{
+    width: 40rpx;
+    height: 40rpx;
 }
 .inputArea .inputArea-textarea{
-    width: 92%;
-    height: 80rpx;
-    border: 1rpx solid #999;
-    padding: 8rpx 10rpx;
+    flex: 1;    
+    min-height: 80rpx;
     box-sizing: border-box;
+    padding: 15rpx 20rpx;
+    border: 1px solid #e5e9f2;
+    border-radius: 5px;
+    color: #2c3e50;
+    outline: none;
+    font-size: 9pt;
+    background: #fff;
 }
+.inputArea-placeholder{
+    color: #ccc;
+}
+.inputArea.active .inputArea-textarea{
+    border-color: #20a0ff;
+}
+
 .inputArea .add{
     width: 8%;
+    margin-right: 10rpx;
     height: 80rpx;
     display: flex;
     align-items: center;

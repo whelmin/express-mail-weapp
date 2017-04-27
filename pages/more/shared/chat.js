@@ -35,14 +35,15 @@ Page({
     status_remind: '建立连接中...',
     message_remind: '加载聊天记录',
     active_type: 'groupChat',
-    record: []
+    record: [],
+    msg_content: null
   },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
     var that = this;
   
     wx.connectSocket({
-      url: 'ws://139.129.33.201:9090/express-mail',
+      url: app._g.websocket + '/express-mail',
       header:{ 
         'authorization': app.getAuth()
       },
@@ -77,16 +78,31 @@ Page({
 
     client.connect({ 'authorization': app.getAuth() }, function (sessionId) {
         // 订阅实时聊天记录
-        client.subscribe('/topic/chat', function (body, headers) {
+        client.subscribe('/topic/chat', function (res) {
             console.log('实时聊天记录');
+            var item = JSON.parse(res.body);
+            item.createTime = app.utils.formatTime(item.createTime);
+            that.data.record.push(item);
+
+            that.setData({
+              record: that.data.record
+            });
         });
         // 订阅历史聊天记录
         client.subscribe('/app/chat/record', function (res) {
             console.log('历史聊天记录');
-            if(res.body) {
+            var body = res.body;
+            if(body) {
+              var content = JSON.parse(body).content;
+
+              content.map(function(e,i){
+                e.createTime = app.utils.formatTime(e.createTime);
+                return e;
+              });
+
               that.setData({
-                record: JSON.parse(res.body).content,
-                message_remind: '加载聊天记录成功。'
+                record: content,
+                message_remind: '加载成功'
               });
             }else{
               app.showErrModal('获取历史聊天记录失败','网络错误');
@@ -98,7 +114,6 @@ Page({
             console.log('聊天错误信息', body);
         });
 
-        // client.send('/app/chat', { priority: 9 }, 'hello workyun.com !');
     });
 
     wx.onSocketError(function(res){
@@ -117,6 +132,23 @@ Page({
         url: '/pages/more/shared/list'
       });
     }
+  },
+  // 绑定消息输入
+  msgContent: function(e) {
+    this.setData({
+      'msg_content': e.detail.value
+    });
+  },
+  sendMsg: function(){
+    var that = this;
+    console.log('send');
+    client.send('/app/chat', {}, JSON.stringify({content: that.data.msg_content}));
+    that.setData({
+      msg_content: null
+    });
+  },
+  addPhoto: function() {
+
   },
   onShow:function(){
     // 页面显示

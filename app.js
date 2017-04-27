@@ -185,7 +185,7 @@ App({
     //计数
     count: {},
     token: {},
-    // server: 'http://139.129.33.201:9090'
-    server: 'https://cqipc.cn/api'
+    websocket: 'wss://cqipc.cn/api',
+    server: 'https://cqipc.cn/api',
   }
 });
