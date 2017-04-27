@@ -29,11 +29,23 @@ Page({
     }
   },
   onLoad: function () {
-  },
-  onShow: function (){
     var that = this;
     //登录
     that.login();
+  },
+  onShow: function (){
+    var that = this;
+    if(!app._g.token.token) { return; }
+    if(that.data.isAdmin) {
+      that.getList_a(0);
+    }else{
+      that.getList_u(0);
+    }
+    app.mpCount(function(data){
+      that.setData({
+        count: data
+      });
+    });
   },
   login: function () {
     var that = this;
@@ -45,9 +57,9 @@ Page({
         isAdmin: app._g.role.isAdmin
       });
       if(that.data.isAdmin) {
-        that.getList_a();
+        that.getList_a(0);
       }else{
-        that.getList_u();
+        that.getList_u(0);
       }
       app.mpCount(function(data){
         that.setData({

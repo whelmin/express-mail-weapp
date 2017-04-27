@@ -32,7 +32,7 @@ Page({
       }, function(){
         clearInterval(querygo);
       });
-    }, 4000);
+    }, 3000);
     
   },
   onUnload:function(){

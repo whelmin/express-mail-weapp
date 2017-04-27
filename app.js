@@ -5,11 +5,6 @@ App({
   },
   getUserInfo:function(cb){
     var that = this;
-    if (this._g.token.token) {
-      // 如果已登录
-      typeof cb == "function" && cb();
-      return;
-    }
     //调用登录接口
     wx.login({
       success: function(loginRes) {
@@ -167,10 +162,56 @@ App({
           });
         }else if(result.qrCodeInfoType === 'RECEIVE_MAIL'){
           // 扫码取件
-
+          wx.request({
+            method: 'POST',
+            url: that._g.server + '/a/mail/receive/qrcode/pickup',
+            data: {
+              qrCodeInfo: result.qrCodeInfo
+            },
+            header: {
+              'content-type': 'application/x-www-form-urlencoded',
+              'authorization': that.getAuth()
+            },
+            success: function(res) {
+              if(res.statusCode >= 200 && res.statusCode < 400){
+                wx.showToast({ title: '扫码取件成功' });
+              }else{
+                that.showErrModal(res.data, '扫描二维码失败');
+              }
+            },
+            fail: function(res) {
+              that.showErrModal('网络错误', '扫描二维码失败');
+            },
+            complete: function() {
+              wx.hideNavigationBarLoading();
+            }
+          });
         }else if(result.qrCodeInfoType === 'SEND_MAIL'){
           // 扫码寄件
-
+          wx.request({
+            method: 'POST',
+            url: that._g.server + '/a/mail/send/qrcode/submit',
+            data: {
+              qrCodeInfo: result.qrCodeInfo
+            },
+            header: {
+              'content-type': 'application/x-www-form-urlencoded',
+              'authorization': that.getAuth()
+            },
+            success: function(res) {
+              if(res.statusCode >= 200 && res.statusCode < 400){
+                wx.showToast({ title: '扫码寄件成功' });
+              }else{
+                that.showErrModal(res.data, '扫描二维码失败');
+              }
+            },
+            fail: function(res) {
+              that.showErrModal('网络错误', '扫描二维码失败');
+            },
+            complete: function() {
+              wx.hideNavigationBarLoading();
+            }
+          });
         }
       },
       complete: function() {
