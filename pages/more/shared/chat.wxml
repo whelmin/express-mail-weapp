@@ -49,11 +49,13 @@
   </view>-->
     <scroll-view class="chat-container" scroll-y scroll-into-view="{{lastMessageId}}" scroll-top="9999999999">
             <view wx:for="{{record}}" wx:for-item="message" wx:key="id" id="{{message.id}}" class="message {{message.type}}">
-                <view wx:if="{{message.type == 'speak'}}" class="user-message {{message.user.id ===  user_id ? 'me' : 'other'}}">
+                <view wx:if="{{message.type == 'speak'}}" class="user-message {{message.user.id ===  user.id ? 'me' : 'other'}}">
                     <image class="avatar" src="{{message.user.avatarUrl}}" mode="aspectFill"></image>
                     <view class="text">
-                        <view class="nickname">{{message.user.nickName}}</view>
-                        <view class="createTime">{{message.createTime}}</view>
+                        <view class="text-header">
+                            <view class="nickname">{{message.user.nickName}}</view>
+                            <view class="createTime">{{message.createTime}}</view>
+                        </view>
                         <view class="content">{{message.content}}</view>
                     </view>
                 </view>

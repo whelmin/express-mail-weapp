@@ -37,7 +37,19 @@ Page({
       nickName: null
     },
     active_type: 'groupChat',
-    record: [],
+    record: [
+      {
+        id:	'590090cc00d9da5de5c7ace0',
+user: {
+  id: '590051fe00d9da5de5c7accb',
+  nickName: '这是昵称',
+  avatarUrl: 'http://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eqdaRumdXeLU2wEm3Q3AevauKCjJWx3Ke48NyGpEnmqnKp26jibW7qic9qicN0ogrZSbxbk8LZ4jNEUA/0'
+},
+content:	'23333文',
+createTime:	'4-7 12:00:00',
+type: 'speak'
+      }
+    ],
     inputContent: null
   },
   onLoad:function(options){

@@ -3,6 +3,7 @@
 .container{
     font-size: 10pt;
     color: #999;
+    background: #f7f6f2;
 }
 .nav-tabs{
     background: #13CE66;
@@ -48,7 +49,8 @@
     margin: 38rpx 20rpx 0;
     text-align: left;
     font-size: 0;
-    display: flex
+    display: flex;
+    width: 100%;
 }
 .user-message.me {
     flex-direction: row-reverse;
@@ -63,23 +65,35 @@
 .text {
     display: inline-block;
     vertical-align: top;
+    max-width: 70%;
 }
 .user-message.other .text {
-    margin-left: 19rpx;
+    margin: 0 0 0 19rpx;
 }
 .user-message.me .text {
-    margin-right: 19rpx;
+    margin: 0 19rpx 0 0;
 }
-.text .nickname {
-    color: #737373;
-    font-size: 14px;
+.text .text-header{
+    display: flex;
+    justify-content: flex-start;
     margin-bottom: 6rpx;
+    color: #737373;
+    font-size: 11pt;
+}
+.text-header .nickname {
+     width: 140rpx;
+     white-space: nowrap;
+     text-overflow: ellipsis;
+     overflow: hidden;
+}
+.text-header .createTime{
+    margin-left: 10rpx;
 }
 .text .content {
     border: #ccc 1rpx solid;
     border-radius: 4px;
     background: #fff;
-    font-size: 36rpx;
+    font-size: 12pt;
     line-height: 36rpx;
     padding: 20rpx;
     position: relative;
@@ -161,7 +175,7 @@
     flex: 1;
     height: 72rpx;
     background: #fff;
-    border:#ddd 1rpx solid;
+    border: #ddd 1rpx solid;
     border-radius: 3px;
     margin-right: 20rpx;
     box-sizing: border-box;
