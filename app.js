@@ -5,6 +5,11 @@ App({
   },
   getUserInfo:function(cb){
     var that = this;
+    if (this._g.token.token) {
+      // 如果已登录
+      typeof cb == "function" && cb();
+      return;
+    }
     //调用登录接口
     wx.login({
       success: function(loginRes) {
