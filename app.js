@@ -8,7 +8,6 @@ App({
     //调用登录接口
     wx.login({
       success: function(loginRes) {
-        console.log(loginRes);
         wx.getUserInfo({
           success: function(userRes) {
             that._g.userInfo = userRes.userInfo;

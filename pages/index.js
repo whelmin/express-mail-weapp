@@ -1,17 +1,38 @@
-// pages/more/index.js
+// pages/index.js
+var app = getApp();
 Page({
   data:{
     imgUrls: [
-      '/images/more/xy1.jpeg',
-      '/images/more/xy2.jpeg',
-      '/images/more/xy3.jpeg',
-      '/images/more/xy4.jpeg'
+      '/images/index/xy1.jpeg',
+      '/images/index/xy2.jpeg',
+      '/images/index/xy3.jpeg',
+      '/images/index/xy4.jpeg'
     ],
     indicatorDots: true,
     activeColor: '#f5f5f5',
     autoplay: true,
     interval: 5000,
     duration: 1000
+  },
+  //下拉刷新
+  onPullDownRefresh: function(){
+    var that = this;
+    that.login();
+  },
+  onLoad: function () {
+    var that = this;
+    //登录
+    console.log(555);
+    that.login();
+  },
+  login: function () {
+    var that = this;
+    //登录
+    app.showLoadToast();
+    console.log(555);
+    app.getUserInfo(function(){
+      wx.hideToast();
+    });
   },
   changeIndicatorDots: function(e) {
     this.setData({
@@ -33,19 +54,4 @@ Page({
       duration: e.detail.value
     })
   },
-  onLoad:function(options){
-    // 页面初始化 options为页面跳转所带来的参数
-  },
-  onReady:function(){
-    // 页面渲染完成
-  },
-  onShow:function(){
-    // 页面显示
-  },
-  onHide:function(){
-    // 页面隐藏
-  },
-  onUnload:function(){
-    // 页面关闭
-  }
 })

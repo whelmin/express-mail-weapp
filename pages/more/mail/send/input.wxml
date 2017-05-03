@@ -1,0 +1,49 @@
+<!--pages/index/send/input.wxml-->
+<!-- 新增寄件订单信息 -->
+<view class="container">
+  <form>
+    <view class="cell-item input-group margin-top">
+      <view class="input-label">寄件人姓名：</view>
+      <input placeholder="请输入寄件人的姓名" data-key="form.sender" bindinput="bindKeyInput" />
+    </view>
+
+    <view class="cell-item input-group">
+      <view class="input-label">寄件电话：</view>
+      <view class="section">
+        <picker bindchange="bindPickerChange" value="{{phoneIndex}}" range="{{phoneNums}}">
+          <text wx:if="{{phoneIndex}}" class="input-placeholder-gray">{{phoneNums[phoneIndex]}}</text>
+          <text wx:else class="picker-placeholder" class="input-placeholder-gray">请选择寄件电话</text>
+        </picker>
+        </view>
+      <navigator url="/pages/user/bind" class="btn">
+        <text>新增</text>
+      </navigator>
+    </view>
+
+    <view class="cell-item input-group margin-bottom">
+      <view class="input-label">寄件地址：</view>
+      <input placeholder="请输入寄件地址" data-key="form.sendAddress" bindinput="bindKeyInput" />
+    </view>
+
+     <view class="cell-item input-group">
+      <view class="input-label">收件人姓名：</view>
+      <input placeholder="请输入收件人的姓名" data-key="form.receiver" bindinput="bindKeyInput" />
+    </view>
+
+    <view class="cell-item input-group">
+      <view class="input-label">收件电话：</view>
+      <input placeholder="请输入收件电话" data-key="form.receivePhoneNum" bindinput="bindKeyInput" />
+    </view>
+
+    <view class="cell-item input-group">
+      <view class="input-label">收件地址：</view>
+      <input placeholder="请输入收件地址" data-key="form.receiveAddress" bindinput="bindKeyInput" />
+    </view>
+
+    <button class="btn btn-lg margin-top" bindtap="submit">
+        <text wx:if="{{!submit_loading}}">提交</text>
+        <text wx:else>提交中</text>
+    </button>
+
+  </form>
+</view>
