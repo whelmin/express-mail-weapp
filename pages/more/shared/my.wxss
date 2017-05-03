@@ -4,16 +4,16 @@
     background-color: #20a0ff;
 }
 .shared-list .main-list-item{
-    border: none;
+    border: 1rpx solid #eaeefb;
     color: #5e6d82;
-    background: #D3DCE6;
+    background: #f9fafc;
 }
 .main-list-item-content{
     display: flex;
     flex: 1;
 }
 .main-list-item-content.border-blue{
-    border-left: 12rpx solid  #20a0ff;
+    border-left: 12rpx solid #20a0ff;
 }
 .main-list-item-content .shared-article-title{
     font-size: 14pt;

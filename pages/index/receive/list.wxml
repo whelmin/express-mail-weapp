@@ -48,7 +48,7 @@
         <text class="btn">取件</text>
       </navigator>
       <view wx:if="{{active_type === 'RECEIVED'}}" class="main-list-item-more">
-        <text class="btn btn-gray">已取件</text>
+        <text class="btn btn-green">已取件</text>
       </view>
     </view>
     <text class="remind">{{list_remind}}</text>

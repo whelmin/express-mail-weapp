@@ -26,7 +26,7 @@
         <text>收件电话：{{item.receivePhoneNum}}</text>
         <text>收件地址：{{item.receiveAddress}}</text>
         <text wx:if="{{item.createTime}}">录入时间：{{item.createTime}}</text>
-        <text wx:if="{{item.requestVisitingTime}}">申请上门时间：{{item.requestVisitingTime}}</text>
+        <text wx:if="{{item.requestVisitingTime}}">申请上门：{{item.requestVisitingTime}}</text>
         <text wx:if="{{item.submitTime}}">寄件时间：{{item.submitTime}}</text>
       </view>
       <view class="main-list-item-more">
@@ -36,7 +36,7 @@
         <text class="btn btn-green" wx:if="{{item.status === 'NEW'}}" bindtap="applyDoor" data-id="{{item.id}}">申请上门</text>
         <text class="btn btn-gray" wx:if="{{item.status === 'VISITING'}}">上门中</text>
         <text class="btn btn-red" wx:if="{{item.status === 'NEW'}}" bindtap="remove" data-id="{{item.id}}">删除</text>       
-        <text class="btn btn-gray" wx:if="{{item.status === 'SENDING'}}">已寄件</text>
+        <text class="btn btn-green" wx:if="{{item.status === 'SENDING'}}">已寄件</text>
       </view>
     </view>
     <text class="remind">{{list_remind}}</text>

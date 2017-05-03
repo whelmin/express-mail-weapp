@@ -7,9 +7,9 @@
     background: #13CE66;
 }
 .shared-list .main-list-item{
-    background: #E5E9F2;
-    border: none;
+    border: 1rpx solid #eaeefb;
     color: #5e6d82;
+    background: #f9fafc;
 }
 .main-list-item navigator{
     width: 100%;

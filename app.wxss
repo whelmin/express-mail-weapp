@@ -132,8 +132,9 @@ button::after{
   margin: 0 30rpx 18rpx;
   line-height: 160%;
   border-radius: 3px;
+  border: 1rpx solid #eaeefb;
   color: #5e6d82;
-  background: #D3DCE6;
+  background: #f9fafc;
 }
 .main-list-item-content {
   flex: 1;
