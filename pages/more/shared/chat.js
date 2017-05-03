@@ -64,8 +64,7 @@ Page({
     // ],
     record: [],
     inputContent: null,
-    imgLen: 0,
-
+    scrollbarPosition: 0
   },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
@@ -100,7 +99,8 @@ Page({
         });
 
         that.setData({
-          record: that.data.record
+          record: that.data.record,
+          // scrollbarPosition: 
         });
       },
       fail: function(err) {
@@ -168,7 +168,6 @@ Page({
                 return e;
               });
               
-
               that.setData({
                 record: that.data.record.concat(content)
               });

@@ -16,7 +16,8 @@
         </view>
     </view>
     <!--群聊-->
-    <scroll-view class="chat-container" scroll-y scroll-into-view="{{lastMessageId}}" scroll-top="9999999999">
+    <scroll-view class="chat-container" scroll-y="true" scroll-with-animation="true" scroll-into-view="{{lastMessageId}}" scroll-top="{{scrollbarPosition}}">
+
         <view wx:for="{{record}}" wx:for-item="message" wx:key="id" id="{{message.id}}" class="message {{message.type}}">
             <view wx:if="{{message.type == 'speak'}}" class="user-message {{message.user.id ===  user.id ? 'me' : 'other'}}">
                 <image class="avatar" src="{{message.user.avatarUrl}}" mode="aspectFill"></image>
@@ -35,6 +36,7 @@
                 {{message.content}}
             </view>
         </view>
+
     </scroll-view>
     <!--输入-->
     <view class="input-panel">
