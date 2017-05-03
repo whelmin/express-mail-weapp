@@ -14,11 +14,6 @@ Page({
     //计数
     count: {}
   },
-  //下拉刷新
-  onPullDownRefresh: function(){
-    var that = this;
-    that.login();
-  },
   //上滑加载
   onReachBottom: function(){
     var that = this;
@@ -30,8 +25,19 @@ Page({
   },
   onLoad: function () {
     var that = this;
-    //登录
-    that.login();
+    that.setData({
+      isAdmin: app._g.role.isAdmin
+    });
+    if(that.data.isAdmin) {
+      that.getList_a(0);
+    }else{
+      that.getList_u(0);
+    }
+    app.mpCount(function(data){
+      that.setData({
+        count: data
+      });
+    });
   },
   onShow: function (){
     var that = this;
@@ -44,27 +50,6 @@ Page({
     app.mpCount(function(data){
       that.setData({
         count: data
-      });
-    });
-  },
-  login: function () {
-    var that = this;
-    //登录
-    app.showLoadToast();
-    app.getUserInfo(function(){
-      wx.hideToast();
-      that.setData({
-        isAdmin: app._g.role.isAdmin
-      });
-      if(that.data.isAdmin) {
-        that.getList_a(0);
-      }else{
-        that.getList_u(0);
-      }
-      app.mpCount(function(data){
-        that.setData({
-          count: data
-        });
       });
     });
   },

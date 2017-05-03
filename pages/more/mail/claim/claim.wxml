@@ -1,0 +1,46 @@
+<!--pages/index/claim/claim.wxml-->
+<view class="container">
+  <!--detail-->
+  <view class="detail">
+    <text>收件人：{{data.receiver}}</text>
+    <text wx:if="{{data.receivePhoneNum}}">收件电话：{{data.receivePhoneNum}}</text>
+    <text wx:if="{{data.receiveAddress}}">收件地址：{{data.receiveAddress}}</text>
+    <text wx:if="{{data.sender}}">寄件人：{{data.sender}}</text>
+    <text wx:if="{{data.sendPhoneNum}}">寄件电话：{{data.sendPhoneNum}}</text>
+    <text wx:if="{{data.sendAddress}}">寄件地址：{{data.sendAddress}}</text>
+    <text wx:if="{{data.sendTime}}">寄件时间：{{data.sendTime}}</text>
+    <text>录入时间：{{data.submitTime}}</text>
+  </view>
+  <text class="form-title">填写认领表单</text>
+
+  <!--认领信息表单-->
+  <form>
+    <view class="cell-item input-group">
+      <view class="input-label">认领人：</view>
+      <input placeholder="请输入认领人姓名" data-key="form.claimer" bindinput="bindKeyInput" />
+    </view>
+
+    <view class="cell-item input-group">
+      <view class="input-label">电话：</view>
+      <view class="section">
+        <picker bindchange="bindPickerChange" value="{{phoneIndex}}" range="{{phoneNums}}">
+          <text wx:if="{{phoneIndex}}">{{phoneNums[phoneIndex]}}</text>
+          <text wx:else class="picker-placeholder">请选择联系电话</text>
+        </picker>
+        </view>
+      <navigator url="/pages/user/bind" class="btn">
+        <text>新增</text>
+      </navigator>
+    </view>
+
+    <view class="cell-item input-group">
+      <view class="input-label">地址：</view>
+      <input placeholder="请输入联系地址" data-key="form.address" bindinput="bindKeyInput" />
+    </view>
+    <button class="btn btn-lg margin-top" bindtap="submit">
+        <text wx:if="{{!submit_loading}}">提交</text>
+        <text wx:else>提交中</text>
+    </button>
+  </form>
+
+</view>

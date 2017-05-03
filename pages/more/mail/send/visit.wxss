@@ -1,0 +1,4 @@
+/* pages/index/send/visit.wxss */
+.container{
+    padding-top: 1rpx; 
+}

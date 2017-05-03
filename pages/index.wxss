@@ -11,6 +11,7 @@ swiper{
   background: #fff;
   color: #324057;
   height: 300rpx;
+  padding-top: 15rpx;
 }
 .module-row{
   width: 100%;

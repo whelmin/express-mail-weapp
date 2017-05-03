@@ -1,24 +1,38 @@
 {
   "pages":[
-    "pages/index/index",
-    "pages/index/claim/claim",
-    "pages/index/receive/list",
-    "pages/index/receive/input",
-    "pages/index/send/list",
-    "pages/index/send/input",
-    "pages/index/send/visit",
-    "pages/index/qrcode/qrcode",
-    "pages/more/index",
+    "pages/index",
+
+    "pages/more/mail/mail",
+    "pages/more/mail/claim/claim",
+    "pages/more/mail/receive/list",
+    "pages/more/mail/receive/input",
+    "pages/more/mail/send/list",
+    "pages/more/mail/send/input",
+    "pages/more/mail/send/visit",
+    "pages/more/mail/qrcode/qrcode",
+
+    "pages/more/express/express",
+    "pages/more/express/claim/claim",
+    "pages/more/express/receive/list",
+    "pages/more/express/receive/input",
+    "pages/more/express/send/list",
+    "pages/more/express/send/input",
+    "pages/more/express/send/visit",
+    "pages/more/express/qrcode/qrcode",
+
     "pages/more/hire/list",
     "pages/more/hire/detail",
     "pages/more/hire/input",
     "pages/more/hire/my",
+
     "pages/more/shared/list",
     "pages/more/shared/detail",
     "pages/more/shared/input",
     "pages/more/shared/my",
     "pages/more/shared/chat",
+
     "pages/more/card/index",
+
     "pages/user/user",
     "pages/user/bind"
   ],
@@ -36,16 +50,10 @@
     "borderStyle":"black",
     "list":[
       {
-        "pagePath":"pages/index/index",
+        "pagePath":"pages/index",
         "text":"首页",
         "iconPath":"images/home.png",
         "selectedIconPath":"images/home@active.png"
-      },
-      {
-        "pagePath":"pages/more/index",
-        "text":"更多",
-        "iconPath":"images/more.png",
-        "selectedIconPath":"images/more@active.png"
       },
       {
         "pagePath":"pages/user/user",
