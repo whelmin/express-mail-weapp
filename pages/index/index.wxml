@@ -70,7 +70,7 @@
     </navigator>
   </view>
   <!--管理员可查询取件列表-->
-  <view class="main-list margin-top">
+  <view class="main-list margin-top"> 
     <view class="main-list-item" wx:for="{{list}}" wx:key="id">
       <view class="main-list-item-content">
         <text wx:if="{{item.sender}}">寄件人：{{item.sender}}</text>
