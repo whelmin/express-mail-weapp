@@ -10,21 +10,35 @@
   </swiper>
   <!--具体模块-->
   <view class="main-header margin-top">
-    <!--招聘模块-->
-    <navigator url="/pages/more/hire/list" class="main-header-btn" hover-class="none">
-      <image src="/images/more/hire.png"></image>
-      <text>招聘信息</text>
-    </navigator>
-    <!--一卡通模块-->
-    <navigator url="/pages/more/card/index" class="main-header-btn" hover-class="none">
-      <image src="/images/more/card.png"></image>
-      <text>一卡通</text>
-    </navigator>
-     <!--共享模块-->
-    <navigator url="/pages/more/shared/list" class="main-header-btn" hover-class="none">
-      <image src="/images/more/share.png"></image>
-      <text>共享服务</text>
-    </navigator>
+    <view class="module-row">
+      <!--招聘模块-->
+      <navigator url="/pages/more/hire/list" class="main-header-btn" hover-class="none">
+        <image src="/images/more/hire.png"></image>
+        <text>招聘信息</text>
+      </navigator>
+      <!--一卡通模块-->
+      <navigator url="/pages/more/card/index" class="main-header-btn" hover-class="none">
+        <image src="/images/more/card.png"></image>
+        <text>一卡通</text>
+      </navigator>
+      <!--共享模块-->
+      <navigator url="/pages/more/shared/list" class="main-header-btn" hover-class="none">
+        <image src="/images/more/share.png"></image>
+        <text>共享服务</text>
+      </navigator>
+    </view>
+    <view class="module-row">
+        <!--快递模块-->
+        <navigator url="/pages/more/shared/list" class="main-header-btn" hover-class="none">
+          <image src="/images/more/express.png"></image>
+          <text>我的快递</text>
+        </navigator>
+        <!--邮报模块-->
+        <navigator url="/pages/more/shared/list" class="main-header-btn" hover-class="none">
+          <image src="/images/more/envelope.png"></image>
+          <text>我的邮报</text>
+        </navigator>
+    </view> 
   </view>
 </view>
 

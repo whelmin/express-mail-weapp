@@ -85,7 +85,7 @@ Page({
         'authorization': app.getAuth()
       },
       success: function(res) {
-        console.log('Socket连接成功');
+        // console.log('Socket连接成功');
 
         that.data.record.push({
           id: that.data.record.length,
@@ -122,7 +122,7 @@ Page({
       }
     });
     wx.onSocketOpen(function(res) {
-      console.log('WebSocket连接已打开！')
+      // console.log('WebSocket连接已打开！');
       socketOpen = true;
       for(var i = 0; i < socketMsgQueue.length; i++) {
         sendSocketMessage(socketMsgQueue[i]);
@@ -132,7 +132,7 @@ Page({
     });
     
     wx.onSocketMessage(function (res) {
-      console.log('收到onmessage事件:', res)
+      // console.log('收到onmessage事件:', res);
       ws.onmessage && ws.onmessage(res);
     });
     
@@ -173,7 +173,11 @@ Page({
                 record: that.data.record.concat(content)
               });
             }else{
-              app.showErrModal('获取历史聊天记录失败','网络错误');
+              that.data.record.push({
+                id: that.data.record.length,
+                type: 'system',
+                content: '获取历史聊天记录失败，请检查网络'
+              });
             }
             
         });
@@ -193,7 +197,12 @@ Page({
     });
 
     wx.onSocketError(function(res){
-      console.log('WebSocket连接打开失败，请检查网络！')
+      // console.log('WebSocket连接打开失败，请检查网络！');
+      that.data.record.push({
+          id: that.data.record.length,
+          type: 'system',
+          content: 'WebSocket连接失败，请检查网络' + res.body
+      });
     });
   },
   onReady:function(){
@@ -236,10 +245,6 @@ Page({
         sourceType: ['album', 'camera'],
         success: function (res) {
           var tempFilePaths = res.tempFilePaths;          
-          console.log(res);
-          // tempFilePaths.forEach(function(e){
-          //   that.uploadImg(e);
-          // });
           wx.showNavigationBarLoading();
           wx.uploadFile({
             url: app._g.server + '/upload',
