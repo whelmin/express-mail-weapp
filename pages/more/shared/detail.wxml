@@ -11,7 +11,7 @@
         </view>
         <text class="content">{{data.text}}</text>
         <block wx:for="{{data.imgs}}" wx:key="*this">
-            <image src="{{server + '/img/' + item}}" mode="aspectFit"></image>
+            <image src="{{server + '/img/' + item}}" mode="aspectFit" bindtap="previewPhoto" data-img-url="{{server + '/img/' + item}}"></image>
         </block>
     </view>
     <!--评论区-->

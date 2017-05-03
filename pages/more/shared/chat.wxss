@@ -2,8 +2,7 @@
 /*群聊*/
 .container{
     font-size: 10pt;
-    color: #999;
-    background: #f7f6f2;
+    background: #eaeaea;
 }
 .nav-tabs{
     background: #13CE66;
@@ -33,6 +32,7 @@
     flex: 1;
     text-align: center;
     overflow-y:auto;
+    padding-bottom: 30rpx; 
 }
 .system-message {
     font-size: 14px;
@@ -50,7 +50,6 @@
     text-align: left;
     font-size: 0;
     display: flex;
-    width: 100%;
 }
 .user-message.me {
     flex-direction: row-reverse;
@@ -72,12 +71,17 @@
 }
 .user-message.me .text {
     margin: 0 19rpx 0 0;
+    display: flex;
+    flex-direction: column;
+}
+.user-message.me .text .content{
+    align-items: flex-end;
 }
 .text .text-header{
     display: flex;
     justify-content: flex-start;
     margin-bottom: 6rpx;
-    color: #737373;
+    color: #000;
     font-size: 11pt;
 }
 .text-header .nickname {
@@ -89,18 +93,25 @@
 .text-header .createTime{
     margin-left: 10rpx;
 }
+.user-message.me .text-header{
+    justify-content: flex-end;
+}
 .text .content {
-    border: #ccc 1rpx solid;
-    border-radius: 4px;
+    border-radius: 8rpx;
     background: #fff;
+    color: #000;
     font-size: 12pt;
     line-height: 36rpx;
     padding: 20rpx;
     position: relative;
+    display: inline-block;
+}
+.content image{
+    width: 400rpx;
+    height: 400rpx;
 }
 .user-message.me .text .content {
     background: #a0e75b;
-    border: #70b44d 1rpx solid;
 }
 .text .content::after,.text .content::before {
     font-size: 0;
@@ -117,7 +128,7 @@
 }
 .user-message.other .text .content::before {
     top: 18rpx;
-    border-right-color: #ccc;
+    border-right-color: #fff;
 }
 .user-message.other .text .content::after {
     border: 12rpx solid transparent;
@@ -125,14 +136,14 @@
     border-right-color: #fff;
 }
 
-.user-message.me .text .content::after,.user-message.me .text .content::before {
+.user-message.me .text .content::after, .user-message.me .text .content::before {
     left: 100%;
     border-left-style: solid;
 }
 
 .user-message.me .text .content::before {
     top: 18rpx;
-    border-left-color: #70b44d;
+    border-left-color: #a0e75b;
 }
 .user-message.me .text .content::after {
     border: 12rpx solid transparent;

@@ -189,6 +189,7 @@ Page({
           wx.request({
             url: that.data.server + '/u/article',
             data: {
+              id: that.data.id || '',
               title: title,
               content: content
             },
@@ -199,8 +200,6 @@ Page({
             method: 'POST',
             success: function(res){
               var data = res.data;
-              console.log(res);
-              console.log(data);
               if(data.status === 'CHECKING'){
                 wx.showModal({
                   title: '提示',

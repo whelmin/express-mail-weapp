@@ -14,58 +14,31 @@
             <text>3</text>
         </view>
         </view>
-  </view>
-  <!--<view class="groupChat">
-    
-    <view class="chatArea">
-        <view class="status-remind">{{status_remind}}</view>
-        <view class="msg-log" wx:for="{{record}}" wx:key="id">
-            <view class="msg-log-item">
-                <view class="msg-header">
-                    <text class="msg-header-name">{{item.user.nickName}}</text>
-                    <text class="msg-header-time">{{item.createTime}}</text>
-                </view>
-                <view class="msg-body">
-                    <view class="msg-body-avatar">
-                        <image src="{{item.user.avatarUrl}}"></image>
-                    </view>
-                    <view class="msg-body-content">{{item.content}}</view>
-                </view>
-            </view>
-
-        </view>
     </view>
-    
-    <view class="inputArea {{search_active ? 'active' : ''}}">
-      <view class="add" bindtap="addPhoto">
-        <image src="/images/more/add.png"></image>
-      </view>
-      <textarea class="inputArea-textarea" value="{{msg_content}}" placeholder="说点什么吧..." placeholder-class="inputArea-placeholder" maxlength="200" auto-height="true" bindinput="msgContent"></textarea>
-      <view class="send-btn" bindtap="sendMsg">
-        <image src="/images/index/enter.png"></image>
-      </view>
-    </view>
-
-  </view>-->
+    <!--群聊-->
     <scroll-view class="chat-container" scroll-y scroll-into-view="{{lastMessageId}}" scroll-top="9999999999">
-            <view wx:for="{{record}}" wx:for-item="message" wx:key="id" id="{{message.id}}" class="message {{message.type}}">
-                <view wx:if="{{message.type == 'speak'}}" class="user-message {{message.user.id ===  user.id ? 'me' : 'other'}}">
-                    <image class="avatar" src="{{message.user.avatarUrl}}" mode="aspectFill"></image>
-                    <view class="text">
-                        <view class="text-header">
-                            <view class="nickname">{{message.user.nickName}}</view>
-                            <view class="createTime">{{message.createTime}}</view>
-                        </view>
-                        <view class="content">{{message.content}}</view>
+        <view wx:for="{{record}}" wx:for-item="message" wx:key="id" id="{{message.id}}" class="message {{message.type}}">
+            <view wx:if="{{message.type == 'speak'}}" class="user-message {{message.user.id ===  user.id ? 'me' : 'other'}}">
+                <image class="avatar" src="{{message.user.avatarUrl}}" mode="aspectFill"></image>
+                <view class="text">
+                    <view class="text-header">
+                        <view class="nickname">{{message.user.nickName}}</view>
+                        <view class="createTime">{{message.createTime}}</view>
+                    </view>
+                    <view class="content">
+                        <image wx:if="{{message.imgUrl}}" src="{{message.imgUrl}}" bindtap="previewPhoto" mode="aspectFit" data-img-url="{{message.imgUrl}}"></image>
+                        <text wx:else>{{message.content}}</text>
                     </view>
                 </view>
-                <view wx:if="{{message.type == 'system'}}" class="system-message">
-                    {{message.content}}
-                </view>
             </view>
+            <view wx:if="{{message.type == 'system'}}" class="system-message">
+                {{message.content}}
+            </view>
+        </view>
     </scroll-view>
+    <!--输入-->
     <view class="input-panel">
-        <button class="pic-icon"></button>
+        <button class="pic-icon" bindtap="sendPhoto"></button>
         <input type="text" value="{{inputContent}}" bindchange="changeInputContent" class="send-input"></input>
         <button bindtap="sendMessage" class="send-btn">发送</button>
     </view>

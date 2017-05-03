@@ -1,9 +1,9 @@
 <!--pages/index/send/visit.wxml 管理员查询上门寄件列表-->
 
-<view class="container margin-top">
+<view class="container">
 
   <!--获取上门中状态的列表-->
-  <view class="main-list">
+  <view class="main-list margin-top"> 
     <view class="main-list-item" wx:for="{{list}}" wx:key="id">
       <view class="main-list-item-content">
         <text>寄件人：{{item.sender}}</text>

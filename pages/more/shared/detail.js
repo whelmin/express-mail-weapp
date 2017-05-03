@@ -32,6 +32,16 @@ Page({
     obj[e.target.dataset.key] = e.detail.value;
     this.setData(obj);
   },
+  previewPhoto: function(e) {
+    var that = this;
+    var urlsArray = [];
+    urlsArray.push(e.target.dataset.imgUrl);
+    
+    wx.previewImage({
+      current: e.target.dataset.imgUrl,
+      urls: urlsArray
+    });
+  },
   onLoad:function(options){
     var that = this;
     wx.showNavigationBarLoading();

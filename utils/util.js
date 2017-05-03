@@ -10,13 +10,17 @@ function formatTime(timestamp, format) {
   var second = date.getSeconds();
   var formattedDate = [year, month, day].map(formatNumber).join('-');
   var formattedTime = [hour, minute, second].map(formatNumber).join(':');
+  var formattedTimeNoS = [hour, minute].map(formatNumber).join(':');
   var formattedMonth = [month, day].map(formatNumber).join('-');
+
   if (format === 'd') {
     return formattedDate;
   } else if (format === 's') {
     return formattedDate + ' ' + formattedTime;
   }else if (format === 'm') {
     return formattedMonth + ' ' + formattedTime;
+  }else if(format === 'ns') {
+    return formattedMonth + ' ' + formattedTimeNoS;
   }
 
 }
@@ -35,5 +39,8 @@ module.exports = {
   },
   formatMonth: function(value) {
     return formatTime(value, 'm');
+  },
+  formatNoS: function(value) {
+    return formatTime(value, 'ns');
   }
 }
