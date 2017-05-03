@@ -218,9 +218,13 @@ Page({
   sendMessage: function(){
     var that = this;
     console.log('send');
+    if(!that.data.inputContent) {
+      return false;
+    }
     client.send('/app/chat', {}, JSON.stringify({
-      content: that.data.inputContent
+        content: that.data.inputContent
     }));
+
     that.setData({
       'inputContent': null
     });
