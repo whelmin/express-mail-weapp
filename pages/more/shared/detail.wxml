@@ -9,7 +9,7 @@
             <text>发布时间：{{data.createTime}}</text>
             <text wx:if="{{data.updateTime}}">更新时间：{{data.updateTime}}</text>
         </view>
-        <text class="content">{{data.text}}</text>
+        <view class="content">{{data.text}}</view>
         <block wx:for="{{data.imgs}}" wx:key="*this">
             <image src="{{server + '/img/' + item}}" mode="aspectFit" bindtap="previewPhoto" data-img-url="{{server + '/img/' + item}}"></image>
         </block>

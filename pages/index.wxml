@@ -21,17 +21,17 @@
         <image src="/images/index/express.png"></image>
         <text>快递系统</text>
       </navigator>
-      <!--招聘模块-->
-      <navigator url="/pages/more/hire/list" class="main-header-btn" hover-class="none">
-        <image src="/images/index/hire.png"></image>
-        <text>招聘信息</text>
-      </navigator>
-    </view> 
-    <view class="module-row">
       <!--共享模块-->
       <navigator url="/pages/more/shared/list" class="main-header-btn" hover-class="none">
         <image src="/images/index/share.png"></image>
         <text>共享服务</text>
+      </navigator>
+    </view> 
+    <view class="module-row">
+      <!--招聘模块-->
+      <navigator url="/pages/more/hire/list" class="main-header-btn" hover-class="none">
+        <image src="/images/index/hire.png"></image>
+        <text>招聘信息</text>
       </navigator>
       <!--一卡通模块-->
       <navigator url="/pages/more/card/index" class="main-header-btn" hover-class="none">
