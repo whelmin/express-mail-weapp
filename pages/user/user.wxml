@@ -8,7 +8,7 @@
       <text class="user-name">{{userInfo.nickName}}</text>
     </view>
     <view class="scan" bindtap="qrcode">
-      <image src="/images/index/qrcode.png"></image>
+      <image src="/images/user/qrcode.png"></image>
     </view>
   </view>
 
@@ -17,17 +17,17 @@
       <text>绑定手机号</text>
       <image src="/images/user/enter.png"></image>
     </navigator>
-    <navigator url="/pages/index/receive/list" class="cell-item">
+    <!--<navigator url="/pages/index/receive/list" class="cell-item">
       <text>我的取件</text>
       <image src="/images/user/enter.png"></image>
     </navigator>
     <navigator url="/pages/index/send/list" class="cell-item">
       <text>我的寄件</text>
       <image src="/images/user/enter.png"></image>
-    </navigator>
+    </navigator>-->
   </view>
 
-  <view class="user-content" wx:else>
+  <!--<view class="user-content" wx:else>
     <navigator url="/pages/index/receive/input" class="cell-item">
       <text>录入取件</text>
       <image src="/images/user/enter.png"></image>
@@ -36,6 +36,6 @@
       <text>上门寄件</text>
       <image src="/images/user/enter.png"></image>
     </navigator>
-  </view>
+  </view>-->
 
 </view>

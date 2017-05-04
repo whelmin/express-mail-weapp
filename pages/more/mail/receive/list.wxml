@@ -1,4 +1,4 @@
-<!--pages/index/receive/list.wxml 取件-->
+<!--pages/more/mail/receive/list 取件-->
 
 <view class="container">
   <view class="nav-tabs">
@@ -41,10 +41,10 @@
         <text wx:if="{{item.createTime}}">认领时间：{{item.createTime}}</text>
         <text>录入时间：{{item.receiveMail.submitTime}}</text>
       </view>
-      <navigator wx:if="{{active_type === 'RECEIVING'}}" url="/pages/index/qrcode/qrcode?id={{item.id}}&type=receive&status={{active_type}}" class="main-list-item-more" hover-class="none">
+      <navigator wx:if="{{active_type === 'RECEIVING'}}" url="/pages/more/mail/qrcode/qrcode?id={{item.id}}&type=receive&status={{active_type}}" class="main-list-item-more" hover-class="none">
         <text class="btn">取件</text>
       </navigator>
-      <navigator wx:if="{{active_type === 'FOUND' }}" url="/pages/index/qrcode/qrcode?id={{item.receiveMail.id}}&type=receive&status={{active_type}}&claimId={{item.id}}" class="main-list-item-more" hover-class="none">
+      <navigator wx:if="{{active_type === 'FOUND' }}" url="/pages/more/mail/qrcode/qrcode?id={{item.receiveMail.id}}&type=receive&status={{active_type}}&claimId={{item.id}}" class="main-list-item-more" hover-class="none">
         <text class="btn">取件</text>
       </navigator>
       <view wx:if="{{active_type === 'RECEIVED'}}" class="main-list-item-more">

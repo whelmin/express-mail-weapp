@@ -93,7 +93,7 @@ Page({
           wx.showToast({ title: '提交成功' });
           app._g.count.foundMailCount++;
           wx.redirectTo({
-            url: '/pages/index/receive/list'
+            url: '/pages/more/mail/receive/list'
           });
         }else{
           app.showErrModal(res.data, '提交失败');

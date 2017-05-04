@@ -1,4 +1,4 @@
-// pages/index/receive/list.js
+// pages/more/mail/receive/list
 // 取件列表
 var app = getApp();
 Page({
@@ -58,7 +58,6 @@ Page({
             }
             return e;
           });
-          console.log(app._g.server + urlLink);
           that.setData({
             list: that.data.list.concat(content),
             current: data

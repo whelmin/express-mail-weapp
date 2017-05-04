@@ -29,9 +29,21 @@ Page({
     var that = this;
     //登录
     app.showLoadToast();
-    console.log(555);
     app.getUserInfo(function(){
       wx.hideToast();
+      that.setData({
+        isAdmin: app._g.role.isAdmin
+      });
+      if(that.data.isAdmin) {
+        that.getList_a(0);
+      }else{
+        that.getList_u(0);
+      }
+      app.mpCount(function(data){
+        that.setData({
+          count: data
+        });
+      });
     });
   },
   changeIndicatorDots: function(e) {

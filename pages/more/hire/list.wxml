@@ -3,8 +3,8 @@
   <!--搜索-->
   <view class="main-search {{search_active ? 'active' : ''}}">
     <input type="text" class="search" placeholder="搜索" placeholder-class="search-placeholder"  bindfocus="inputFocus" bindblur="inputBlur" data-key="search_text" bindinput="bindKeyInput"/>
-    <image src="/images/index/search.png" class="search-icon"></image>
-    <image src="/images/index/enter.png" class="search-btn" bindtap="search"></image>
+    <image src="/images/more/search.png" class="search-icon"></image>
+    <image src="/images/more/enter.png" class="search-btn" bindtap="search"></image>
   </view>
 
   <!--招聘信息列表-->
