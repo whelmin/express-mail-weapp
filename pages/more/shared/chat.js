@@ -65,6 +65,9 @@ Page({
       that.getData(options);
     }
   },
+  onUnload: function() {
+    wx.closeSocket();
+  },
   getData:function(options){
     var that = this;
     that.setData({
