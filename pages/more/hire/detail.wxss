@@ -12,19 +12,19 @@
 .detail .info{
     margin-top: 30rpx;
     color: #999;
-    font-size: 11pt;
 }
 .detail .info text{
-    padding: 10rpx 0;
+    font-size: 10pt;
+    line-height: 135%;
     display: block;
 }
 .detail .info text:last-child{
     margin-bottom: 15rpx;
 }
 .detail .content{
-    font-size: 11pt;
+    font-size: 12pt;
     line-height: 150%;
-    padding: 50rpx 15rpx 200rpx;
+    padding: 5rpx 15rpx 25rpx;
     word-break: break-all;
     text-align: justify;
 }
