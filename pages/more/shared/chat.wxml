@@ -15,7 +15,7 @@
     <!--群聊-->
     <scroll-view class="chat-container" scroll-y="true" scroll-with-animation="true" bindscroll="onScroll" scroll-into-view="{{toView}}" bindscrolltolower="onScrollTolower">
 
-        <view wx:for="{{record}}" wx:for-item="message" wx:key="id" id="{{record.length === index+1 ? 'lastItem' : '' }}" class="message {{message.type}}">
+        <view wx:for="{{record}}" wx:for-item="message" wx:key="id" id="{{'item-' + message.id}}" class="message {{message.type}}">
             <view wx:if="{{message.type == 'speak'}}" class="user-message {{message.user.id ===  user.id ? 'me' : 'other'}}">
                 <image class="avatar" src="{{message.user.avatarUrl}}" mode="aspectFill"></image>
                 <view class="text">
