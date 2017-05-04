@@ -1,4 +1,4 @@
-//pages/index/send/list.js
+//pages/more/mail/send/list.js
 //用户寄件列表
 
 var app = getApp();

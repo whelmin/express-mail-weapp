@@ -1,4 +1,4 @@
-//pages/index/receive/input.js
+//pages/more/mail/receive/input.js
 //管理员录入取件
 
 var app = getApp();
@@ -12,7 +12,8 @@ Page({
       sendPhoneNum: null,
       receiver: null,
       receiveAddress: null,
-      receivePhoneNum: null
+      receivePhoneNum: null,
+      memo: null
     },
     submit_loading: false
   },
@@ -51,7 +52,8 @@ Page({
         sendPhoneNum: that.data.form.sendPhoneNum || '',
         receiver: that.data.form.receiver,
         receiveAddress: that.data.form.receiveAddress || '',
-        receivePhoneNum: that.data.form.receivePhoneNum || ''
+        receivePhoneNum: that.data.form.receivePhoneNum || '',
+        memo: that.data.form.memo || ''
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded',
@@ -83,7 +85,8 @@ Page({
             sendPhoneNum: null,
             receiver: null,
             receiveAddress: null,
-            receivePhoneNum: null
+            receivePhoneNum: null,
+            memo: null
           }
         });
       }

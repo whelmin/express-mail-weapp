@@ -12,30 +12,23 @@
     </view>
   </view>
 
-  <view class="user-content" wx:if="{{!isAdmin}}">
-    <navigator url="/pages/user/bind" class="cell-item margin-bottom">
+  <view class="user-content">
+    <navigator url="/pages/user/bind" class="cell-item">
       <text>绑定手机号</text>
       <image src="/images/user/enter.png"></image>
     </navigator>
-    <!--<navigator url="/pages/index/receive/list" class="cell-item">
-      <text>我的取件</text>
+    <navigator wx:if="{{isMailAdmin}}" url="/pages/more/mail/mail" class="cell-item">
+      <text>邮报管理</text>
       <image src="/images/user/enter.png"></image>
     </navigator>
-    <navigator url="/pages/index/send/list" class="cell-item">
-      <text>我的寄件</text>
+    <navigator wx:if="{{isExpressAdmin}}" url="/pages/more/express/express" class="cell-item">
+      <text>快递管理</text>
       <image src="/images/user/enter.png"></image>
-    </navigator>-->
+    </navigator>
+    <navigator url="/pages/user/about" class="cell-item margin-top">
+      <text>关于</text>
+      <image src="/images/user/enter.png"></image>
+    </navigator>
   </view>
-
-  <!--<view class="user-content" wx:else>
-    <navigator url="/pages/index/receive/input" class="cell-item">
-      <text>录入取件</text>
-      <image src="/images/user/enter.png"></image>
-    </navigator>
-    <navigator url="/pages/index/send/visit" class="cell-item">
-      <text>上门寄件</text>
-      <image src="/images/user/enter.png"></image>
-    </navigator>
-  </view>-->
 
 </view>

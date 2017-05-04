@@ -1,4 +1,4 @@
-/* pages/index/receive/input.wxss 管理员录入取件 */
+/* pages/more/mail/receive/input.wxss 管理员录入取件 */
 
 .cell-item {
   font-size: 12pt;

@@ -1,4 +1,4 @@
-<!--pages/index/qrcode/qrcode.wxml-->
+<!--pages/more/mail/qrcode/qrcode.wxml-->
 <!--获取二维码-->
 <!--取件-->
 <view class="container" wx:if="{{mailType === 'receive'}}"> 
@@ -24,6 +24,7 @@
     <text wx:if="{{data.receiveMail.sendTime}}">寄件时间：{{data.receiveMail.sendTime}}</text>
     <text>录入时间：{{data.receiveMail.submitTime}}</text>
     <text wx:if="{{data.receiveMail.receiveTime}}">取件时间：{{data.receiveMail.receiveTime}}</text>
+    <text wx:if="{{data.receiveMail.memo}}">备注：{{data.receiveMail.memo}}</text>
     <block wx:if="{{data.claimer}}">
       <text>认领人姓名：{{data.claimer}}</text>
       <text>认领地址：{{data.address}}</text>
@@ -54,5 +55,6 @@
     <text wx:if="{{data.sendPhoneNum}}">寄件电话：{{data.sendPhoneNum}}</text>
     <text wx:if="{{data.sendAddress}}">寄件地址：{{data.sendAddress}}</text>
     <text wx:if="{{data.createTime}}">寄件时间：{{data.createTime}}</text>
+    <text wx:if="{{data.memo}}">备注：{{data.memo}}</text>
   </view>
 </view>

@@ -29,7 +29,9 @@ App({
                 var userRoles = res.data.user.userRoles || ['NORMAL_USER'];
                 that._g.role.userRoles = userRoles;
                 if(userRoles.indexOf('SUPER_ADMIN') !== -1 || userRoles.indexOf('MAIL_ADMIN') !== -1){
-                  that._g.role.isAdmin = true;
+                  that._g.role.isMailAdmin = true;
+                }else if(userRoles.indexOf('SUPER_ADMIN') !== -1 || userRoles.indexOf('EXPRESS_ADMIN') !== -1){
+                  that._g.role.isExpressAdmin = true;
                 }else{
                   if(res.data.register){
                     wx.showModal({
@@ -226,7 +228,8 @@ App({
     user: {},
     role: {
       userRoles: [],
-      isAdmin: false
+      isMailAdmin: false,
+      isExpressAdmin: false
     },
     //计数
     count: {},

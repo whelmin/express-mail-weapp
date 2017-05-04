@@ -1,4 +1,4 @@
-<!--pages/index/receive/input.wxml 管理员录入取件 -->
+<!--pages/more/mail/receive/input.wxml 管理员录入取件 -->
 
 <view class="container">
   <text class="form-title">录入取件信息</text>
@@ -32,6 +32,11 @@
     <view class="cell-item input-group">
       <view class="input-label">收件人联系方式：</view>
       <input placeholder="请输入收件人的联系方式" data-key="form.receivePhoneNum" bindinput="bindKeyInput" />
+    </view>
+
+    <view class="cell-item input-group margin-top">
+      <view class="input-label">备注：</view>
+      <input placeholder="请输入备注" data-key="form.memo" bindinput="bindKeyInput" />
     </view>
 
     <button class="btn btn-lg margin-top" bindtap="submit">

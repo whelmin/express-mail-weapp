@@ -1,4 +1,4 @@
-// pages/index/qrcode/qrcode.js
+// pages/more/mail/qrcode/qrcode.js
 // 获取二维码
 var app = getApp();
 var querygo = null;

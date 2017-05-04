@@ -1,4 +1,4 @@
-/* pages/index/send/input.wxss */
+/* pages/more/mail/send/input.wxss */
 .cell-item {
   font-size: 12pt;
 }

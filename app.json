@@ -34,7 +34,8 @@
     "pages/more/card/index",
 
     "pages/user/user",
-    "pages/user/bind"
+    "pages/user/bind",
+    "pages/user/about"
   ],
   "window":{
     "backgroundColor":"#20a0ff",

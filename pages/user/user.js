@@ -2,14 +2,16 @@
 var app = getApp();
 Page({
   data:{
-    isAdmin: false,
+    isMailAdmin: false,
+    isExpressAdmin: false,
     userInfo: {}
   },
   onLoad:function(options){
     var that = this;
     that.setData({
       userInfo: app._g.userInfo,
-      isAdmin: app._g.role.isAdmin
+      isMailAdmin: app._g.role.isMailAdmin,
+      isExpressAdmin: app._g.role.isExpressAdmin
     });
   },
   qrcode: app.qrcode,

@@ -1,4 +1,4 @@
-<!--pages/more/card.wxml-->
+<!--pages/more/card/index.wxml-->
 <view class="container">
     <block>
         <view class="ykt-card">

@@ -1,9 +1,9 @@
-//index.js
+//mail.js
 //获取应用实例
 var app = getApp();
 Page({
   data: {
-    isAdmin: false,
+    isMailAdmin: false,
     list: [],
     current: {},
     list_remind: '加载中',
@@ -17,7 +17,7 @@ Page({
   //上滑加载
   onReachBottom: function(){
     var that = this;
-    if(that.data.isAdmin) {
+    if(app._g.role.isMailAdmin) {
         that.getList_a();
     }else{
         that.getList_u();
@@ -26,13 +26,8 @@ Page({
   onLoad: function () {
     var that = this;
     that.setData({
-      isAdmin: app._g.role.isAdmin
+      isMailAdmin: app._g.role.isMailAdmin
     });
-    if(that.data.isAdmin) {
-      that.getList_a(0);
-    }else{
-      that.getList_u(0);
-    }
     app.mpCount(function(data){
       that.setData({
         count: data
@@ -42,7 +37,7 @@ Page({
   onShow: function (){
     var that = this;
     if(!app._g.token.token) { return; }
-    if(that.data.isAdmin) {
+    if(that.data.isMailAdmin) {
       that.getList_a(0);
     }else{
       that.getList_u(0);
@@ -67,7 +62,7 @@ Page({
   //用户获取待认领列表
   getList_u: function(page) {
     var that = this;
-    if(app._g.role.isAdmin){ return; }
+    if(app._g.role.isMailAdmin){ return; }
     if(page === undefined){
       page = that.data.current.number + 1 || 0;
     }

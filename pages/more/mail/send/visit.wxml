@@ -1,4 +1,4 @@
-<!--pages/index/send/visit.wxml 管理员查询上门寄件列表-->
+<!--pages/more/mail/send/visit.wxml 管理员查询上门寄件列表-->
 
 <view class="container">
 
@@ -14,6 +14,7 @@
         <text>收件地址：{{item.receiveAddress}}</text>
         <text wx:if="{{item.createTime}}">用户创建时间：{{item.createTime}}</text>
         <text wx:if="{{item.requestVisitingTime}}">用户申请上门时间：{{item.requestVisitingTime}}</text>
+        <text wx:if="{{item.memo}}">备注：{{item.memo}}</text>
       </view>
     </view>
     <text class="remind">{{list_remind}}</text>

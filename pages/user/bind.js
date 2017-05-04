@@ -49,8 +49,12 @@ Page({
     }, 1000);
     wx.showNavigationBarLoading();
     wx.request({
-      method: 'GET',
-      url: app._g.server + '/msgcode/' + that.data.phone,
+      method: 'POST',
+      url: app._g.server + '/verifycode',
+      data: {
+        operation: 'BIND_PHONE_NUM',
+        phoneNum: that.data.phone
+      },
       header: {
         'content-type': 'application/x-www-form-urlencoded',
         'authorization': app.getAuth()
@@ -86,8 +90,12 @@ Page({
       'submit_loading': true
     });
     wx.request({
-      method: 'GET',
-      url: app._g.server + '/bind/' + that.data.phone + '/' + that.data.code,
+      method: 'POST',
+      url: app._g.server + '/bind',
+      data: {
+        phoneNum: that.data.phone,
+        verifyCode: that.data.code
+      },
       header: {
         'content-type': 'application/x-www-form-urlencoded',
         'authorization': app.getAuth()
