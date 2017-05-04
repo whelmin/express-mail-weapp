@@ -20,7 +20,7 @@ Page({
     return {
       title: that.data.data.title,
       desc: that.data.data.text,
-      path: '/pages/more/hire/detail?id=that.data.id',
+      path: '/pages/more/hire/detail?id=' + that.data.id
     }
   },
   //绑定input
@@ -40,6 +40,16 @@ Page({
     });
   },
   onLoad:function(options){
+    var that = this;
+    if(!app._g.user.id) {
+      app.getUserInfo(function(){
+        that.getData(options);
+      });
+    }else{
+      that.getData(options);
+    }
+  },
+  getData:function(options){
     var that = this;
     wx.showNavigationBarLoading();
     that.setData({
@@ -67,11 +77,11 @@ Page({
             data: data
           });
         }else{
-          app.showErr(res.data, that, '加载中');
+          app.showErrModal(res.data, '加载中');
         }
       },
       fail: function(res) {
-        app.showErr(res.data, that, '网络错误');
+        app.showErrModal(res.data, '网络错误');
       
       },
       complete: function() {
