@@ -16,7 +16,7 @@
         </view>
     </view>
     <!--群聊-->
-    <scroll-view class="chat-container" scroll-y="true" scroll-with-animation="true" scroll-into-view="{{lastMessageId}}" scroll-top="{{scrollbarPosition}}">
+    <scroll-view class="chat-container" scroll-y="true" scroll-with-animation="true" scroll-top="{{scrollTop}}" style="height:480px;">
 
         <view wx:for="{{record}}" wx:for-item="message" wx:key="id" id="{{message.id}}" class="message {{message.type}}">
             <view wx:if="{{message.type == 'speak'}}" class="user-message {{message.user.id ===  user.id ? 'me' : 'other'}}">
@@ -45,3 +45,4 @@
         <button bindtap="sendMessage" class="send-btn">发送</button>
     </view>
 </view>
+
