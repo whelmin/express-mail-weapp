@@ -158,7 +158,7 @@ Page({
     if(!content){ app.showErrModal('评论不能为空！', '发布失败'); return; }
 
     wx.showNavigationBarLoading();
-    app.showLoadToast('发布中');
+    app.showLoadToast('评论中');
     that.setData({
       'submit_loading': true
     });

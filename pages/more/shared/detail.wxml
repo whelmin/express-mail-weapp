@@ -1,6 +1,4 @@
-<!--pages/more/shared/detail.wxml-->
-<!--共享文章详情-->
-
+<!--pages/more/shared/detail.wxml--> <!--共享文章详情-->
 <view class="container">
     <view class="detail margin-top">
         <text class="title">{{data.title}}</text>
@@ -30,6 +28,7 @@
                 </view>
             </view>
         </view>
+        <text class="remind" wx:if="{{data.status === 'CHECK_PASSED'}}">{{comment_remind}}</text>
         <!--发布新评论-->
         <view class="newComment margin-top">
             <view class="newComment-left">
@@ -46,5 +45,4 @@
             </view>
         </view>
     </view>
-    <text class="remind" wx:if="{{data.status === 'CHECK_PASSED'}}">{{comment_remind}}</text>
 </view>

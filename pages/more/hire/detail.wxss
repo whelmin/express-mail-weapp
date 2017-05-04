@@ -70,7 +70,9 @@
     font-weight: lighter;
     line-height: 200%;
 }
-
+.remind {
+    display: block;
+}
 /*新增评论区*/
 .newComment{
     display: flex;
@@ -90,6 +92,7 @@
     width: 100%;
     overflow: hidden; 
     text-overflow: ellipsis;
+    white-space:nowrap;
 }
 .newComment-right{
     display: flex;

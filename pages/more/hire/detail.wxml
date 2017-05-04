@@ -28,6 +28,7 @@
                 </view>
             </view>
         </view>
+        <text class="remind" wx:if="{{data.status === 'CHECK_PASSED'}}">{{comment_remind}}</text>
         <!--发布新评论-->
         <view class="newComment margin-top">
             <view class="newComment-left">
@@ -44,5 +45,4 @@
             </view>
         </view>
     </view>
-    <text class="remind" wx:if="{{data.status === 'CHECK_PASSED'}}">{{comment_remind}}</text>
 </view>
