@@ -7,6 +7,9 @@
 .nav-tabs{
     background: #13CE66;
     margin-bottom: 0;
+    position: fixed;
+    width: 100%;
+    z-index: 100;
 }
 .tab-item{
     position: relative;
@@ -32,7 +35,8 @@
     flex: 1;
     text-align: center;
     overflow-y:auto;
-    padding-bottom: 30rpx; 
+    margin: 80rpx 0 100rpx 0;
+    padding-bottom: 30rpx;
 }
 .system-message {
     font-size: 14px;
@@ -173,14 +177,15 @@
     box-sizing: border-box;
     display: flex;
     align-items: center;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    right: 0;
 }
 .pic-icon {
-    width: 70rpx;
-    height: 60rpx;
+    width: 80rpx;
+    height: 65rpx;
     margin: 0 20rpx 0 0;
-    background-image:url('/images/more/pic.png');
-    background-position: center;
-    background-size: 70rpx 60rpx;
 }
 .send-input {
     flex: 1;
@@ -193,10 +198,10 @@
     padding: 0 10rpx;
 }
 .send-btn {
-    width: 160rpx;
     height: 72rpx;
     line-height: 72rpx;
     background-color: #a0e75a;
+    padding: 0 30rpx;
     font-size: 28rpx;
 }
 .me .nickname {

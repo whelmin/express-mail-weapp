@@ -53,7 +53,7 @@
   <view class="main-header admin-header">
     <!--扫码登录-->
     <view class="main-header-btn" bindtap="qrcode">
-      <image src="/images/index/qrcode.png"></image>
+      <image src="/images/user/qrcode.png"></image>
       <text>扫描二维码</text>
     </view>
   </view>

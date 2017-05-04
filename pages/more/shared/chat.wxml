@@ -40,7 +40,7 @@
     </scroll-view>
     <!--输入-->
     <view class="input-panel">
-        <button class="pic-icon" bindtap="sendPhoto"></button>
+        <image class="pic-icon" bindtap="sendPhoto" src="/images/more/pic.png"></image>
         <input type="text" value="{{inputContent}}" bindchange="changeInputContent" class="send-input"></input>
         <button bindtap="sendMessage" class="send-btn">发送</button>
     </view>

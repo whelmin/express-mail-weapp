@@ -1,13 +1,6 @@
 <!--pages/more/card.wxml-->
 <view class="container">
-    <view wx:if="{{remind}}" class="remind-box">
-            <image wx:if="{{remind == '加载中'}}" class="remind-img" src="/images/index/loading.gif"></image>
-            <block wx:else>
-                <image class="remind-img" src="/images/index/nothing.png"></image>
-                <text class="remind-text">{{remind}}</text>
-            </block>
-    </view>
-    <block wx:else>
+    <block>
         <view class="ykt-card">
             <view class="ykt-black-line"></view>
             <view class="ykt-content">
@@ -15,7 +8,7 @@
                     <text class="ykt-ye-name">余额</text>
                     <view class="ykt-ye-money">
                         <!--<text class="ykt-ye-value">{{balance}}</text>元-->
-                        <text class="ykt-ye-value">33.3</text>元
+                        <text class="ykt-ye-value">xx.x</text>元
                     </view>
                 </view>
                 <view class="ykt-img">
@@ -26,8 +19,9 @@
                 <!--<text class="ykt-ye-time">截至时间：{{last_time}}</text>
                 <text class="ykt-ye-id">卡号：{{ykt_id}}</text>-->
                 <text class="ykt-ye-time">截至时间：2017-4-1</text>
-                <text class="ykt-ye-id">卡号：1632993</text>
+                <text class="ykt-ye-id">卡号：1632***</text>
             </view>
         </view>
     </block>
+    <text class="remind">该功能还在开发中，敬请期待 ...</text>
 </view>
