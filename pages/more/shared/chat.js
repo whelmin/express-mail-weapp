@@ -78,6 +78,7 @@ Page({
       type: 'system',
       content: '正在登录 ...'
     });
+    wx.closeSocket();
     wx.connectSocket({
       url: app._g.websocket + '/express-mail',
       header:{ 
