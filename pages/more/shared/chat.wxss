@@ -117,6 +117,7 @@ page{
     padding: 20rpx;
     position: relative;
     display: inline-block;
+    word-break: break-all;
 }
 .content image{
     max-width: 300rpx;
