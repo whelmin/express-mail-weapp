@@ -30,22 +30,22 @@ App({
                 that._g.role.userRoles = userRoles;
                 if(userRoles.indexOf('SUPER_ADMIN') !== -1 || userRoles.indexOf('MAIL_ADMIN') !== -1){
                   that._g.role.isMailAdmin = true;
-                }else if(userRoles.indexOf('SUPER_ADMIN') !== -1 || userRoles.indexOf('EXPRESS_ADMIN') !== -1){
+                }
+                if(userRoles.indexOf('SUPER_ADMIN') !== -1 || userRoles.indexOf('EXPRESS_ADMIN') !== -1){
                   that._g.role.isExpressAdmin = true;
-                }else{
-                  if(res.data.register){
-                    wx.showModal({
-                      title: '补全信息',
-                      content: '请先绑定手机号才能正常查阅取件信息！',
-                      success: function(res) {
-                        if (res.confirm) {
-                          wx.navigateTo({
-                            url: '/pages/user/bind'
-                          });
-                        }
+                }
+                if(res.data.register){
+                  wx.showModal({
+                    title: '补全信息',
+                    content: '请先绑定手机号才能正常查阅信息！',
+                    success: function(res) {
+                      if (res.confirm) {
+                        wx.navigateTo({
+                          url: '/pages/user/bind'
+                        });
                       }
-                    });
-                  }
+                    }
+                  });
                 }
                 typeof cb == "function" && cb();
               }
