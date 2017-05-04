@@ -1,4 +1,4 @@
-/* pages/index/receive/list.wxss */
+/* pages/more/mail/receive/list.wxss */
 .tab-item{
     position: relative;
 }

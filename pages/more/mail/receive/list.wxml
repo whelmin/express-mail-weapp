@@ -31,6 +31,7 @@
         <text wx:if="{{item.sendTime}}">寄件时间：{{item.sendTime}}</text>
         <text>录入时间：{{item.submitTime}}</text>
         <text wx:if="{{item.receiveTime}}">取件时间：{{item.receiveTime}}</text>
+        <text wx:if="{{item.memo}}">备注：{{item.memo}}</text>
       </view>
       <view class="main-list-item-content" wx:else>
         <text>收件人姓名：{{item.receiveMail.receiver}}</text>
@@ -40,6 +41,7 @@
         <text wx:if="{{item.address}}">认领地址：{{item.address}}</text>
         <text wx:if="{{item.createTime}}">认领时间：{{item.createTime}}</text>
         <text>录入时间：{{item.receiveMail.submitTime}}</text>
+        <text wx:if="{{item.receiveMail.memo}}">备注：{{item.receiveMail.memo}}</text>
       </view>
       <navigator wx:if="{{active_type === 'RECEIVING'}}" url="/pages/more/mail/qrcode/qrcode?id={{item.id}}&type=receive&status={{active_type}}" class="main-list-item-more" hover-class="none">
         <text class="btn">取件</text>

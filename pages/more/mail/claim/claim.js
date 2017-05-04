@@ -1,4 +1,4 @@
-// pages/index/claim/claim.js
+// pages/more/mail/claim/claim.js
 var app = getApp();
 Page({
   data:{

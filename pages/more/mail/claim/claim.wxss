@@ -1,4 +1,4 @@
-/* pages/index/claim/claim.wxss */
+/* pages/more/mail/claim/claim.wxss */
 .detail {
   display: flex;
   flex-direction: column;

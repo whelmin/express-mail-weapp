@@ -1,4 +1,4 @@
-<!--pages/index/claim/claim.wxml-->
+<!--pages/more/mail/claim/claim.wxml-->
 <view class="container">
   <!--detail-->
   <view class="detail">
@@ -10,6 +10,7 @@
     <text wx:if="{{data.sendAddress}}">寄件地址：{{data.sendAddress}}</text>
     <text wx:if="{{data.sendTime}}">寄件时间：{{data.sendTime}}</text>
     <text>录入时间：{{data.submitTime}}</text>
+    <text wx:if="{{data.memo}}">备注：{{data.memo}}</text>
   </view>
   <text class="form-title">填写认领表单</text>
 

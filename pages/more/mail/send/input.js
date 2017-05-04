@@ -1,4 +1,4 @@
-// pages/index/send/input.js
+// pages/more/mail/send/input.js
 var app = getApp();
 Page({
   data:{
@@ -61,7 +61,8 @@ Page({
         sendPhoneNum: that.data.form.sendPhoneNum,
         receiver: that.data.form.receiver,
         receiveAddress: that.data.form.receiveAddress,
-        receivePhoneNum: that.data.form.receivePhoneNum
+        receivePhoneNum: that.data.form.receivePhoneNum,
+        memo: that.data.form.memo
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded',

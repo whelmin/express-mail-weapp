@@ -1,4 +1,4 @@
-<!--pages/more/card.wxml-->
+<!--pages/more/card/index.wxml-->
 <view class="container">
     <view wx:if="{{remind}}" class="remind-box">
             <image wx:if="{{remind == '加载中'}}" class="remind-img" src="/images/index/loading.gif"></image>

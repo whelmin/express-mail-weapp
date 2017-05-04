@@ -1,4 +1,4 @@
-// pages/index/send/visit.js
+// pages/more/mail/send/visit.js
 // 管理员查询上门寄件列表
 
 var app = getApp();
