@@ -13,7 +13,7 @@
     </view>
   </view>
   <!--新增寄件-->
-  <navigator wx:if="{{active_type === 'NEW,VISITING'}}" url="/pages/index/send/input">
+  <navigator wx:if="{{active_type === 'NEW,VISITING'}}" url="/pages/more/express/send/input">
     <view class="btn btn-lg">新增寄件</view>
   </navigator>
   <!--寄件列表-->
@@ -30,7 +30,7 @@
         <text wx:if="{{item.submitTime}}">寄件时间：{{item.submitTime}}</text>
       </view>
       <view class="main-list-item-more">
-        <navigator wx:if="{{item.status === 'NEW' || item.status === 'VISITING' }}" url="/pages/index/qrcode/qrcode?id={{item.id}}&type=send&status={{item.status}}" hover-class="none">
+        <navigator wx:if="{{item.status === 'NEW' || item.status === 'VISITING' }}" url="/pages/more/express/qrcode/qrcode?id={{item.id}}&type=send&status={{item.status}}" hover-class="none">
           <text class="btn">寄件</text>
       </navigator>
         <text class="btn btn-green" wx:if="{{item.status === 'NEW'}}" bindtap="applyDoor" data-id="{{item.id}}">申请上门</text>

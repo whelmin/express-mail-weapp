@@ -72,7 +72,7 @@ Page({
           var data = res.data;
           wx.showToast({ title: '提交成功', icon: 'success' });
           wx.redirectTo({
-            url: '/pages/index/send/list'
+            url: '/pages/more/express/send/list'
           });
         }else{
           app.showErrModal(res.data, '提交失败');
