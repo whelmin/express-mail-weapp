@@ -3,19 +3,13 @@
 <!--共享服务文章-->
 <view class="container">
   <view class="nav-tabs">
-    <view class="tab-item {{active_type === 'forum' ? 'active' : ''}}" data-type="forum" bindtap="switchType">
+    <navigator url="/pages/more/shared/list" open-type="redirect" class="tab-item active">
       <text>论坛</text>
-    </view>
+    </navigator>
 
-    <view class="tab-item {{active_type === 'groupChat' ? 'active' : ''}}" data-type="groupChat" bindtap="switchType">
+    <navigator url="/pages/more/shared/chat" open-type="redirect" class="tab-item">
       <text>群聊</text>
-      <!--<view wx:if="{{count.foundMailCount}}" class="count">
-        <text>{{count.foundMailCount}}</text>
-      </view>-->
-      <view class="count">
-        <text>3</text>
-      </view>
-    </view>
+    </navigator>
   </view>
 
   <!--论坛文章列表-->

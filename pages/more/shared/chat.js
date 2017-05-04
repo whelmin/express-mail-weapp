@@ -37,60 +37,33 @@ Page({
       nickName: null
     },
     active_type: 'groupChat',
-    // record: [
-    //   {
-    //     id:	'590090cc00d9da5de5c7ace0',
-    //     user: {
-    //       id: '590051fe00d9da5de5c7accb',
-    //       nickName: '这是昵称',
-    //       avatarUrl: 'http://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eqdaRumdXeLU2wEm3Q3AevauKCjJWx3Ke48NyGpEnmqnKp26jibW7qic9qicN0ogrZSbxbk8LZ4jNEUA/0'
-    //     },
-    //   content:	'23',
-    //   createTime:	'4-7 12:00:00',
-    //   type: 'speak'
-    // },
-    // {
-    //     id:	'590185dc00d9da0f8ef23ed4',
-    //     user: {
-    //       id: '59005a3100d9da5de5c7acce',
-    //       nickName: 'whelmin',
-    //       avatarUrl: 'http://wx.qlogo.cn/mmopen/vi_32/4j897mJ7GmzEKNicbRXs7DCXZcibx944Zlb6b7LmGyudpsEPSGYDYK50lxI6B6GW7fsiabo5Uy1y20Q3mzxicwibq8Q/0'
-    //     },
-    //   content:	'刚回家',
-    //   createTime:	'04-27 13:47:08',
-    //   type: 'speak',
-    //   imgUrl: 'https://cqipc.cn/api/img/5900be3d00d9da4431772395'
-    // },
-    // {
-    //     id:	'590185dc00d9da0f8ef23ed4',
-    //     user: {
-    //       id: '59005a3100d9da5de5c7acce',
-    //       nickName: 'whelmin',
-    //       avatarUrl: 'http://wx.qlogo.cn/mmopen/vi_32/4j897mJ7GmzEKNicbRXs7DCXZcibx944Zlb6b7LmGyudpsEPSGYDYK50lxI6B6GW7fsiabo5Uy1y20Q3mzxicwibq8Q/0'
-    //     },
-    //   content:	'刚回家',
-    //   createTime:	'04-27 13:47:08',
-    //   type: 'speak',
-    //   imgUrl: 'https://cqipc.cn/api/img/5900be3d00d9da4431772395'
-    // },
-    // {
-    //     id:	'590185dc00d9da0f8ef23ed4',
-    //     user: {
-    //       id: '59005a3100d9da5de5c7acce',
-    //       nickName: 'whelmin',
-    //       avatarUrl: 'http://wx.qlogo.cn/mmopen/vi_32/4j897mJ7GmzEKNicbRXs7DCXZcibx944Zlb6b7LmGyudpsEPSGYDYK50lxI6B6GW7fsiabo5Uy1y20Q3mzxicwibq8Q/0'
-    //     },
-    //   content:	'刚回家',
-    //   createTime:	'04-27 13:47:08',
-    //   type: 'speak'
-    // }
-    // ],
     record: [],
     inputContent: null,
-    scrollTop: 9999999
+    scrollTop: 0,
+    scrollHeight: 0,
+    toView: '',
+    count: 0
+  },
+  onShareAppMessage: function () {
+    var that = this;
+    return {
+      title: '共享服务群聊',
+      desc: '即刻加入群聊',
+      path: '/pages/more/shared/chat'
+    }
   },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
+    var that = this;
+    if(!app._g.user.id) {
+      app.getUserInfo(function(){
+        that.getData(options);
+      });
+    }else{
+      that.getData(options);
+    }
+  },
+  getData:function(options){
     var that = this;
     that.setData({
       'user.id': app._g.user.id,
@@ -122,8 +95,7 @@ Page({
         });
 
         that.setData({
-          record: that.data.record,
-          scrollTop: 999999999
+          record: that.data.record
         });
       },
       fail: function(err) {
@@ -175,6 +147,7 @@ Page({
             that.setData({
               record: that.data.record
             });
+            that.scrollBottom('chat');
         });
         // 订阅历史聊天记录
         client.subscribe('/app/chat/record', function (res) {
@@ -200,8 +173,11 @@ Page({
                 type: 'system',
                 content: '获取历史聊天记录失败，请检查网络'
               });
+              that.setData({
+                record: that.data.record
+              });
             }
-            
+            that.scrollBottom('chat');
         });
         // 订阅聊天错误信息
         client.subscribe('/user/queue/errors', function (res) {
@@ -214,6 +190,7 @@ Page({
             that.setData({
               record: that.data.record
             });
+            that.scrollBottom('chat');
         });
 
     });
@@ -225,20 +202,50 @@ Page({
           type: 'system',
           content: 'WebSocket连接失败，请检查网络' + res.body
       });
+      
+      that.setData({
+        record: that.data.record
+      });
+      that.scrollBottom('chat');
     });
   },
-  onReady:function(){
-    // 页面渲染完成
-  },
-  //切换tab
-  switchType: function(e) {
+  //监听滚动
+  onScroll: function(e) {
     var that = this;
-    var active_type = e.currentTarget.dataset.type;
-    if(active_type === 'forum') {
-      wx.redirectTo({
-        url: '/pages/more/shared/list'
+    var scrollTop = e.detail.scrollTop;
+    if(scrollTop > that.data.scrollHeight) {
+      that.setData({
+        scrollHeight: scrollTop
       });
     }
+    that.setData({
+      scrollTop: scrollTop
+    });
+  },
+  //监听到底部
+  onScrollTolower: function() {
+    var that = this;
+    that.setData({
+      count: 0
+    });
+  },
+  //滚动到底部
+  scrollBottom: function(status){
+    var that = this;
+    if(status === 'chat' && that.data.scrollHeight - that.data.scrollTop > 500){
+      // 如果正在查阅历史记录，则只显示有新消息，但不进行滚动
+      that.data.count++;
+      that.setData({
+        count: that.data.count
+      });
+      return;
+    }
+    that.setData({
+      count: 0
+    });
+    that.setData({
+      toView: 'lastItem'
+    });
   },
   // 绑定消息输入
   changeInputContent: function(e) {
@@ -248,7 +255,6 @@ Page({
   },
   sendMessage: function(){
     var that = this;
-    console.log('send');
     if(!that.data.inputContent) {
       return false;
     }

@@ -85,25 +85,6 @@ Page({
       }
     });
   },
-  //切换tab
-  switchType: function(e) {
-    var that = this;
-    var active_type = e.currentTarget.dataset.type;
-    if(active_type !== that.data.active_type) {
-      that.setData({
-        list: [],
-        current: {},
-        list_remind: '加载中',
-        active_type: active_type
-      });
-      that.getList();
-    }
-    if(active_type === 'groupChat') {
-      wx.redirectTo({
-        url: '/pages/more/shared/chat'
-      });
-    }
-  },
 
   onHide:function(){
     // 页面隐藏

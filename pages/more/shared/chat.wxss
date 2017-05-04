@@ -1,6 +1,10 @@
 /* pages/more/shared/chat.wxss */
 /*群聊*/
+page{
+    height: 100%;
+}
 .container{
+    height: 100%;
     font-size: 10pt;
     background: #eaeaea;
 }
@@ -32,11 +36,14 @@
 }
 
 .chat-container {
+    height: 100%;
     flex: 1;
     text-align: center;
     overflow-y:auto;
     margin: 80rpx 0 100rpx 0;
-    padding-bottom: 30rpx;
+}
+#lastItem {
+    margin-bottom: 30rpx;
 }
 .system-message {
     font-size: 14px;
@@ -61,7 +68,6 @@
 .avatar {
     width: 84rpx;
     height: 84rpx;
-    border: #a5a5a7 1rpx solid;
     display: inline-block;
     vertical-align: top;
 }
@@ -84,17 +90,18 @@
 .text .text-header{
     display: flex;
     justify-content: flex-start;
-    margin-bottom: 6rpx;
-    color: #000;
+    margin-bottom: 8rpx;
     font-size: 11pt;
 }
 .text-header .nickname {
-     width: 140rpx;
-     white-space: nowrap;
-     text-overflow: ellipsis;
-     overflow: hidden;
+    color: #666;
+    width: 140rpx;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 .text-header .createTime{
+    color: #aaa;
     margin-left: 10rpx;
 }
 .user-message.me .text-header{
@@ -103,7 +110,7 @@
 .text .content {
     border-radius: 8rpx;
     background: #fff;
-    color: #000;
+    color: #333;
     font-size: 12pt;
     line-height: 36rpx;
     padding: 20rpx;
@@ -111,8 +118,8 @@
     display: inline-block;
 }
 .content image{
-    width: 400rpx;
-    height: 400rpx;
+    max-width: 300rpx;
+    height: 300rpx;
 }
 .user-message.me .text .content {
     background: #a0e75b;
@@ -183,9 +190,9 @@
     right: 0;
 }
 .pic-icon {
-    width: 80rpx;
-    height: 65rpx;
-    margin: 0 20rpx 0 0;
+    width: 55rpx;
+    height: 55rpx;
+    margin: 0 15rpx 0 0;
 }
 .send-input {
     flex: 1;
@@ -198,12 +205,26 @@
     padding: 0 10rpx;
 }
 .send-btn {
-    height: 72rpx;
-    line-height: 72rpx;
+    height: 68rpx;
+    line-height: 68rpx;
     background-color: #a0e75a;
     padding: 0 30rpx;
     font-size: 28rpx;
+    border-radius: 3px;
+    overflow: hidden;
 }
 .me .nickname {
     display: none;
+}
+.goto-bottom {
+    position: fixed;
+    right: 10rpx;
+    bottom: 110rpx;
+    background: #e0423b;
+    color: #fff;
+    border-radius: 15rpx;
+    height: 25rpx;
+    font-size: 10pt;
+    line-height: 25rpx;
+    padding: 10rpx 15rpx;
 }

@@ -1,24 +1,21 @@
 <!--pages/more/shared/chat.wxml-->
 <view class="container">
-    <view class="nav-tabs">
-        <view class="tab-item {{active_type === 'forum' ? 'active' : ''}}" data-type="forum" bindtap="switchType">
-        <text>论坛</text>
-        </view>
+    <view class="nav-tabs"> 
+        <navigator url="/pages/more/shared/list" open-type="redirect" class="tab-item">
+            <text>论坛</text>
+        </navigator>
 
-        <view class="tab-item {{active_type === 'groupChat' ? 'active' : ''}}" data-type="groupChat" bindtap="switchType">
-        <text>群聊</text>
-        <!--<view wx:if="{{count.foundMailCount}}" class="count">
-            <text>{{count.foundMailCount}}</text>
-        </view>-->
-        <view class="count">
-            <text>3</text>
-        </view>
+        <view bindtap="scrollBottom" class="tab-item active">
+            <text>群聊</text>
+            <view wx:if="{{count}}" class="count">
+                <text>{{count}}</text>
+            </view>
         </view>
     </view>
     <!--群聊-->
-    <scroll-view class="chat-container" scroll-y="true" scroll-with-animation="true" scroll-top="{{scrollTop}}" style="height:480px;">
+    <scroll-view class="chat-container" scroll-y="true" scroll-with-animation="true" bindscroll="onScroll" scroll-into-view="{{toView}}" bindscrolltolower="onScrollTolower">
 
-        <view wx:for="{{record}}" wx:for-item="message" wx:key="id" id="{{message.id}}" class="message {{message.type}}">
+        <view wx:for="{{record}}" wx:for-item="message" wx:key="id" id="{{record.length === index+1 ? 'lastItem' : '' }}" class="message {{message.type}}">
             <view wx:if="{{message.type == 'speak'}}" class="user-message {{message.user.id ===  user.id ? 'me' : 'other'}}">
                 <image class="avatar" src="{{message.user.avatarUrl}}" mode="aspectFill"></image>
                 <view class="text">
@@ -27,7 +24,7 @@
                         <view class="createTime">{{message.createTime}}</view>
                     </view>
                     <view class="content">
-                        <image wx:if="{{message.imgUrl}}" src="{{message.imgUrl}}" bindtap="previewPhoto" mode="aspectFit" data-img-url="{{message.imgUrl}}"></image>
+                        <image wx:if="{{message.imgUrl}}" src="{{message.imgUrl}}" bindtap="previewPhoto" mode="aspectFill" data-img-url="{{message.imgUrl}}"></image>
                         <text wx:else>{{message.content}}</text>
                     </view>
                 </view>
@@ -38,6 +35,7 @@
         </view>
 
     </scroll-view>
+    <view class="goto-bottom" bindtap="scrollBottom" wx:if="{{count}}">{{count}}条未读</view>
     <!--输入-->
     <view class="input-panel">
         <image class="pic-icon" bindtap="sendPhoto" src="/images/more/pic.png"></image>

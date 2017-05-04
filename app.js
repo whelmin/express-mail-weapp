@@ -68,8 +68,8 @@ App({
       success: function(res){
          if(res.statusCode >= 200 && res.statusCode < 400){
            var data = res.data;
-           var receiveTotal = data.receiveMailCount + data.foundMailCount;
-           data.receiveTotal = receiveTotal;
+           data.receiveMailTotal = data.receiveMailCount + data.foundMailCount;
+           data.receiveExpressTotal = data.receiveExpressCount + data.foundExpressCount;
            that._g.count = data || {};
            typeof cb == "function" && cb(data);
          }
@@ -135,85 +135,52 @@ App({
         var result = JSON.parse(res.result);
         if(result.qrCodeInfoType === 'ADMIN_LOGIN'){
           // 扫码登录
-          wx.request({
-            method: 'POST',
-            url: that._g.server + '/login/a/confirm',
-            data: {
-              qrCodeInfo: result.qrCodeInfo
-            },
-            header: {
-              'content-type': 'application/x-www-form-urlencoded',
-              'authorization': that.getAuth()
-            },
-            success: function(res) {
-              if(res.statusCode >= 200 && res.statusCode < 400){
-                if(res.data.code == '200'){
-                  wx.showToast({ title: '登录成功' });
-                }
-              }else{
-                that.showErrModal(res.data, '扫描二维码失败');
-              }
-            },
-            fail: function(res) {
-              that.showErrModal('网络错误', '扫描二维码失败');
-            },
-            complete: function() {
-              wx.hideNavigationBarLoading();
-            }
-          });
+          var url = '/login/a/confirm';
+          var name = '登录';
         }else if(result.qrCodeInfoType === 'RECEIVE_MAIL'){
-          // 扫码取件
-          wx.request({
-            method: 'POST',
-            url: that._g.server + '/a/mail/receive/qrcode/pickup',
-            data: {
-              qrCodeInfo: result.qrCodeInfo
-            },
-            header: {
-              'content-type': 'application/x-www-form-urlencoded',
-              'authorization': that.getAuth()
-            },
-            success: function(res) {
-              if(res.statusCode >= 200 && res.statusCode < 400){
-                wx.showToast({ title: '扫码取件成功' });
-              }else{
-                that.showErrModal(res.data, '扫描二维码失败');
-              }
-            },
-            fail: function(res) {
-              that.showErrModal('网络错误', '扫描二维码失败');
-            },
-            complete: function() {
-              wx.hideNavigationBarLoading();
-            }
-          });
+          // 扫码取邮件
+          var url = '/a/mail/receive/qrcode/pickup';
+          var name = '扫码取件';
         }else if(result.qrCodeInfoType === 'SEND_MAIL'){
-          // 扫码寄件
-          wx.request({
-            method: 'POST',
-            url: that._g.server + '/a/mail/send/qrcode/submit',
-            data: {
-              qrCodeInfo: result.qrCodeInfo
-            },
-            header: {
-              'content-type': 'application/x-www-form-urlencoded',
-              'authorization': that.getAuth()
-            },
-            success: function(res) {
-              if(res.statusCode >= 200 && res.statusCode < 400){
-                wx.showToast({ title: '扫码寄件成功' });
-              }else{
-                that.showErrModal(res.data, '扫描二维码失败');
-              }
-            },
-            fail: function(res) {
-              that.showErrModal('网络错误', '扫描二维码失败');
-            },
-            complete: function() {
-              wx.hideNavigationBarLoading();
-            }
-          });
+          // 扫码寄邮件
+          var url = '/a/mail/send/qrcode/submit';
+          var name = '扫码寄件';
+        }else if(result.qrCodeInfoType === 'RECEIVE_EXPRESS'){
+          // 扫码取快递
+          var url = '/a/express/receive/qrcode/pickup';
+          var name = '扫码取件';
+        }else if(result.qrCodeInfoType === 'SEND_EXPRESS'){
+          // 扫码寄快递
+          var url = '/a/express/send/qrcode/submit';
+          var name = '扫码寄件';
         }
+        // 发送请求
+        wx.request({
+          method: 'POST',
+          url: that._g.server + url,
+          data: {
+            qrCodeInfo: result.qrCodeInfo
+          },
+          header: {
+            'content-type': 'application/x-www-form-urlencoded',
+            'authorization': that.getAuth()
+          },
+          success: function(res) {
+            if(res.statusCode >= 200 && res.statusCode < 400){
+              if(!res.data.code || res.data.code == 200){
+                wx.showToast({ title: name + '成功' });
+              }
+            }else{
+              that.showErrModal(res.data, '扫描二维码失败');
+            }
+          },
+          fail: function(res) {
+            that.showErrModal('网络错误', '扫描二维码失败');
+          },
+          complete: function() {
+            wx.hideNavigationBarLoading();
+          }
+        });
       },
       complete: function() {
         wx.hideNavigationBarLoading();

@@ -13,6 +13,10 @@
   </view>
 
   <view class="user-content">
+    <view wx:if="{{isMailAdmin || isExpressAdmin}}" bindtap="qrcode" class="cell-item margin-bottom">
+      <text>扫描二维码</text>
+      <image src="/images/user/enter.png"></image>
+    </view>
     <navigator url="/pages/user/bind" class="cell-item">
       <text>绑定手机号</text>
       <image src="/images/user/enter.png"></image>
