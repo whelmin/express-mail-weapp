@@ -10,7 +10,7 @@
     </view>
 
     <view class="tab-item {{active_type === 'FOUND' ? 'active' : ''}}" data-type="FOUND" bindtap="switchType">
-      <text>认领中</text>
+      <text>认领记录</text>
       <view wx:if="{{count.foundMailCount}}" class="count">
         <text>{{count.foundMailCount}}</text>
       </view>
@@ -46,9 +46,12 @@
       <navigator wx:if="{{active_type === 'RECEIVING'}}" url="/pages/more/mail/qrcode/qrcode?id={{item.id}}&type=receive&status={{active_type}}" class="main-list-item-more" hover-class="none">
         <text class="btn">取件</text>
       </navigator>
-      <navigator wx:if="{{active_type === 'FOUND' }}" url="/pages/more/mail/qrcode/qrcode?id={{item.receiveMail.id}}&type=receive&status={{active_type}}&claimId={{item.id}}" class="main-list-item-more" hover-class="none">
+      <navigator wx:if="{{active_type === 'FOUND' && item.receiveMail.status === 'FOUND'}}" url="/pages/more/mail/qrcode/qrcode?id={{item.receiveMail.id}}&type=receive&status={{active_type}}&claimId={{item.id}}" class="main-list-item-more" hover-class="none">
         <text class="btn">取件</text>
       </navigator>
+      <view wx:if="{{active_type === 'FOUND' && item.receiveMail.status === 'RECEIVED'}}" class="main-list-item-more">
+        <text class="btn btn-green">已取件</text>
+      </view>
       <view wx:if="{{active_type === 'RECEIVED'}}" class="main-list-item-more">
         <text class="btn btn-green">已取件</text>
       </view>
