@@ -1,4 +1,4 @@
-/* pages/index/qrcode/qrcode.wxss */
+/* pages/more/express/qrcode/qrcode.wxss */
 .qrcode-box {
   display: flex;
   align-items: center;

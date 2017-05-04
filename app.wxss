@@ -86,7 +86,7 @@ button::after{
   line-height: 18pt;
 }
 .btn-red {
-  background: #ff4949;
+  background: #e0423b;
 }
 .btn-green {
   background: #13ce66;

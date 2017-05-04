@@ -1,29 +1,30 @@
-<!--pages/index/qrcode/qrcode.wxml-->
+<!--pages/more/express/qrcode/qrcode.wxml-->
 <!--获取二维码-->
 <!--取件-->
-<view class="container" wx:if="{{mailType === 'receive'}}"> 
+<view class="container" wx:if="{{expressType === 'receive'}}"> 
   <view class="qrcode-box">
-    <image wx:if="{{data.receiveMail.status !== 'RECEIVED'}}" class="qrcode" src="{{qrcode_url}}"></image>
+    <image wx:if="{{data.receiveExpress.status !== 'RECEIVED'}}" class="qrcode" src="{{qrcode_url}}"></image>
     <block wx:else>
       <icon type="success" size="80"/>
       <text class="used">已取件</text>
     </block>
   </view>
   <view class="detail">
-    <view class="token" wx:if="{{data.receiveMail.status !== 'RECEIVED'}}">
+    <view class="token" wx:if="{{data.receiveExpress.status !== 'RECEIVED'}}">
       <text>取件码：</text>
-      <text class="token-value">{{data.mailToken.token}}</text>
+      <text class="token-value">{{data.expressToken.token}}</text>
     </view>
-    <text wx:else>取件码：{{data.mailToken.token}}（已取件）</text>
-    <text>收件人：{{data.receiveMail.receiver}}</text>
-    <text wx:if="{{data.receiveMail.receivePhoneNum}}">收件电话：{{data.receiveMail.receivePhoneNum}}</text>
-    <text wx:if="{{data.receiveMail.receiveAddress}}">收件地址：{{data.receiveMail.receiveAddress}}</text>
-    <text wx:if="{{data.receiveMail.sender}}">寄件人：{{data.receiveMail.sender}}</text>
-    <text wx:if="{{data.receiveMail.sendPhoneNum}}">寄件电话：{{data.receiveMail.sendPhoneNum}}</text>
-    <text wx:if="{{data.receiveMail.sendAddress}}">寄件地址：{{data.receiveMail.sendAddress}}</text>
-    <text wx:if="{{data.receiveMail.sendTime}}">寄件时间：{{data.receiveMail.sendTime}}</text>
-    <text>录入时间：{{data.receiveMail.submitTime}}</text>
-    <text wx:if="{{data.receiveMail.receiveTime}}">取件时间：{{data.receiveMail.receiveTime}}</text>
+    <text wx:else>取件码：{{data.expressToken.token}}（已取件）</text>
+    <text>收件人：{{data.receiveExpress.receiver}}</text>
+    <text wx:if="{{data.receiveExpress.receivePhoneNum}}">收件电话：{{data.receiveExpress.receivePhoneNum}}</text>
+    <text wx:if="{{data.receiveExpress.receiveAddress}}">收件地址：{{data.receiveExpress.receiveAddress}}</text>
+    <text wx:if="{{data.receiveExpress.sender}}">寄件人：{{data.receiveExpress.sender}}</text>
+    <text wx:if="{{data.receiveExpress.sendPhoneNum}}">寄件电话：{{data.receiveExpress.sendPhoneNum}}</text>
+    <text wx:if="{{data.receiveExpress.sendAddress}}">寄件地址：{{data.receiveExpress.sendAddress}}</text>
+    <text wx:if="{{data.receiveExpress.sendTime}}">寄件时间：{{data.receiveExpress.sendTime}}</text>
+    <text>录入时间：{{data.receiveExpress.submitTime}}</text>
+    <text wx:if="{{data.receiveExpress.receiveTime}}">取件时间：{{data.receiveExpress.receiveTime}}</text>
+    <text wx:if="{{data.receiveExpress.memo}}">备注：{{data.receiveExpress.memo}}</text>
     <block wx:if="{{data.claimer}}">
       <text>认领人姓名：{{data.claimer}}</text>
       <text>认领地址：{{data.address}}</text>
@@ -33,7 +34,7 @@
   </view>
 </view>
 <!--寄件-->
-<view class="container" wx:if="{{mailType === 'send'}}">
+<view class="container" wx:if="{{expressType === 'send'}}">
   <view class="qrcode-box">
     <image wx:if="{{data.status !== 'SENDING'}}" class="qrcode" src="{{qrcode_url}}"></image>
     <block wx:else>
@@ -54,5 +55,6 @@
     <text wx:if="{{data.sendPhoneNum}}">寄件电话：{{data.sendPhoneNum}}</text>
     <text wx:if="{{data.sendAddress}}">寄件地址：{{data.sendAddress}}</text>
     <text wx:if="{{data.createTime}}">寄件时间：{{data.createTime}}</text>
+    <text wx:if="{{data.memo}}">备注：{{data.memo}}</text>
   </view>
 </view>

@@ -1,3 +1,5 @@
 {
-  "navigationBarTitleText":"新增寄件"
+  "navigationBarTitleText": "新增寄件",
+  "navigationBarBackgroundColor": "#e0423b",
+  "backgroundColor": "#e0423b"
 }

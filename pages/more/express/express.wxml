@@ -1,6 +1,6 @@
-<!--index.wxml-->
+<!--express.wxml-->
 <!--普通用户-->
-<view class="container" wx:if="{{!isAdmin}}">
+<view class="container" wx:if="{{!isExpressAdmin}}">
   <view class="main-header">
     <!--取件-->
     <navigator url="/pages/more/express/receive/list" class="main-header-btn" hover-class="none">
@@ -15,8 +15,8 @@
     <navigator url="/pages/more/express/send/list" class="main-header-btn" hover-class="none">
       <image src="/images/more/send.png"></image>
       <text>寄件</text>
-      <view wx:if="{{count.sendMailCount}}" class="count">
-        <text>{{count.sendMailCount}}</text>
+      <view wx:if="{{count.sendExpressCount}}" class="count">
+        <text>{{count.sendExpressCount}}</text>
       </view>
     </navigator>
   </view>
@@ -35,8 +35,9 @@
         <text>收件人：{{item.receiver}}</text>
         <text wx:if="{{item.sendTime}}">寄件时间：{{item.sendTime}}</text>
         <text wx:if="{{item.submitTime}}">录入时间：{{item.submitTime}}</text>
+        <text wx:if="{{item.memo}}">备注：{{item.memo}}</text>
       </view>
-      <navigator wx:if="{{item.status === 'LOST'}}" url="/pages/index/claim/claim?id={{item.id}}" class="main-list-item-more" hover-class="none">
+      <navigator wx:if="{{item.status === 'LOST'}}" url="/pages/more/express/claim/claim?id={{item.id}}" class="main-list-item-more" hover-class="none">
         <text class="btn">认领</text>
       </navigator>
       <view wx:if="{{item.status === 'FOUND'}}" class="main-list-item-more">
@@ -81,9 +82,10 @@
         <text wx:if="{{item.receiveAddress}}">收件地址：{{item.receiveAddress}}</text>
         <text wx:if="{{item.createTime}}">用户创建时间：{{item.createTime}}</text>
         <text wx:if="{{item.submitTime}}">用户提交时间：{{item.submitTime}}</text>
+        <text wx:if="{{item.memo}}">备注：{{item.memo}}</text>
       </view>
       <view wx:if="{{item.status === 'NEW'}}" class="main-list-item-more">
-        <text class="btn" bindtap="submit" data-id="{{item.id}}">提交发布</text>
+        <text class="btn btn-red" bindtap="submit" data-id="{{item.id}}">提交发布</text>
       </view>
       <view wx:if="{{item.status === 'RECEIVING'}}" class="main-list-item-more">
         <text class="btn btn-green">待取件</text>

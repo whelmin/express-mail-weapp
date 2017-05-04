@@ -1,4 +1,4 @@
-//pages/index/send/list.js
+//pages/more/express/send/list.js
 //用户寄件列表
 
 var app = getApp();
@@ -38,7 +38,7 @@ Page({
 
     wx.showNavigationBarLoading();
     wx.request({
-      url: app._g.server + '/u/mail/send/l',
+      url: app._g.server + '/u/express/send/l',
       data: {
         statusList: that.data.active_type,
         page: page
@@ -107,7 +107,7 @@ Page({
           wx.showNavigationBarLoading();
           //发送上门请求
           wx.request({
-            url: app._g.server + '/u/mail/send/visiting/' + e.currentTarget.dataset.id,
+            url: app._g.server + '/u/express/send/visiting/' + e.currentTarget.dataset.id,
             method: 'GET', 
             header: {
               'content-type': 'application/x-www-form-urlencoded',
@@ -152,7 +152,7 @@ Page({
           wx.showNavigationBarLoading();
           //发送删除请求
           wx.request({
-            url: app._g.server + '/u/mail/send/d',
+            url: app._g.server + '/u/express/send/d',
             method: 'POST', 
             data: {
               ids: e.currentTarget.dataset.id
@@ -169,9 +169,9 @@ Page({
                 if(data.succeeded === 1 && data.failed === 0) {
                   wx.showToast({ title: '删除寄件成功！' });
                   that.getList(0);
-                  app._g.count.sendMailCount--;
+                  app._g.count.sendExpressCount--;
                   that.setData({
-                    'count.sendMailCount': that.data.count.sendMailCount-1
+                    'count.sendExpressCount': that.data.count.sendExpressCount-1
                   });
                 }
               }

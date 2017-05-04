@@ -1,8 +1,8 @@
-/**index.wxss**/
+/**express.wxss**/
 .main-header {
   display: flex;
   align-items: center;
-  background: #20a0ff;
+  background: #e0423b;
   color: #fff;
   height: 300rpx;
   font-size: 14pt;
@@ -30,7 +30,8 @@
   position: absolute;
   top: 10rpx;
   right: 100rpx;
-  background: #FF4949;
+  background: #f39c12;
+  color: #fff;
   width: 40rpx;
   height: 40rpx;
   border-radius: 40rpx;

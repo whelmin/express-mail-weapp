@@ -1,11 +1,11 @@
-<!--pages/index/send/list.wxml 用户寄件列表-->
+<!--pages/more/express/send/list.wxml 用户寄件列表-->
 
 <view class="container">
   <view class="nav-tabs">
     <view class="tab-item {{active_type === 'NEW,VISITING' ? 'active' : ''}}" data-type="NEW,VISITING" bindtap="switchType">
       <text>新寄件</text>
-      <view wx:if="{{count.sendMailCount}}" class="count">
-        <text>{{count.sendMailCount}}</text>
+      <view wx:if="{{count.sendExpressCount}}" class="count">
+        <text>{{count.sendExpressCount}}</text>
       </view>
     </view>
     <view class="tab-item {{active_type === 'SENDING' ? 'active' : ''}}" data-type="SENDING" bindtap="switchType">
@@ -14,7 +14,7 @@
   </view>
   <!--新增寄件-->
   <navigator wx:if="{{active_type === 'NEW,VISITING'}}" url="/pages/more/express/send/input">
-    <view class="btn btn-lg">新增寄件</view>
+    <view class="btn btn-red btn-lg">新增寄件</view>
   </navigator>
   <!--寄件列表-->
   <view class="main-list">
@@ -28,10 +28,11 @@
         <text wx:if="{{item.createTime}}">录入时间：{{item.createTime}}</text>
         <text wx:if="{{item.requestVisitingTime}}">申请上门：{{item.requestVisitingTime}}</text>
         <text wx:if="{{item.submitTime}}">寄件时间：{{item.submitTime}}</text>
+        <text wx:if="{{item.memo}}">备注：{{item.memo}}</text>
       </view>
       <view class="main-list-item-more">
         <navigator wx:if="{{item.status === 'NEW' || item.status === 'VISITING' }}" url="/pages/more/express/qrcode/qrcode?id={{item.id}}&type=send&status={{item.status}}" hover-class="none">
-          <text class="btn">寄件</text>
+          <text class="btn btn-red">寄件</text>
       </navigator>
         <text class="btn btn-green" wx:if="{{item.status === 'NEW'}}" bindtap="applyDoor" data-id="{{item.id}}">申请上门</text>
         <text class="btn btn-gray" wx:if="{{item.status === 'VISITING'}}">上门中</text>

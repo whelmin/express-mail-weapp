@@ -1,4 +1,4 @@
-<!--pages/index/receive/input.wxml 管理员录入取件 -->
+<!--pages/more/express/receive/input.wxml 管理员录入取件 -->
 
 <view class="container">
   <text class="form-title">录入取件信息</text>
@@ -34,7 +34,12 @@
       <input placeholder="请输入收件人的联系方式" data-key="form.receivePhoneNum" bindinput="bindKeyInput" />
     </view>
 
-    <button class="btn btn-lg margin-top" bindtap="submit">
+    <view class="cell-item input-group margin-top">
+      <view class="input-label">备注：</view>
+      <input placeholder="请输入备注" data-key="form.memo" bindinput="bindKeyInput" />
+    </view>
+
+    <button class="btn btn-red btn-lg margin-top" bindtap="submit">
         <text wx:if="{{!submit_loading}}">提交</text>
         <text wx:else>提交中</text>
     </button>

@@ -1,4 +1,4 @@
-<!--pages/index/claim/claim.wxml-->
+<!--pages/more/express/claim/claim.wxml-->
 <view class="container">
   <!--detail-->
   <view class="detail">
@@ -10,6 +10,7 @@
     <text wx:if="{{data.sendAddress}}">寄件地址：{{data.sendAddress}}</text>
     <text wx:if="{{data.sendTime}}">寄件时间：{{data.sendTime}}</text>
     <text>录入时间：{{data.submitTime}}</text>
+    <text wx:if="{{data.memo}}">备注：{{data.memo}}</text>
   </view>
   <text class="form-title">填写认领表单</text>
 
@@ -28,7 +29,7 @@
           <text wx:else class="picker-placeholder">请选择联系电话</text>
         </picker>
         </view>
-      <navigator url="/pages/user/bind" class="btn">
+      <navigator url="/pages/user/bind" class="btn btn-red">
         <text>新增</text>
       </navigator>
     </view>
@@ -37,7 +38,7 @@
       <view class="input-label">地址：</view>
       <input placeholder="请输入联系地址" data-key="form.address" bindinput="bindKeyInput" />
     </view>
-    <button class="btn btn-lg margin-top" bindtap="submit">
+    <button class="btn btn-red btn-lg margin-top" bindtap="submit">
         <text wx:if="{{!submit_loading}}">提交</text>
         <text wx:else>提交中</text>
     </button>

@@ -1,4 +1,7 @@
-/* pages/index/send/list.wxss */
+/* pages/more/express/send/list.wxss */
+.nav-tabs{
+    background: #e0423b;
+}
 .tab-item{
     position: relative;
 }
@@ -10,7 +13,7 @@
     min-width: 38rpx;
     height: 30rpx;
     border-radius: 15rpx;
-    color: #20a0ff;
+    color: #e0423b;
     background-color: #fff;
     display: flex;
     justify-content: center;

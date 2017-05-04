@@ -1,4 +1,4 @@
-<!--pages/index/send/input.wxml-->
+<!--pages/more/express/send/input.wxml-->
 <!-- 新增寄件订单信息 -->
 <view class="container">
   <form>
@@ -15,7 +15,7 @@
           <text wx:else class="picker-placeholder" class="input-placeholder-gray">请选择寄件电话</text>
         </picker>
         </view>
-      <navigator url="/pages/user/bind" class="btn">
+      <navigator url="/pages/user/bind" class="btn btn-red">
         <text>新增</text>
       </navigator>
     </view>
@@ -35,12 +35,17 @@
       <input placeholder="请输入收件电话" data-key="form.receivePhoneNum" bindinput="bindKeyInput" />
     </view>
 
-    <view class="cell-item input-group">
+    <view class="cell-item input-group margin-bottom">
       <view class="input-label">收件地址：</view>
       <input placeholder="请输入收件地址" data-key="form.receiveAddress" bindinput="bindKeyInput" />
     </view>
 
-    <button class="btn btn-lg margin-top" bindtap="submit">
+    <view class="cell-item input-group">
+      <view class="input-label">备注：</view>
+      <input placeholder="请输入备注" data-key="form.memo" bindinput="bindKeyInput" />
+    </view>
+
+    <button class="btn btn-red btn-lg margin-top" bindtap="submit">
         <text wx:if="{{!submit_loading}}">提交</text>
         <text wx:else>提交中</text>
     </button>

@@ -21,12 +21,8 @@ Page({
     obj[e.target.dataset.key] = e.detail.value;
     this.setData(obj);
   },
-  onLoad:function(options){
-    // 页面初始化 options为页面跳转所带来的参数
-    var that = this;
-    that.setData({
-      phoneNums: app._g.user.phoneNums || []
-    });
+  onLoad:function(){
+
   },
   onShow:function(){
     // 页面显示
@@ -34,7 +30,6 @@ Page({
     that.setData({
       phoneNums: app._g.user.phoneNums || []
     });
-    console.log(app._g.user.phoneNums);
   },
   // 提交
   submit: function(){
@@ -73,7 +68,7 @@ Page({
           var data = res.data;
           wx.showToast({ title: '提交成功', icon: 'success' });
           wx.redirectTo({
-            url: '/pages/index/send/list'
+            url: '/pages/more/mail/send/list'
           });
         }else{
           app.showErrModal(res.data, '提交失败');

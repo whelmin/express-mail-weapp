@@ -1,4 +1,4 @@
-//pages/index/receive/input.js
+//pages/more/express/receive/input.js
 //管理员录入取件
 
 var app = getApp();
@@ -12,7 +12,8 @@ Page({
       sendPhoneNum: null,
       receiver: null,
       receiveAddress: null,
-      receivePhoneNum: null
+      receivePhoneNum: null,
+      memo: null
     },
     submit_loading: false
   },
@@ -43,7 +44,7 @@ Page({
 
     wx.request({
       method: 'POST',
-      url: app._g.server + '/a/mail/receive',
+      url: app._g.server + '/a/express/receive',
       data: {
         id: that.data.id || '',
         sender: that.data.form.sender || '',
@@ -51,7 +52,8 @@ Page({
         sendPhoneNum: that.data.form.sendPhoneNum || '',
         receiver: that.data.form.receiver,
         receiveAddress: that.data.form.receiveAddress || '',
-        receivePhoneNum: that.data.form.receivePhoneNum || ''
+        receivePhoneNum: that.data.form.receivePhoneNum || '',
+        memo: that.data.form.memo || ''
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded',
@@ -62,7 +64,7 @@ Page({
           var data = res.data;
           wx.showToast({ title: '提交成功' });
           wx.redirectTo({
-            url: '/pages/index/index'
+            url: '/pages/more/express/express'
           });
         }else{
           app.showErrModal(res.data, '提交失败');
@@ -83,7 +85,8 @@ Page({
             sendPhoneNum: null,
             receiver: null,
             receiveAddress: null,
-            receivePhoneNum: null
+            receivePhoneNum: null,
+            memo: null
           }
         });
       }

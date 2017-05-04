@@ -1,4 +1,4 @@
-// pages/index/qrcode/qrcode.js
+// pages/more/express/qrcode/qrcode.js
 // 获取二维码
 var app = getApp();
 var querygo = null;
@@ -8,8 +8,8 @@ Page({
     claimId: null,
     qrcode_url: null,
     // 邮件send或receive状态
-    mailType: null,
-    mailStatus: null,
+    expressType: null,
+    expressStatus: null,
     data: {}
   },
   onLoad:function(options){
@@ -18,11 +18,11 @@ Page({
       id: options.id,
       claimId: options.claimId || null
     });
-    var mailType = options.type;
+    var expressType = options.type;
     that.setData({
-      qrcode_url: app._g.server + '/u/mail/' + mailType + '/qrcode/' + app.getAuth() + '/' + options.id,
-      mailType: mailType,
-      mailStatus: options.status
+      qrcode_url: app._g.server + '/u/express/' + expressType + '/qrcode/' + app.getAuth() + '/' + options.id,
+      expressType: expressType,
+      expressStatus: options.status
     });
     wx.showNavigationBarLoading();
     that.getInfo();
@@ -41,10 +41,10 @@ Page({
   },
   getInfo: function(cb, err_cb){
     var that = this;
-    var mailType = that.data.mailType;
-    that.sendRequest('/u/mail/' + mailType + '/' + that.data.id, cb, err_cb);
+    var expressType = that.data.expressType;
+    that.sendRequest('/u/express/' + expressType + '/' + that.data.id, cb, err_cb);
     if (that.data.claimId) {
-      that.sendRequest('/u/mail/receive/claim/' + that.data.claimId, cb, err_cb);
+      that.sendRequest('/u/express/receive/claim/' + that.data.claimId, cb, err_cb);
     }
   },
   sendRequest: function(url, cb, err_cb) {
@@ -60,10 +60,10 @@ Page({
           if(res.statusCode >= 200 && res.statusCode < 400){
             var data = res.data;
             // 取件
-            if (data.receiveMail) {
-              data.receiveMail.sendTime = app.utils.formatDate(data.receiveMail.sendTime);
-              data.receiveMail.submitTime = app.utils.formatTime(data.receiveMail.submitTime);
-              data.receiveMail.receiveTime = app.utils.formatTime(data.receiveMail.receiveTime);
+            if (data.receiveExpress) {
+              data.receiveExpress.sendTime = app.utils.formatDate(data.receiveExpress.sendTime);
+              data.receiveExpress.submitTime = app.utils.formatTime(data.receiveExpress.submitTime);
+              data.receiveExpress.receiveTime = app.utils.formatTime(data.receiveExpress.receiveTime);
             }
             if (data.createTime) {
               data.createTime = app.utils.formatDate(data.createTime);
@@ -73,7 +73,7 @@ Page({
             that.setData({
               data: Object.assign({}, that.data.data, data)
             });
-            var status = data.status || data.receiveMail.status;
+            var status = data.status || data.receiveExpress.status;
             typeof cb === "function" && cb(status === 'RECEIVED' || status === 'SENDING');
           }else{
             app.showErrModal(res.data, '获取信息失败');

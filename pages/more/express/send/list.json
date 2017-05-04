@@ -1,3 +1,5 @@
 {
-  "navigationBarTitleText":"我的寄件"
+  "navigationBarTitleText": "我的寄件",
+  "navigationBarBackgroundColor": "#e0423b",
+  "backgroundColor": "#e0423b"
 }

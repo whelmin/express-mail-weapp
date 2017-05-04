@@ -1,18 +1,18 @@
-<!--pages/index/receive/list.wxml 取件-->
+<!--pages/more/express/receive/list 取件-->
 
 <view class="container">
   <view class="nav-tabs">
     <view class="tab-item {{active_type === 'RECEIVING' ? 'active' : ''}}" data-type="RECEIVING" bindtap="switchType">
       <text>待取件</text>
-      <view wx:if="{{count.receiveMailCount}}" class="count">
-        <text>{{count.receiveMailCount}}</text>
+      <view wx:if="{{count.receiveExpressCount}}" class="count">
+        <text>{{count.receiveExpressCount}}</text>
       </view>
     </view>
 
     <view class="tab-item {{active_type === 'FOUND' ? 'active' : ''}}" data-type="FOUND" bindtap="switchType">
       <text>认领中</text>
-      <view wx:if="{{count.foundMailCount}}" class="count">
-        <text>{{count.foundMailCount}}</text>
+      <view wx:if="{{count.foundExpressCount}}" class="count">
+        <text>{{count.foundExpressCount}}</text>
       </view>
     </view>
 
@@ -31,21 +31,23 @@
         <text wx:if="{{item.sendTime}}">寄件时间：{{item.sendTime}}</text>
         <text>录入时间：{{item.submitTime}}</text>
         <text wx:if="{{item.receiveTime}}">取件时间：{{item.receiveTime}}</text>
+        <text wx:if="{{item.memo}}">备注：{{item.memo}}</text>
       </view>
       <view class="main-list-item-content" wx:else>
-        <text>收件人姓名：{{item.receiveMail.receiver}}</text>
-        <text wx:if="{{item.receiveMail.receivePhoneNum}}">收件电话：{{item.receivePhoneNum}}</text>
+        <text>收件人姓名：{{item.receiveExpress.receiver}}</text>
+        <text wx:if="{{item.receiveExpress.receivePhoneNum}}">收件电话：{{item.receivePhoneNum}}</text>
         <text wx:if="{{item.claimer}}">认领人姓名：{{item.claimer}}</text>
         <text wx:if="{{item.PhoneNum}}">认领人电话：{{item.PhoneNum}}</text>
         <text wx:if="{{item.address}}">认领地址：{{item.address}}</text>
         <text wx:if="{{item.createTime}}">认领时间：{{item.createTime}}</text>
-        <text>录入时间：{{item.receiveMail.submitTime}}</text>
+        <text>录入时间：{{item.receiveExpress.submitTime}}</text>
+        <text wx:if="{{item.receiveExpress.memo}}">备注：{{item.receiveExpress.memo}}</text>
       </view>
       <navigator wx:if="{{active_type === 'RECEIVING'}}" url="/pages/more/express/qrcode/qrcode?id={{item.id}}&type=receive&status={{active_type}}" class="main-list-item-more" hover-class="none">
-        <text class="btn">取件</text>
+        <text class="btn btn-red">取件</text>
       </navigator>
-      <navigator wx:if="{{active_type === 'FOUND' }}" url="/pages/more/express/qrcode/qrcode?id={{item.receiveMail.id}}&type=receive&status={{active_type}}&claimId={{item.id}}" class="main-list-item-more" hover-class="none">
-        <text class="btn">取件</text>
+      <navigator wx:if="{{active_type === 'FOUND' }}" url="/pages/more/express/qrcode/qrcode?id={{item.receiveExpress.id}}&type=receive&status={{active_type}}&claimId={{item.id}}" class="main-list-item-more" hover-class="none">
+        <text class="btn btn-red">取件</text>
       </navigator>
       <view wx:if="{{active_type === 'RECEIVED'}}" class="main-list-item-more">
         <text class="btn btn-green">已取件</text>

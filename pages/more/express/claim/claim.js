@@ -1,4 +1,4 @@
-// pages/index/claim/claim.js
+// pages/more/express/claim/claim.js
 var app = getApp();
 Page({
   data:{
@@ -30,7 +30,7 @@ Page({
     wx.showNavigationBarLoading();
     wx.request({
       method: 'GET',
-      url: app._g.server + '/u/mail/receive/lost/' + options.id,
+      url: app._g.server + '/u/express/receive/lost/' + options.id,
       header: {
         'content-type': 'application/x-www-form-urlencoded',
         'authorization': app.getAuth()
@@ -76,9 +76,9 @@ Page({
     });
     wx.request({
       method: 'POST',
-      url: app._g.server + '/u/mail/receive/claim',
+      url: app._g.server + '/u/express/receive/claim',
       data: {
-        'receiveMail.id': that.data.id,
+        'receiveExpress.id': that.data.id,
         claimer: that.data.form.claimer,
         phoneNum: that.data.form.phone,
         address: that.data.form.address
@@ -91,9 +91,9 @@ Page({
         if(res.statusCode >= 200 && res.statusCode < 400){
           var data = res.data;
           wx.showToast({ title: '提交成功' });
-          app._g.count.foundMailCount++;
+          app._g.count.foundExpressCount++;
           wx.redirectTo({
-            url: '/pages/index/receive/list'
+            url: '/pages/more/express/receive/list'
           });
         }else{
           app.showErrModal(res.data, '提交失败');

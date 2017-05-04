@@ -1,4 +1,4 @@
-// pages/index/send/visit.js
+// pages/more/express/send/visit.js
 // 管理员查询上门寄件列表
 
 var app = getApp();
@@ -36,7 +36,7 @@ Page({
 
     wx.showNavigationBarLoading();
     wx.request({
-      url: app._g.server + '/a/mail/send/l',
+      url: app._g.server + '/a/express/send/l',
       data: {
         statusList: that.data.active_type,
         page: page

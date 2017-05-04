@@ -1,4 +1,4 @@
-// pages/index/receive/list.js
+// pages/more/express/receive/list
 // 取件列表
 var app = getApp();
 Page({
@@ -14,7 +14,7 @@ Page({
   onShow: function(){
     var that = this;
     that.getList(0);
-    if(!(app._g.count.receiveMailCount === undefined)) {
+    if(!(app._g.count.receiveExpressCount === undefined)) {
       that.setData({
         count: app._g.count
       });
@@ -32,7 +32,7 @@ Page({
 
     that.setData({ list_remind: '加载中' });
     wx.showNavigationBarLoading();
-    var urlLink = (that.data.active_type === 'FOUND')? '/u/mail/receive/l/claim' : '/u/mail/receive/l';
+    var urlLink = (that.data.active_type === 'FOUND')? '/u/express/receive/l/claim' : '/u/express/receive/l';
 
     wx.request({
       method: 'POST',
@@ -53,12 +53,11 @@ Page({
             e.createTime = app.utils.formatDate(e.createTime);
             e.submitTime = app.utils.formatTime(e.submitTime);
             e.receiveTime = app.utils.formatTime(e.receiveTime);
-            if(e.receiveMail){
-              e.receiveMail.submitTime = app.utils.formatTime(e.receiveMail.submitTime);
+            if(e.receiveExpress){
+              e.receiveExpress.submitTime = app.utils.formatTime(e.receiveExpress.submitTime);
             }
             return e;
           });
-          console.log(app._g.server + urlLink);
           that.setData({
             list: that.data.list.concat(content),
             current: data

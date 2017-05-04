@@ -1,3 +1,5 @@
 {
-  "navigationBarTitleText":"认领" 
+  "navigationBarTitleText": "认领快递",
+  "navigationBarBackgroundColor": "#e0423b",
+  "backgroundColor": "#e0423b"
 }

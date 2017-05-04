@@ -1,4 +1,4 @@
-// pages/index/send/input.js
+// pages/more/express/send/input.js
 var app = getApp();
 Page({
   data:{
@@ -21,12 +21,8 @@ Page({
     obj[e.target.dataset.key] = e.detail.value;
     this.setData(obj);
   },
-  onLoad:function(options){
-    // 页面初始化 options为页面跳转所带来的参数
-    var that = this;
-    that.setData({
-      phoneNums: app._g.user.phoneNums || []
-    });
+  onLoad:function(){
+
   },
   onShow:function(){
     // 页面显示
@@ -34,7 +30,6 @@ Page({
     that.setData({
       phoneNums: app._g.user.phoneNums || []
     });
-    console.log(app._g.user.phoneNums);
   },
   // 提交
   submit: function(){
@@ -54,14 +49,15 @@ Page({
     });
     wx.request({
       method: 'POST',
-      url: app._g.server + '/u/mail/send',
+      url: app._g.server + '/u/express/send',
       data: {
         sender: that.data.form.sender,
         sendAddress: that.data.form.sendAddress,
         sendPhoneNum: that.data.form.sendPhoneNum,
         receiver: that.data.form.receiver,
         receiveAddress: that.data.form.receiveAddress,
-        receivePhoneNum: that.data.form.receivePhoneNum
+        receivePhoneNum: that.data.form.receivePhoneNum,
+        memo: that.data.form.memo
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded',

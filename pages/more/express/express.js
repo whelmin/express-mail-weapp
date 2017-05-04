@@ -1,9 +1,9 @@
-//index.js
+//mail.js
 //获取应用实例
 var app = getApp();
 Page({
   data: {
-    isAdmin: false,
+    isMailAdmin: false,
     list: [],
     current: {},
     list_remind: '加载中',
@@ -17,7 +17,7 @@ Page({
   //上滑加载
   onReachBottom: function(){
     var that = this;
-    if(that.data.isAdmin) {
+    if(app._g.role.isExpressAdmin) {
         that.getList_a();
     }else{
         that.getList_u();
@@ -25,11 +25,19 @@ Page({
   },
   onLoad: function () {
     var that = this;
-    //登录
     that.setData({
-      isAdmin: app._g.role.isAdmin
+      isExpressAdmin: app._g.role.isExpressAdmin
     });
-    if(that.data.isAdmin) {
+    app.mpCount(function(data){
+      that.setData({
+        count: data
+      });
+    });
+  },
+  onShow: function (){
+    var that = this;
+    if(!app._g.token.token) { return; }
+    if(that.data.isExpressAdmin) {
       that.getList_a(0);
     }else{
       that.getList_u(0);
@@ -38,14 +46,6 @@ Page({
       that.setData({
         count: data
       });
-    });
-  },
-  login: function () {
-    var that = this;
-    //登录
-    app.showLoadToast();
-    app.getUserInfo(function(){
-      wx.hideToast();
     });
   },
   //绑定input
@@ -62,7 +62,7 @@ Page({
   //用户获取待认领列表
   getList_u: function(page) {
     var that = this;
-    if(app._g.role.isAdmin){ return; }
+    if(app._g.role.isExpressAdmin){ return; }
     if(page === undefined){
       page = that.data.current.number + 1 || 0;
     }
@@ -73,7 +73,7 @@ Page({
     
     wx.request({
       method: 'POST',
-      url: app._g.server + '/u/mail/receive/l/lost',
+      url: app._g.server + '/u/express/receive/l/lost',
       data: {
         page: page
       },
@@ -121,7 +121,7 @@ Page({
     }
     wx.showNavigationBarLoading();
     wx.request({
-      url: app._g.server + '/u/mail/receive/s/lost',
+      url: app._g.server + '/u/express/receive/s/lost',
       data: {
         keywords: that.data.search_text
       },
@@ -188,7 +188,7 @@ Page({
     
     wx.request({
       method: 'POST',
-      url: app._g.server + '/a/mail/receive/l',
+      url: app._g.server + '/a/express/receive/l',
       data: {
         page: page
       },
@@ -233,7 +233,7 @@ Page({
     var that = this;
     wx.showNavigationBarLoading();
     wx.request({
-      url: app._g.server + '/a/mail/receive/submit',
+      url: app._g.server + '/a/express/receive/submit',
       data: {
         ids: e.target.dataset.id
       },
