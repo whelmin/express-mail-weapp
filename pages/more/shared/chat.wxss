@@ -57,7 +57,7 @@ page{
 
 }
 .user-message {
-    margin: 38rpx 20rpx 0;
+    margin: 18rpx 20rpx 20rpx;
     text-align: left;
     font-size: 0;
     display: flex;
@@ -101,6 +101,7 @@ page{
     overflow: hidden;
 }
 .text-header .createTime{
+    font-size: 10pt;
     color: #aaa;
     margin-left: 10rpx;
 }

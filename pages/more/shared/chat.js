@@ -250,7 +250,7 @@ Page({
       count: 0
     });
     that.setData({
-      toView: 'lastItem'
+      toView: 'item-' + that.data.record[that.data.record.length-1].id
     });
   },
   // 绑定消息输入
