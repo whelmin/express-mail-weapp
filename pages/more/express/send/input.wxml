@@ -15,7 +15,7 @@
           <text wx:else class="picker-placeholder" class="input-placeholder-gray">请选择寄件电话</text>
         </picker>
         </view>
-      <navigator url="/pages/user/bind" class="btn btn-red">
+      <navigator url="/pages/user/bind" class="btn btn-red" hover-class="none">
         <text>新增</text>
       </navigator>
     </view>

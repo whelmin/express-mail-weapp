@@ -1,27 +1,28 @@
 // pages/more/shared/chat.js
-// 群聊
+// socket连接状态, 消息队列
+var socketOpen, socketMsgQueue, ws, client;
 
-// socket连接状态
-var socketOpen = false;
-// 消息队列
-var socketMsgQueue = [];
+// 群聊
 function sendSocketMessage(msg) {
   if (socketOpen) {
     wx.sendSocketMessage({
       data: msg
     });
   }else {
-    socketMsgQueue.push(msg)
+    socketMsgQueue.push(msg);
   }
 }
 
-// 初始化
-var ws = {
-  send: sendSocketMessage,
-  onopen: null,
-  onmessage: null
-};
-var client = null;
+function init() {
+  socketOpen = false;
+  socketMsgQueue = [];
+  ws = {
+    send: sendSocketMessage,
+    onopen: null,
+    onmessage: null
+  };
+  client = null;
+}
 
 function initClient() {
   // Stomp用来订阅和发布消息、基于二进制的协议
@@ -55,6 +56,7 @@ Page({
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
     var that = this;
+
     if(!app._g.user.id) {
       app.getUserInfo(function(){
         that.getData(options);
@@ -70,10 +72,11 @@ Page({
       'user.nickName': app._g.user.nickName
     });
     that.data.record.push({
-          id: that.data.record.length,
-          type: 'system',
-          content: '正在登录 ...'
+      id: that.data.record.length,
+      type: 'system',
+      content: '正在登录 ...'
     });
+    init();
     wx.connectSocket({
       url: app._g.websocket + '/express-mail',
       header:{ 

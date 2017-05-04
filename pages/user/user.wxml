@@ -17,19 +17,19 @@
       <text>扫描二维码</text>
       <image src="/images/user/enter.png"></image>
     </view>
-    <navigator url="/pages/user/bind" class="cell-item">
+    <navigator url="/pages/user/bind" class="cell-item" hover-class="none">
       <text>绑定手机号</text>
       <image src="/images/user/enter.png"></image>
     </navigator>
-    <navigator wx:if="{{isMailAdmin}}" url="/pages/more/mail/mail" class="cell-item">
+    <navigator wx:if="{{isMailAdmin}}" url="/pages/more/mail/mail" class="cell-item" hover-class="none">
       <text>邮报管理</text>
       <image src="/images/user/enter.png"></image>
     </navigator>
-    <navigator wx:if="{{isExpressAdmin}}" url="/pages/more/express/express" class="cell-item">
+    <navigator wx:if="{{isExpressAdmin}}" url="/pages/more/express/express" class="cell-item" hover-class="none">
       <text>快递管理</text>
       <image src="/images/user/enter.png"></image>
     </navigator>
-    <navigator url="/pages/user/about" class="cell-item margin-top">
+    <navigator url="/pages/user/about" class="cell-item margin-top" hover-class="none">
       <text>关于</text>
       <image src="/images/user/enter.png"></image>
     </navigator>

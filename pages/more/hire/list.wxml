@@ -10,7 +10,7 @@
   <!--招聘信息列表-->
   <view class="main-list hire-list">
     <view class="main-list-item" wx:for="{{list}}" wx:key="id">
-        <navigator url="/pages/more/hire/detail?id={{item.id}}">
+        <navigator url="/pages/more/hire/detail?id={{item.id}}" hover-class="none">
             <view class="main-list-item-content">
                 <text class="hire-article-title">{{item.title}}</text>
                 <text class="hire-article-content">{{item.content}}</text>

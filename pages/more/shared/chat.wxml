@@ -1,7 +1,7 @@
 <!--pages/more/shared/chat.wxml-->
 <view class="container">
     <view class="nav-tabs"> 
-        <navigator url="/pages/more/shared/list" open-type="redirect" class="tab-item">
+        <navigator url="/pages/more/shared/list" open-type="redirect" class="tab-item" hover-class="none">
             <text>论坛</text>
         </navigator>
 

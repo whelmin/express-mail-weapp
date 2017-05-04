@@ -13,7 +13,7 @@
     </view>
   </view>
   <!--新增寄件-->
-  <navigator wx:if="{{active_type === 'NEW,VISITING'}}" url="/pages/more/express/send/input">
+  <navigator wx:if="{{active_type === 'NEW,VISITING'}}" url="/pages/more/express/send/input" hover-class="none">
     <view class="btn btn-red btn-lg">新增寄件</view>
   </navigator>
   <!--寄件列表-->
