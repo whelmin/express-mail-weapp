@@ -53,22 +53,21 @@ Page({
       path: '/pages/more/shared/chat'
     }
   },
-  onLoad:function(options){
-    // 页面初始化 options为页面跳转所带来的参数
+  onLoad: function(){
     var that = this;
-
+    init();
     if(!app._g.user.id) {
       app.getUserInfo(function(){
-        that.getData(options);
+        that.getData();
       });
     }else{
-      that.getData(options);
+      that.getData();
     }
   },
   onUnload: function() {
     wx.closeSocket();
   },
-  getData:function(options){
+  getData: function(){
     var that = this;
     that.setData({
       'user.id': app._g.user.id,
@@ -79,7 +78,6 @@ Page({
       type: 'system',
       content: '正在登录 ...'
     });
-    init();
     wx.connectSocket({
       url: app._g.websocket + '/express-mail',
       header:{ 
@@ -105,10 +103,11 @@ Page({
         });
       },
       fail: function(err) {
+        
         that.data.record.push({
           id: that.data.record.length,
           type: 'system',
-          content: '登录失败' + err
+          content: '登录失败 ' + err.message
         });
 
         that.data.record.push({
@@ -316,13 +315,4 @@ Page({
       urls: urlsArray
     });
   },
-  onShow:function(){
-    // 页面显示
-  },
-  onHide:function(){
-    // 页面隐藏
-  },
-  onUnload:function(){
-    // 页面关闭
-  }
 })
