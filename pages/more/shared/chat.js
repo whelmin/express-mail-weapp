@@ -37,57 +37,57 @@ Page({
       nickName: null
     },
     active_type: 'groupChat',
-    record: [
-      {
-        id:	'590090cc00d9da5de5c7ace0',
-        user: {
-          id: '590051fe00d9da5de5c7accb',
-          nickName: '这是昵称',
-          avatarUrl: 'http://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eqdaRumdXeLU2wEm3Q3AevauKCjJWx3Ke48NyGpEnmqnKp26jibW7qic9qicN0ogrZSbxbk8LZ4jNEUA/0'
-        },
-      content:	'23',
-      createTime:	'4-7 12:00:00',
-      type: 'speak'
-    },
-    {
-        id:	'590185dc00d9da0f8ef23ed4',
-        user: {
-          id: '59005a3100d9da5de5c7acce',
-          nickName: 'whelmin',
-          avatarUrl: 'http://wx.qlogo.cn/mmopen/vi_32/4j897mJ7GmzEKNicbRXs7DCXZcibx944Zlb6b7LmGyudpsEPSGYDYK50lxI6B6GW7fsiabo5Uy1y20Q3mzxicwibq8Q/0'
-        },
-      content:	'刚回家',
-      createTime:	'04-27 13:47:08',
-      type: 'speak',
-      imgUrl: 'https://cqipc.cn/api/img/5900be3d00d9da4431772395'
-    },
-    {
-        id:	'590185dc00d9da0f8ef23ed4',
-        user: {
-          id: '59005a3100d9da5de5c7acce',
-          nickName: 'whelmin',
-          avatarUrl: 'http://wx.qlogo.cn/mmopen/vi_32/4j897mJ7GmzEKNicbRXs7DCXZcibx944Zlb6b7LmGyudpsEPSGYDYK50lxI6B6GW7fsiabo5Uy1y20Q3mzxicwibq8Q/0'
-        },
-      content:	'刚回家',
-      createTime:	'04-27 13:47:08',
-      type: 'speak',
-      imgUrl: 'https://cqipc.cn/api/img/5900be3d00d9da4431772395'
-    },
-    {
-        id:	'590185dc00d9da0f8ef23ed4',
-        user: {
-          id: '59005a3100d9da5de5c7acce',
-          nickName: 'whelmin',
-          avatarUrl: 'http://wx.qlogo.cn/mmopen/vi_32/4j897mJ7GmzEKNicbRXs7DCXZcibx944Zlb6b7LmGyudpsEPSGYDYK50lxI6B6GW7fsiabo5Uy1y20Q3mzxicwibq8Q/0'
-        },
-      content:	'刚回家',
-      createTime:	'04-27 13:47:08',
-      type: 'speak'
-    }
-    ],
-    // record: [],
+    // record: [
+    //   {
+    //     id:	'590090cc00d9da5de5c7ace0',
+    //     user: {
+    //       id: '590051fe00d9da5de5c7accb',
+    //       nickName: '这是昵称',
+    //       avatarUrl: 'http://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eqdaRumdXeLU2wEm3Q3AevauKCjJWx3Ke48NyGpEnmqnKp26jibW7qic9qicN0ogrZSbxbk8LZ4jNEUA/0'
+    //     },
+    //   content:	'23',
+    //   createTime:	'4-7 12:00:00',
+    //   type: 'speak'
+    // },
+    // {
+    //     id:	'590185dc00d9da0f8ef23ed4',
+    //     user: {
+    //       id: '59005a3100d9da5de5c7acce',
+    //       nickName: 'whelmin',
+    //       avatarUrl: 'http://wx.qlogo.cn/mmopen/vi_32/4j897mJ7GmzEKNicbRXs7DCXZcibx944Zlb6b7LmGyudpsEPSGYDYK50lxI6B6GW7fsiabo5Uy1y20Q3mzxicwibq8Q/0'
+    //     },
+    //   content:	'刚回家',
+    //   createTime:	'04-27 13:47:08',
+    //   type: 'speak',
+    //   imgUrl: 'https://cqipc.cn/api/img/5900be3d00d9da4431772395'
+    // },
+    // {
+    //     id:	'590185dc00d9da0f8ef23ed4',
+    //     user: {
+    //       id: '59005a3100d9da5de5c7acce',
+    //       nickName: 'whelmin',
+    //       avatarUrl: 'http://wx.qlogo.cn/mmopen/vi_32/4j897mJ7GmzEKNicbRXs7DCXZcibx944Zlb6b7LmGyudpsEPSGYDYK50lxI6B6GW7fsiabo5Uy1y20Q3mzxicwibq8Q/0'
+    //     },
+    //   content:	'刚回家',
+    //   createTime:	'04-27 13:47:08',
+    //   type: 'speak',
+    //   imgUrl: 'https://cqipc.cn/api/img/5900be3d00d9da4431772395'
+    // },
+    // {
+    //     id:	'590185dc00d9da0f8ef23ed4',
+    //     user: {
+    //       id: '59005a3100d9da5de5c7acce',
+    //       nickName: 'whelmin',
+    //       avatarUrl: 'http://wx.qlogo.cn/mmopen/vi_32/4j897mJ7GmzEKNicbRXs7DCXZcibx944Zlb6b7LmGyudpsEPSGYDYK50lxI6B6GW7fsiabo5Uy1y20Q3mzxicwibq8Q/0'
+    //     },
+    //   content:	'刚回家',
+    //   createTime:	'04-27 13:47:08',
+    //   type: 'speak'
+    // }
+    // ],
+    record: [],
     inputContent: null,
-    scrollbarPosition: 0
+    scrollTop: 9999999
   },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
@@ -123,7 +123,7 @@ Page({
 
         that.setData({
           record: that.data.record,
-          // scrollbarPosition: 
+          scrollTop: 999999999
         });
       },
       fail: function(err) {
