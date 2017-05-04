@@ -64,7 +64,7 @@ Page({
           var data = res.data;
           wx.showToast({ title: '提交成功' });
           wx.redirectTo({
-            url: '/pages/index/index'
+            url: '/pages/more/mail/mail'
           });
         }else{
           app.showErrModal(res.data, '提交失败');
