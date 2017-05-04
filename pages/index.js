@@ -30,6 +30,7 @@ Page({
     app.showLoadToast('登录中');
     app.getUserInfo(function(){
       wx.hideToast();
+      wx.stopPullDownRefresh();
     });
   },
   changeIndicatorDots: function(e) {
