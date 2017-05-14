@@ -1,7 +1,13 @@
 {
   "pages":[
     "pages/index",
-    
+
+    "pages/news/list",
+    "pages/news/detail",
+
+    "pages/user/user",
+    "pages/user/bind",
+
     "pages/more/mail/mail",
     "pages/more/mail/claim/claim",
     "pages/more/mail/receive/list",
@@ -31,23 +37,19 @@
     "pages/more/shared/my",
     "pages/more/shared/chat",
 
-    "pages/more/card/index",
-
-    "pages/user/user",
-    "pages/user/bind",
-    "pages/user/about"
+    "pages/more/card/index"
   ],
   "window":{
     "backgroundColor":"#20a0ff",
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#20a0ff",
-    "navigationBarTitleText":"邮报系统",
+    "navigationBarTitleText":"we重工",
     "navigationBarTextStyle":"light"
   },
   "tabBar":{
-    "color":"#8492A6",
+    "color":"#8492a6",
     "selectedColor":"#20a0ff",
-    "backgroundColor":"#f9fAfC",
+    "backgroundColor":"#f9fafc",
     "borderStyle":"black",
     "list":[
       {
@@ -55,6 +57,12 @@
         "text":"首页",
         "iconPath":"images/home.png",
         "selectedIconPath":"images/home@active.png"
+      },
+      {
+        "pagePath": "pages/news/list",
+        "text": "校园资讯",
+        "iconPath": "images/news.png",
+        "selectedIconPath": "images/news@active.png"
       },
       {
         "pagePath":"pages/user/user",

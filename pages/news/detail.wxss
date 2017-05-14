@@ -1,0 +1,27 @@
+/* pages/news/detail.wxss */
+.container{
+    background: #fff;
+    padding: 0 30rpx;
+}
+.title{
+    font-size: 16pt;
+    font-weight: bold;
+    margin-top: 40rpx;
+    line-height: 140%;
+    word-break: break-all;
+}
+.info{
+    font-size: 11pt;
+    margin-top: 30rpx;
+    color: #b2b2b2;
+}
+.info text{
+    padding: 0 20rpx 0 5rpx;
+}
+.detail{
+    font-size: 12pt;
+    line-height: 150%;
+    padding: 50rpx 15rpx 200rpx;
+    word-break: break-all;
+    text-align: justify;
+}

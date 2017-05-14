@@ -261,7 +261,7 @@ Page({
   },
   sendMessage: function(){
     var that = this;
-    if(!that.data.inputContent) {
+    if(!that.data.inputContent.trim()) {
       return false;
     }
     client.send('/app/chat', {}, JSON.stringify({

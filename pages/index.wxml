@@ -1,44 +1,34 @@
 <!--pages/more/index.wxml-->
 <view class="container">
-  <!--轮播图-->
-  <swiper indicator-dots="{{indicatorDots}}" indicator-active-color="{{activeColor}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-    <block wx:for="{{imgUrls}}" wx:key="*this">
-      <swiper-item>
-        <image src="{{item}}" class="slide-image"/>
-      </swiper-item>
+  <!--模块-->
+  <view class="main-core">
+    <block wx:for="{{core}}" wx:key="path">
+      <navigator wx:if="{{!item.disable}}" class="main-core-item" url="{{'/pages/more/'+item.path}}">
+        <image class="core-item-icon" src="/images/index/{{item.id}}.png"></image>
+        <text class="core-item-name">{{item.name}}</text>
+      </navigator>
+      <view wx:else class="main-core-item disabled" bindtap="disabled_item">
+        <image class="core-item-icon" src="/images/index/{{item.id}}.png"></image>
+        <text class="core-item-name">{{item.name}}</text>
+      </view>
     </block>
-  </swiper>
-  <!--具体模块-->
-  <view class="main-header margin-top">
-    <view class="module-row">
-      <!--邮报模块-->
-      <navigator url="/pages/more/mail/mail" class="main-header-btn" hover-class="none">
-        <image src="/images/index/envelope.png"></image>
-        <text>邮报系统</text>
-      </navigator>
-      <!--快递模块-->
-      <navigator url="/pages/more/express/express" class="main-header-btn" hover-class="none">
-        <image src="/images/index/express.png"></image>
-        <text>快递系统</text>
-      </navigator>
-      <!--共享模块-->
-      <navigator url="/pages/more/shared/list" class="main-header-btn" hover-class="none">
-        <image src="/images/index/share.png"></image>
-        <text>共享服务</text>
-      </navigator>
-    </view> 
-    <view class="module-row">
-      <!--招聘模块-->
-      <navigator url="/pages/more/hire/list" class="main-header-btn" hover-class="none">
-        <image src="/images/index/hire.png"></image>
-        <text>招聘信息</text>
-      </navigator>
-      <!--一卡通模块-->
-      <navigator url="/pages/more/card/index" class="main-header-btn" hover-class="none">
-        <image src="/images/index/card.png"></image>
-        <text>一卡通</text>
-      </navigator>
+  </view>
+  <!--卡片列表-->
+  <view class="main-card">
+    <!--今日头条-->
+    <view class="main-card-item" id="hot">
+      <view class="card-item-hd">
+        <image class="card-item-icon" src="/images/index/disable.png"></image>
+        <text class="card-item-name">今日头条</text>
+      </view>
+      <view class="card-list">
+        <navigator class="card-list-item" wx:for="{{hotList}}" wx:key="id">
+          <text>{{item.title}}</text>
+        </navigator>
+      </view>
     </view>
   </view>
+
+  <image class="main-bg" src="/images/index/logo.png" mode="widthFix">背景</image>
 </view>
 

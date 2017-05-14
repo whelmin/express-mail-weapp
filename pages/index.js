@@ -2,17 +2,23 @@
 var app = getApp();
 Page({
   data:{
-    imgUrls: [
-      '/images/index/xy1.jpeg',
-      '/images/index/xy2.jpeg',
-      '/images/index/xy3.jpeg',
-      '/images/index/xy4.jpeg'
+    core: [
+      { id: 'mail', path: 'mail/mail', name: '邮报系统' },
+      { id: 'express', path: 'express/express', name: '速递服务' },
+      { id: 'shared', path: 'shared/list', name: '共享服务' },
+      { id: 'hire', path: 'hire/list', name: '招聘信息' },
+      { id: 'card', path: 'card/index', name: '一卡通', disable: true },
+      { id: 'disable', name: '今日头条', disable: true },
+      { id: 'disable', name: '学术讲座', disable: true },
+      { id: 'disable', name: '逃逃点名', disable: true },
+      { id: 'disable', name: '物业报修', disable: true },
+      { id: 'disable', name: '社团联合', disable: true }
     ],
-    indicatorDots: true,
-    activeColor: '#f5f5f5',
-    autoplay: true,
-    interval: 5000,
-    duration: 1000
+    hotList: [
+      { id: 0, title: '【喜讯】热烈祝贺重庆工业职业技术学院荣获“第五届黄炎培优秀学校奖”' },
+      { id: 1, title: '【综合新闻】重庆市教育政策研讨会在重庆工业职业技术学院召开' },
+      { id: 2, title: '【综合新闻】《重庆市教育评估管理办法》专家论证会在重庆工业职业技术学院召开' }
+    ]
   },
   //下拉刷新
   onPullDownRefresh: function(){
@@ -32,25 +38,5 @@ Page({
       wx.hideToast();
       wx.stopPullDownRefresh();
     });
-  },
-  changeIndicatorDots: function(e) {
-    this.setData({
-      indicatorDots: !this.data.indicatorDots
-    })
-  },
-  changeAutoplay: function(e) {
-    this.setData({
-      autoplay: !this.data.autoplay
-    })
-  },
-  intervalChange: function(e) {
-    this.setData({
-      interval: e.detail.value
-    })
-  },
-  durationChange: function(e) {
-    this.setData({
-      duration: e.detail.value
-    })
-  },
+  }
 })

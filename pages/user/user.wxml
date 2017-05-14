@@ -29,10 +29,6 @@
       <text>快递管理</text>
       <image src="/images/user/enter.png"></image>
     </navigator>
-    <navigator url="/pages/user/about" class="cell-item margin-top" hover-class="none">
-      <text>关于</text>
-      <image src="/images/user/enter.png"></image>
-    </navigator>
   </view>
 
 </view>
