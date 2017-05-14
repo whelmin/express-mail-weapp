@@ -18,7 +18,7 @@
     <!--今日头条-->
     <view class="main-card-item" id="hot">
       <view class="card-item-hd">
-        <image class="card-item-icon" src="/images/index/disable.png"></image>
+        <image class="card-item-icon" src="/images/index/headline.png"></image>
         <text class="card-item-name">今日头条</text>
       </view>
       <view class="card-list">

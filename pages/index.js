@@ -8,11 +8,11 @@ Page({
       { id: 'shared', path: 'shared/list', name: '共享服务' },
       { id: 'hire', path: 'hire/list', name: '招聘信息' },
       { id: 'card', path: 'card/index', name: '一卡通', disable: true },
-      { id: 'disable', name: '今日头条', disable: true },
-      { id: 'disable', name: '学术讲座', disable: true },
-      { id: 'disable', name: '逃逃点名', disable: true },
-      { id: 'disable', name: '物业报修', disable: true },
-      { id: 'disable', name: '社团联合', disable: true }
+      { id: 'headline', name: '今日头条', disable: true },
+      { id: 'lecture', name: '学术讲座', disable: true },
+      { id: 'call-roll', name: '逃逃点名', disable: true },
+      { id: 'repair', name: '物业报修', disable: true },
+      { id: 'community', name: '社团联合', disable: true }
     ],
     hotList: [
       { id: 0, title: '【喜讯】热烈祝贺重庆工业职业技术学院荣获“第五届黄炎培优秀学校奖”' },
